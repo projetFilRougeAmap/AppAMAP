@@ -1,4 +1,4 @@
-AppliAMAP
-=========
+appAMAP
+=======
 
-A Symfony project created on December 18, 2015, 11:34 am.
+A Symfony project created on February 2, 2016, 10:39 am.
