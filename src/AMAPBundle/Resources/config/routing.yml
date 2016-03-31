@@ -5,3 +5,7 @@ amap_homepage:
 amap_homepage2:
     path:     /Accueil
     defaults: { _controller: AMAPBundle:Default:index }
+    
+gestionProduits:
+    path:     /GestionProduits
+    defaults: { _controller: AMAPBundle:GestionProduits:index }
