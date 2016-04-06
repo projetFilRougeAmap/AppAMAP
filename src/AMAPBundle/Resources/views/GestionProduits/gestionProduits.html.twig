@@ -1,10 +1,18 @@
 {% extends 'base.html.twig'%}
 {% block body %} 
-    {#% for p in prod %}
-       {{ p.getLibelle()  }}
-    {% endfor %}
-    
     {{form_start(form)}}
+    Nom du produit : {{form_widget(form.libelleProduit)}}<br>
+    {{form_widget(form.valider)}}
+    {{form_end(form)}}
     
-    {{form_end(form)}#}
+    <table>
+        <tr>
+            <td>Nom produit</td>
+        </tr>
+        {% for p in prod %}
+            <tr><td>
+                {{ p.getLibelle()  }}
+            </td></tr>
+        {% endfor %}
+    </table>
 {% endblock body%}

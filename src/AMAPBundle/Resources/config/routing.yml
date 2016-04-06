@@ -2,10 +2,6 @@ amap_homepage:
     path:     /
     defaults: { _controller: AMAPBundle:Default:index }
     
-amap_homepage2:
-    path:     /Accueil
-    defaults: { _controller: AMAPBundle:Default:index }
-    
 gestionProduits:
     path:     /GestionProduits
     defaults: { _controller: AMAPBundle:GestionProduits:index }
