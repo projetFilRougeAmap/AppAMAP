@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * produit
  *
- * @ORM\Table(name="produit")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\produitRepository")
+ * @ORM\Table(name="entrepot")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\entrepotRepository")
  */
-class Produit
+class Entrepot
 {
     /**
      * @var int
@@ -29,7 +29,7 @@ class Produit
     private $libelle;
 
     /**
-    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Stock", mappedBy="produit")
+    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Stock", mappedBy="entrepot")
     */
     private $stock;
 
