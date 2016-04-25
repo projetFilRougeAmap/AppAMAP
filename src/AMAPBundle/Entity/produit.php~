@@ -32,6 +32,11 @@ class Produit
     * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Stock", mappedBy="produit")
     */
     private $stock;
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\CategorieProduit", inversedBy="produit")
+    */
+    private $categorieProduit;
 
     /**
      * Get id
@@ -65,5 +70,46 @@ class Produit
     public function getLibelle()
     {
         return $this->libelle;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->stock = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add stock
+     *
+     * @param \AMAPBundle\Entity\Stock $stock
+     *
+     * @return Produit
+     */
+    public function addStock(\AMAPBundle\Entity\Stock $stock)
+    {
+        $this->stock[] = $stock;
+
+        return $this;
+    }
+
+    /**
+     * Remove stock
+     *
+     * @param \AMAPBundle\Entity\Stock $stock
+     */
+    public function removeStock(\AMAPBundle\Entity\Stock $stock)
+    {
+        $this->stock->removeElement($stock);
+    }
+
+    /**
+     * Get stock
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStock()
+    {
+        return $this->stock;
     }
 }

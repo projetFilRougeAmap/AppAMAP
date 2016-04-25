@@ -27,6 +27,11 @@ class CategorieProduit
      * @ORM\Column(name="libelle", type="string", length=255)
      */
     private $libelle;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Produit", mappedBy="categorieProduit")
+    */
+    private $produit;
 
 
     /**
@@ -61,5 +66,46 @@ class CategorieProduit
     public function getLibelle()
     {
         return $this->libelle;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->produit = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add produit
+     *
+     * @param \AMAPBundle\Entity\Produit $produit
+     *
+     * @return CategorieProduit
+     */
+    public function addProduit(\AMAPBundle\Entity\Produit $produit)
+    {
+        $this->produit[] = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Remove produit
+     *
+     * @param \AMAPBundle\Entity\Produit $produit
+     */
+    public function removeProduit(\AMAPBundle\Entity\Produit $produit)
+    {
+        $this->produit->removeElement($produit);
+    }
+
+    /**
+     * Get produit
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduit()
+    {
+        return $this->produit;
     }
 }

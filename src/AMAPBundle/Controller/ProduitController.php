@@ -2,25 +2,20 @@
 
 namespace AMAPBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use \Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
-use \Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use \Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AMAPBundle\Entity\Produit;
 use AMAPBundle\Form\ProduitType;
 
-
 /**
-* Produit controller.
-*
-* @Route("/gestionProduits")
-*/
-class GestionProduitsController extends Controller
+ * Produit controller.
+ *
+ * @Route("/gestionProduits")
+ */
+class ProduitController extends Controller
 {
-    
     /**
      * Lists all Produit entities.
      *
@@ -142,5 +137,4 @@ class GestionProduitsController extends Controller
             ->getForm()
         ;
     }
-    
 }

@@ -98,7 +98,7 @@
                             <li><a {% if app.request.attributes.get('_route') == 'amap_homepage' %} class="menu-top-active" {% endif %} href="{{path('amap_homepage')}}">Accueil</a></li>
                             <li><a href="">Nous découvrir</a></li>
                             <li><a href="">Gestion des paniers</a></li>
-                            <li><a {% if app.request.attributes.get('_route') == 'gestionProduits' %} class="menu-top-active" {% endif %} href="{{path('gestionProduits')}}">Gestion des produits</a></li>
+                            <li><a {% if app.request.attributes.get('_route') == 'gestionProduits_index' %} class="menu-top-active" {% endif %} href="{{path('gestionProduits_index')}}">Gestion des produits</a></li>
                             <li><a href="">Gestion des commandes</a></li>
                         </ul>
                     </div>

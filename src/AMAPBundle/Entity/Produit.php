@@ -32,6 +32,11 @@ class Produit
     * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Stock", mappedBy="produit")
     */
     private $stock;
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\CategorieProduit", inversedBy="produit")
+    */
+    private $categorieProduit;
 
     /**
      * Get id
@@ -106,5 +111,29 @@ class Produit
     public function getStock()
     {
         return $this->stock;
+    }
+
+    /**
+     * Set categorieProduit
+     *
+     * @param \AMAPBundle\Entity\CategorieProduit $categorieProduit
+     *
+     * @return Produit
+     */
+    public function setCategorieProduit(\AMAPBundle\Entity\CategorieProduit $categorieProduit = null)
+    {
+        $this->categorieProduit = $categorieProduit;
+
+        return $this;
+    }
+
+    /**
+     * Get categorieProduit
+     *
+     * @return \AMAPBundle\Entity\CategorieProduit
+     */
+    public function getCategorieProduit()
+    {
+        return $this->categorieProduit;
     }
 }

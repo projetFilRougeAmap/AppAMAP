@@ -66,4 +66,45 @@ class Entrepot
     {
         return $this->libelle;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->stock = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add stock
+     *
+     * @param \AMAPBundle\Entity\Stock $stock
+     *
+     * @return Entrepot
+     */
+    public function addStock(\AMAPBundle\Entity\Stock $stock)
+    {
+        $this->stock[] = $stock;
+
+        return $this;
+    }
+
+    /**
+     * Remove stock
+     *
+     * @param \AMAPBundle\Entity\Stock $stock
+     */
+    public function removeStock(\AMAPBundle\Entity\Stock $stock)
+    {
+        $this->stock->removeElement($stock);
+    }
+
+    /**
+     * Get stock
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
 }

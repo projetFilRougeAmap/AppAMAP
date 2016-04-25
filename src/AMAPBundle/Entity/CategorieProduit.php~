@@ -27,6 +27,11 @@ class CategorieProduit
      * @ORM\Column(name="libelle", type="string", length=255)
      */
     private $libelle;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Produit", mappedBy="categorieProduit")
+    */
+    private $produit;
 
 
     /**

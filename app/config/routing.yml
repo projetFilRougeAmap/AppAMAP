@@ -1,6 +1,10 @@
 amap:
-    resource: "@AMAPBundle/Resources/config/routing.yml"
-    prefix:   /
+    resource: "@AMAPBundle/Controller/DefaultController.php"
+    type:     annotation
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+amap_gestionProduits:
+    resource: "@AMAPBundle/Controller/GestionProduitsController.php"
+    type:     annotation
