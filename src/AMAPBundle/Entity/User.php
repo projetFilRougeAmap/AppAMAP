@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * panier
  *
  * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\userRepository")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {

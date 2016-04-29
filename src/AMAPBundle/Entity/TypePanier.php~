@@ -5,12 +5,12 @@ namespace AMAPBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * produit
+ * TypePanier
  *
- * @ORM\Table(name="categorieProduit")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\CategorieProduitRepository")
+ * @ORM\Table(name="type_panier")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\TypePanierRepository")
  */
-class CategorieProduit
+class TypePanier
 {
     /**
      * @var int
@@ -29,16 +29,16 @@ class CategorieProduit
     private $libelle;
     
     /**
-    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Produit", mappedBy="categorieProduit")
+    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Panier", mappedBy="typePanier")
     */
-    private $produits;
+    private $paniers;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->paniers = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -56,7 +56,7 @@ class CategorieProduit
      *
      * @param string $libelle
      *
-     * @return CategorieProduit
+     * @return TypePanier
      */
     public function setLibelle($libelle)
     {
@@ -76,36 +76,36 @@ class CategorieProduit
     }
 
     /**
-     * Add produit
+     * Add panier
      *
-     * @param \AMAPBundle\Entity\Produit $produit
+     * @param \AMAPBundle\Entity\Panier $panier
      *
-     * @return CategorieProduit
+     * @return TypePanier
      */
-    public function addProduit(\AMAPBundle\Entity\Produit $produit)
+    public function addPanier(\AMAPBundle\Entity\Panier $panier)
     {
-        $this->produits[] = $produit;
+        $this->paniers[] = $panier;
 
         return $this;
     }
 
     /**
-     * Remove produit
+     * Remove panier
      *
-     * @param \AMAPBundle\Entity\Produit $produit
+     * @param \AMAPBundle\Entity\Panier $panier
      */
-    public function removeProduit(\AMAPBundle\Entity\Produit $produit)
+    public function removePanier(\AMAPBundle\Entity\Panier $panier)
     {
-        $this->produits->removeElement($produit);
+        $this->paniers->removeElement($panier);
     }
 
     /**
-     * Get produits
+     * Get paniers
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getProduits()
+    public function getPaniers()
     {
-        return $this->produits;
+        return $this->paniers;
     }
 }

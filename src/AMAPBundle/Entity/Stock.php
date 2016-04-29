@@ -44,13 +44,13 @@ class Stock
     /**
     * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Produit", inversedBy="stock")
     */
-    private $produit;
+    private $produits;
     
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -74,7 +74,7 @@ class Stock
     /**
      * Get quantite
      *
-     * @return int
+     * @return integer
      */
     public function getQuantite()
     {
@@ -130,26 +130,26 @@ class Stock
     }
 
     /**
-     * Set produit
+     * Set produits
      *
-     * @param \AMAPBundle\Entity\Produit $produit
+     * @param \AMAPBundle\Entity\Produit $produits
      *
      * @return Stock
      */
-    public function setProduit(\AMAPBundle\Entity\Produit $produit = null)
+    public function setProduits(\AMAPBundle\Entity\Produit $produits = null)
     {
-        $this->produit = $produit;
+        $this->produits = $produits;
 
         return $this;
     }
 
     /**
-     * Get produit
+     * Get produits
      *
      * @return \AMAPBundle\Entity\Produit
      */
-    public function getProduit()
+    public function getProduits()
     {
-        return $this->produit;
+        return $this->produits;
     }
 }

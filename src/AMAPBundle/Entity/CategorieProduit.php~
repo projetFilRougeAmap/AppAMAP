@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * produit
  *
  * @ORM\Table(name="categorieProduit")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\categorieProduitRepository")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\CategorieProduitRepository")
  */
 class CategorieProduit
 {
@@ -31,13 +31,20 @@ class CategorieProduit
     /**
     * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Produit", mappedBy="categorieProduit")
     */
-    private $produit;
+    private $produits;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -49,7 +56,7 @@ class CategorieProduit
      *
      * @param string $libelle
      *
-     * @return produit
+     * @return CategorieProduit
      */
     public function setLibelle($libelle)
     {
@@ -66,5 +73,39 @@ class CategorieProduit
     public function getLibelle()
     {
         return $this->libelle;
+    }
+
+    /**
+     * Add produit
+     *
+     * @param \AMAPBundle\Entity\Produit $produit
+     *
+     * @return CategorieProduit
+     */
+    public function addProduit(\AMAPBundle\Entity\Produit $produit)
+    {
+        $this->produits[] = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Remove produit
+     *
+     * @param \AMAPBundle\Entity\Produit $produit
+     */
+    public function removeProduit(\AMAPBundle\Entity\Produit $produit)
+    {
+        $this->produits->removeElement($produit);
+    }
+
+    /**
+     * Get produits
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduits()
+    {
+        return $this->produits;
     }
 }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * produit
  *
  * @ORM\Table(name="produit")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\produitRepository")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\ProduitRepository")
  */
 class Produit
 {
@@ -27,21 +27,49 @@ class Produit
      * @ORM\Column(name="libelle", type="string", length=255)
      */
     private $libelle;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prix", type="float")
+     */
+    private $prix;
 
     /**
-    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Stock", mappedBy="produit")
+    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Stock", mappedBy="produits")
     */
     private $stock;
     
     /**
-    * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\CategorieProduit", inversedBy="produit")
+    * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\CategorieProduit", inversedBy="produits")
     */
     private $categorieProduit;
+    
+    /**
+    * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Panier", mappedBy="produits")
+    */
+    private $paniers;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\CommandeProduit", mappedBy="produits")
+    */
+    private $commandeProduit;
+
+   
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->stock = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->paniers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commandeProduit = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -53,7 +81,7 @@ class Produit
      *
      * @param string $libelle
      *
-     * @return produit
+     * @return Produit
      */
     public function setLibelle($libelle)
     {
@@ -71,12 +99,29 @@ class Produit
     {
         return $this->libelle;
     }
+
     /**
-     * Constructor
+     * Set prix
+     *
+     * @param float $prix
+     *
+     * @return Produit
      */
-    public function __construct()
+    public function setPrix($prix)
     {
-        $this->stock = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return float
+     */
+    public function getPrix()
+    {
+        return $this->prix;
     }
 
     /**
@@ -135,5 +180,73 @@ class Produit
     public function getCategorieProduit()
     {
         return $this->categorieProduit;
+    }
+
+    /**
+     * Add panier
+     *
+     * @param \AMAPBundle\Entity\Panier $panier
+     *
+     * @return Produit
+     */
+    public function addPanier(\AMAPBundle\Entity\Panier $panier)
+    {
+        $this->paniers[] = $panier;
+
+        return $this;
+    }
+
+    /**
+     * Remove panier
+     *
+     * @param \AMAPBundle\Entity\Panier $panier
+     */
+    public function removePanier(\AMAPBundle\Entity\Panier $panier)
+    {
+        $this->paniers->removeElement($panier);
+    }
+
+    /**
+     * Get paniers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPaniers()
+    {
+        return $this->paniers;
+    }
+
+    /**
+     * Add commandeProduit
+     *
+     * @param \AMAPBundle\Entity\CommandeProduit $commandeProduit
+     *
+     * @return Produit
+     */
+    public function addCommandeProduit(\AMAPBundle\Entity\CommandeProduit $commandeProduit)
+    {
+        $this->commandeProduit[] = $commandeProduit;
+
+        return $this;
+    }
+
+    /**
+     * Remove commandeProduit
+     *
+     * @param \AMAPBundle\Entity\CommandeProduit $commandeProduit
+     */
+    public function removeCommandeProduit(\AMAPBundle\Entity\CommandeProduit $commandeProduit)
+    {
+        $this->commandeProduit->removeElement($commandeProduit);
+    }
+
+    /**
+     * Get commandeProduit
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommandeProduit()
+    {
+        return $this->commandeProduit;
     }
 }
