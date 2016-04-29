@@ -8,3 +8,8 @@ fos_user:
 amap_gestionProduits:
     resource: "@AMAPBundle/Controller/GestionProduitsController.php"
     type:     annotation
+amap_identification:
+    resource: "@AMAPBundle/Controller/IdentificationController.php"
+    type:     annotation
+    
+    
