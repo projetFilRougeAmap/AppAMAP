@@ -2,14 +2,11 @@
 
 namespace AMAPBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use \Symfony\Component\Form\Extension\Core\Type\TextType;
-use \Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use \Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AMAPBundle\Entity\Produit;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AMAPBundle\Entity\Produit;
 
 
 /**
@@ -22,7 +19,7 @@ class IdentificationController extends Controller
     /**
      * Affiche l'accueil
      *
-     * @Route("/", name="amap_homepage")
+     * @Route("/", name="amap_identification")
      * @Method({"GET", "POST"})
      */
     public function indexAction(\Symfony\Component\HttpFoundation\Request $request)
