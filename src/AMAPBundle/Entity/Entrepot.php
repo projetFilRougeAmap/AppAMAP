@@ -107,4 +107,8 @@ class Entrepot
     {
         return $this->stock;
     }
+    
+    public function __toString(){
+    	return $this->libelle;
+    }
 }

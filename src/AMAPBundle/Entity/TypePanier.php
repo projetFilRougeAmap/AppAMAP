@@ -108,4 +108,8 @@ class TypePanier
     {
         return $this->paniers;
     }
+    
+    public function __toString(){
+    	return $this->libelle;
+    }
 }

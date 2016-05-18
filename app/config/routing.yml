@@ -1,3 +1,15 @@
+amap_entrepot:
+    resource: "@AMAPBundle/Controller/EntrepotController.php"
+    type:     annotation
+
+amap_stock:
+    resource: "@AMAPBundle/Controller/StockController.php"
+    type:     annotation
+
+amap_type_panier:
+    resource: "@AMAPBundle/Controller/TypePanierController.php"
+    type:     annotation
+
 amap_panier:
     resource: "@AMAPBundle/Controller/PanierController.php"
     type:     annotation

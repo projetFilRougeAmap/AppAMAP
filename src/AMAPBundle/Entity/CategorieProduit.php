@@ -108,4 +108,7 @@ class CategorieProduit
     {
         return $this->produits;
     }
+    public function __toString(){
+    	return $this->libelle;
+    }
 }

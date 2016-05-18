@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Entrepot list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entrepot in entrepots %}
+            <tr>
+                <td><a href="{{ path('entrepot_show', { 'id': entrepot.id }) }}">{{ entrepot.id }}</a></td>
+                <td>{{ entrepot.libelle }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('entrepot_show', { 'id': entrepot.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('entrepot_edit', { 'id': entrepot.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('entrepot_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -249,4 +249,7 @@ class Produit
     {
         return $this->commandeProduit;
     }
+    public function __toString() {
+    	return $this->libelle;
+    }
 }
