@@ -32,11 +32,23 @@ class Entrepot
     * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Stock", mappedBy="entrepot")
     */
     private $stock;
+    
+    /**
+    * @ORM\OneToOne(targetEntity="AMAPBundle\Entity\Adresse")
+    */
+    private $adresse;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->stock = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -48,7 +60,7 @@ class Entrepot
      *
      * @param string $libelle
      *
-     * @return produit
+     * @return Entrepot
      */
     public function setLibelle($libelle)
     {
@@ -65,13 +77,6 @@ class Entrepot
     public function getLibelle()
     {
         return $this->libelle;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->stock = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -107,8 +112,28 @@ class Entrepot
     {
         return $this->stock;
     }
-    
-    public function __toString(){
-    	return $this->libelle;
+
+    /**
+     * Set adresse
+     *
+     * @param \AMAPBundle\Entity\Adresse $adresse
+     *
+     * @return Entrepot
+     */
+    public function setAdresse(\AMAPBundle\Entity\Adresse $adresse = null)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return \AMAPBundle\Entity\Adresse
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
     }
 }
