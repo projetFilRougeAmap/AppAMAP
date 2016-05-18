@@ -1,7 +1,3 @@
-amap:
-    resource: "@AMAPBundle/Controller/DefaultController.php"
-    type:     annotation
-
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
@@ -11,5 +7,7 @@ amap_gestionProduits:
 amap_identification:
     resource: "@AMAPBundle/Controller/IdentificationController.php"
     type:     annotation
-    
-    
+
+amap_home:
+    resource: "@AMAPBundle/Controller/HomeController.php"
+    type:     annotation
