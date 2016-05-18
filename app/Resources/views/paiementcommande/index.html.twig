@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PaiementCommande list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datepaiement</th>
+                <th>Montant</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paiementCommande in paiementCommandes %}
+            <tr>
+                <td><a href="{{ path('paiementcommande_show', { 'id': paiementCommande.id }) }}">{{ paiementCommande.id }}</a></td>
+                <td>{% if paiementCommande.datePaiement %}{{ paiementCommande.datePaiement|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ paiementCommande.montant }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('paiementcommande_show', { 'id': paiementCommande.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('paiementcommande_edit', { 'id': paiementCommande.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('paiementcommande_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

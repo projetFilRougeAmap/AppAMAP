@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Livraison list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datelivraison</th>
+                <th>Intitule</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for livraison in livraisons %}
+            <tr>
+                <td><a href="{{ path('livraison_show', { 'id': livraison.id }) }}">{{ livraison.id }}</a></td>
+                <td>{% if livraison.dateLivraison %}{{ livraison.dateLivraison|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ livraison.intitule }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('livraison_show', { 'id': livraison.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('livraison_edit', { 'id': livraison.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('livraison_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
