@@ -26,6 +26,7 @@ class HomeController extends Controller
      */
     public function indexAction(\Symfony\Component\HttpFoundation\Request $request)
     {
+    	
         return $this->render('AMAPBundle:Default:index.html.twig');
     }
 }

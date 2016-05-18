@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Panier list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datedernieremodif</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for panier in paniers %}
+            <tr>
+                <td><a href="{{ path('panier_show', { 'id': panier.id }) }}">{{ panier.id }}</a></td>
+                <td>{% if panier.dateDerniereModif %}{{ panier.dateDerniereModif|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ panier.prix }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('panier_show', { 'id': panier.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('panier_edit', { 'id': panier.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('panier_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

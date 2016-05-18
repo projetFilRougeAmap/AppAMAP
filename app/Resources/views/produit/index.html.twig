@@ -8,21 +8,23 @@
             <tr>
                 <th>Id</th>
                 <th>Libelle</th>
+                <th>Prix</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for produit in produits %}
             <tr>
-                <td><a href="{{ path('gestionProduits_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
+                <td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
                 <td>{{ produit.libelle }}</td>
+                <td>{{ produit.prix }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('gestionProduits_show', { 'id': produit.id }) }}">show</a>
+                            <a href="{{ path('produit_show', { 'id': produit.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('gestionProduits_edit', { 'id': produit.id }) }}">edit</a>
+                            <a href="{{ path('produit_edit', { 'id': produit.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -33,7 +35,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('gestionProduits_new') }}">Create a new entry</a>
+            <a href="{{ path('produit_new') }}">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}

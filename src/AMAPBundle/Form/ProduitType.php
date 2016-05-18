@@ -16,7 +16,9 @@ class ProduitType extends AbstractType
     {
         $builder
             ->add('libelle')
+            ->add('prix')
             ->add('categorieProduit')
+            ->add('paniers')
         ;
     }
     
