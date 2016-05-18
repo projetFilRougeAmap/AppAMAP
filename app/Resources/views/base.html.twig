@@ -4,7 +4,7 @@
 <!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8" />
-		<title>Smarty - Multipurpose + Admin</title>
+		<title>Mon AMAP</title>
 		<meta name="keywords" content="HTML5,CSS3,Template" />
 		<meta name="description" content="" />
 		<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
@@ -202,60 +202,81 @@
 									</li>
 								-->
 								<ul id="topMain" class="nav nav-pills nav-main">
-									<li class="dropdown active"><!-- HOME -->
-										<a class="dropdown-toggle" href="{{path('amap_homepage')}}">
+									<li class="dropdown active"><!-- Accueil -->
+										<a href="{{path('amap_homepage')}}">
 											Accueil
 										</a>
+									</li>
+                                                                        
+                                                                        <li class="dropdown"><!-- Gestion des paniers -->
+										<a class="dropdown-toggle" href="">
+											Gestion des paniers/produits
+										</a>
 										<ul class="dropdown-menu">
-											<li class="dropdown active">
-												<a class="dropdown-toggle" href="#">
-													HOME CORPORATE
+											<li class="dropdown">
+												<a class="dropdown" href="#">
+													Paniers
 												</a>
-												<ul class="dropdown-menu">
+												<!--<ul class="dropdown-menu">
 													<li><a href="index-corporate-1.html">CORPORATE LAYOUT 1</a></li>
-													<li><a href="index-corporate-2.html">CORPORATE LAYOUT 2</a></li>
-												</ul>
+												</ul>-->
 											</li>
-											
+											<li class="dropdown">
+												<a class="dropdown" href="{{path('gestionProduits_index')}}">
+													Produits
+												</a>
+											</li>
+                                                                                        <li class="dropdown">
+												<a class="dropdown" href="#">
+													Stock
+												</a>
+											</li>
 										</ul>
 									</li>
-									<li class="dropdown"><!-- PAGES -->
-										<a href="{{path('gestionProduits_index')}}">
-											Gestion des produits
-										</a>
-										
-									</li>
-									<li class="dropdown"><!-- FEATURES -->
-										<a href="#">
+                                                                        
+									<li class="dropdown"><!-- Gestion des commandes -->
+										<a class="dropdown-toggle" href="">
 											Gestion des commandes
 										</a>
-										
-									</li>
-									
-									
-									<li class="dropdown"><!-- SHOP -->
-										<a class="dropdown-toggle" href="#">
-											SHOP
-										</a>
-										<ul class="dropdown-menu pull-right">
+										<ul class="dropdown-menu">
 											<li class="dropdown">
-												<a class="dropdown-toggle" href="#">
-													1 COLUMN
+												<a class="dropdown" href="#">
+													Commandes
 												</a>
-												<ul class="dropdown-menu">
-													<li><a href="shop-1col-left.html">LEFT SIDEBAR</a></li>
-													<li><a href="shop-1col-right.html">RIGHT SIDEBAR</a></li>
-													<li><a href="shop-1col-both.html">BOTH SIDEBAR</a></li>
-													<li><a href="shop-1col-full.html">FULL WIDTH</a></li>
-												</ul>
+											</li>
+											<li class="dropdown">
+												<a class="dropdown" href="#">
+													Livraisons
+												</a>
+											</li>
+                                                                                        <li class="dropdown">
+												<a class="dropdown" href="#">
+													Paiements
+												</a>
 											</li>
 										</ul>
 									</li>
-									<li class="dropdown mega-menu"><!-- SHORTCODES -->
-										<a class="dropdown-toggle" href="#">
-											SHORTCODES
+									
+                                                                        
+                                                                        <li class="dropdown"><!-- Gestion administrative -->
+										<a class="dropdown-toggle" href="">
+											Gestion administrative
 										</a>
+										<ul class="dropdown-menu">
+											<li class="dropdown">
+												<a class="dropdown" href="#">
+													Utilisateurs
+												</a>
+											</li>
+											<li class="dropdown">
+												<a class="dropdown" href="#">
+													Entrepots
+												</a>
+											</li>
+										</ul>
 									</li>
+									
+									
 									<li>
 										<a id="sidepanel_btn" href="#" class="fa fa-bars"></a>
 									</li>
