@@ -107,19 +107,13 @@ class GestionProduitsController extends Controller
     /**
      * Deletes a Produit entity.
      *
-     * @Route("/{id}", name="gestionProduits_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="gestionProduits_delete")
      */
     public function deleteAction(Request $request, Produit $produit)
-    {
-        $form = $this->createDeleteForm($produit);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($produit);
-            $em->flush();
-        }
+{
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($produit);
+        $em->flush();
 
         return $this->redirectToRoute('gestionProduits_index');
     }

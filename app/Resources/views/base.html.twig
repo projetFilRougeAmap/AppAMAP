@@ -30,6 +30,8 @@
 		<!-- PAGE LEVEL SCRIPTS -->
 		<link href="{{asset('assets/css/header-1.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('assets/css/color_scheme/green.css')}}" rel="stylesheet" type="text/css" id="color_scheme" />
+                
+                {% block css %}{%endblock%}
 	</head>
 <body class="smoothscroll enable-animation">
 
@@ -214,7 +216,7 @@
 										</a>
 										<ul class="dropdown-menu">
 											<li class="dropdown">
-												<a class="dropdown" href="#">
+												<a class="dropdown" href="{{path('panier_index')}}">
 													Paniers
 												</a>
 												<!--<ul class="dropdown-menu">
@@ -293,7 +295,8 @@
 
 <section>
 
-{% block body %}{% endblock %}
+<div class='row'><div class='col-md-10 col-md-offset-1'>{% block body %}{% endblock %}</div></div>
+
 <br>
 <br>
 </section>
