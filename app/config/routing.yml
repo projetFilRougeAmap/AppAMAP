@@ -1,69 +1,8 @@
-amap_user:
-    resource: "@AMAPBundle/Controller/UserController.php"
+admin:
+    resource: "@AdminBundle/Controller/"
     type:     annotation
+    prefix:   /Admin
 
-amap_paiement_commande:
-    resource: "@AMAPBundle/Controller/PaiementCommandeController.php"
-    type:     annotation
-
-amap_livraison:
-    resource: "@AMAPBundle/Controller/LivraisonController.php"
-    type:     annotation
-
-amap_etat_commande:
-    resource: "@AMAPBundle/Controller/EtatCommandeController.php"
-    type:     annotation
-
-amap_etat:
-    resource: "@AMAPBundle/Controller/EtatController.php"
-    type:     annotation
-
-amap_commande_produit:
-    resource: "@AMAPBundle/Controller/CommandeProduitController.php"
-    type:     annotation
-
-amap_commande:
-    resource: "@AMAPBundle/Controller/CommandeController.php"
-    type:     annotation
-
-amap_categorie_produit:
-    resource: "@AMAPBundle/Controller/CategorieProduitController.php"
-    type:     annotation
-
-amap_adresse:
-    resource: "@AMAPBundle/Controller/AdresseController.php"
-    type:     annotation
-
-amap_entrepot:
-    resource: "@AMAPBundle/Controller/EntrepotController.php"
-    type:     annotation
-
-amap_stock:
-    resource: "@AMAPBundle/Controller/StockController.php"
-    type:     annotation
-
-amap_type_panier:
-    resource: "@AMAPBundle/Controller/TypePanierController.php"
-    type:     annotation
-
-amap_panier:
-    resource: "@AMAPBundle/Controller/PanierController.php"
-    type:     annotation
-
-amap_produit:
-    resource: "@AMAPBundle/Controller/ProduitController.php"
-    type:     annotation
-
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
-amap_gestionProduits:
-    resource: "@AMAPBundle/Controller/GestionProduitsController.php"
-    type:     annotation
-amap_identification:
-    resource: "@AMAPBundle/Controller/IdentificationController.php"
-    type:     annotation
-
-amap_home:
-    resource: "@AMAPBundle/Controller/HomeController.php"
+amap:
+    resource: "@AMAPBundle/Controller/"
     type:     annotation
