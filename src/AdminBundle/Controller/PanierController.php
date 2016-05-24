@@ -26,9 +26,9 @@ class PanierController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $paniers = $em->getRepository('AdminBundle::Panier')->findAll();
+        $paniers = $em->getRepository('AdminBundle:Panier')->findAll();
 
-        return $this->render('panier/index.html.twig', array(
+        return $this->render('AdminBundle:Panier:index.html.twig', array(
             'paniers' => $paniers,
         ));
     }
@@ -53,7 +53,7 @@ class PanierController extends Controller
             return $this->redirectToRoute('panier_show', array('id' => $panier->getId()));
         }
 
-        return $this->render('panier/new.html.twig', array(
+        return $this->render('AdminBundle:Panier:new.html.twig', array(
             'panier' => $panier,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class PanierController extends Controller
     {
         $deleteForm = $this->createDeleteForm($panier);
 
-        return $this->render('panier/show.html.twig', array(
+        return $this->render('AdminBundle:Panier:show.html.twig', array(
             'panier' => $panier,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -84,7 +84,7 @@ class PanierController extends Controller
     public function editAction(Request $request, Panier $panier)
     {
         $deleteForm = $this->createDeleteForm($panier);
-        $editForm = $this->createForm('AdminBundle:\Form\PanierType', $panier);
+        $editForm = $this->createForm('AdminBundle\Form\PanierType', $panier);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -95,7 +95,7 @@ class PanierController extends Controller
             return $this->redirectToRoute('panier_edit', array('id' => $panier->getId()));
         }
 
-        return $this->render('panier/edit.html.twig', array(
+        return $this->render('AdminBundle:Panier:edit.html.twig', array(
             'panier' => $panier,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -105,19 +105,13 @@ class PanierController extends Controller
     /**
      * Deletes a Panier entity.
      *
-     * @Route("/{id}", name="panier_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="panier_delete")
      */
     public function deleteAction(Request $request, Panier $panier)
     {
-        $form = $this->createDeleteForm($panier);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($panier);
-            $em->flush();
-        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($panier);
+        $em->flush();
 
         return $this->redirectToRoute('panier_index');
     }

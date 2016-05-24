@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<title>ADMIN AMAP</title>
+		<title>Admin AMAP</title>
 
 	
 
@@ -50,7 +50,7 @@
 				<nav id="sideNav"><!-- MAIN MENU -->
 					<ul class="nav nav-list">
 						<li class="active"><!-- dashboard -->
-							<a class="dashboard" href="index.html"><!-- warning - url used by default by ajax (if eneabled) -->
+							<a class="dashboard" href="{{path('admin_homepage')}}"><!-- warning - url used by default by ajax (if eneabled) -->
 								<i class="main-icon fa fa-dashboard"></i> <span>Accueil</span>
 							</a>
 						</li>
@@ -116,7 +116,7 @@
 
 				<!-- Logo -->
 				<span class="logo pull-left">
-					<img src="{{ asset('admin/assets/images/logo_light.png')}}" alt="admin panel" height="35" />
+					<img src="{{ asset('assets/images/logo_dark.png') }}" alt="admin panel" height="50" />
 				</span>
 
 				<form method="get" action="page-search.html" class="search pull-left hidden-xs">
