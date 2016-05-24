@@ -1,13 +1,49 @@
 {% extends 'baseAdmin.html.twig' %}
 
+
+
 {% block body %}
-    <h1>Création d'un produit</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <div class="panel panel-default">
+        <div class="panel-heading panel-heading-transparent">
+                <strong>Création d'un produit</strong>
+        </div>
 
-    <a href="{{ path('produit_index') }}" class="btn btn-primary">Retour</a>
+        <div class="panel-body">
+            {{ form_start(form) }}    
+            <fieldset>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label> Libelle : </label>
+                            {{ form_widget(form.libelle, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Prix : </label>
+                            {{ form_widget(form.prix, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Catégorie de produit : </label>
+                            {{ form_widget(form.categorieProduit, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                        
+                <input type="submit" value="Ajouter" class="btn btn-success"/>
+            </fieldset>
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+
+    <a href="{{ path('gestionProduits_index') }}" class="btn btn-primary">Retour</a><br><br>
 
 {% endblock %}

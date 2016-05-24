@@ -43,37 +43,29 @@ class GestionProduitsController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $produit = new Produit();
         $form = $this->createForm('AdminBundle\Form\ProduitType', $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($produit);
-            $em->flush();
-
-            return $this->redirectToRoute('gestionProduits_show', array('id' => $produit->getId()));
+            
+            
+            if (!$em->getRepository('AdminBundle:Produit')->findBy(array('libelle'=>$produit->getLibelle()))) {       
+                $em->persist($produit);
+                $em->flush();
+                return $this->redirectToRoute('gestionProduits_index');
+            } else {
+                return $this->render('AdminBundle:Produit:new.html.twig', array(
+                    'produit' => $produit,
+                    'form' => $form->createView(),
+                ));
+            }
         }
 
         return $this->render('AdminBundle:Produit:new.html.twig', array(
             'produit' => $produit,
             'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a Produit entity.
-     *
-     * @Route("/{id}", name="gestionProduits_show")
-     * @Method("GET")
-     */
-    public function showAction(Produit $produit)
-    {
-        $deleteForm = $this->createDeleteForm($produit);
-
-        return $this->render('AdminBundle:Produit:show.html.twig', array(
-            'produit' => $produit,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 

@@ -18,7 +18,6 @@ class ProduitType extends AbstractType
             ->add('libelle')
             ->add('prix')
             ->add('categorieProduit')
-            ->add('paniers')
         ;
     }
     
