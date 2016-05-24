@@ -29,7 +29,7 @@ class AdresseType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AdminBundle:\Entity\Adresse'
+            'data_class' => 'AdminBundle\Entity\Adresse'
         ));
     }
 }

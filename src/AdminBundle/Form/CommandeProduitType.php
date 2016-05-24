@@ -27,7 +27,7 @@ class CommandeProduitType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AdminBundle:\Entity\CommandeProduit'
+            'data_class' => 'AdminBundle\Entity\CommandeProduit'
         ));
     }
 }
