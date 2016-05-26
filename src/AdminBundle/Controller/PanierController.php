@@ -42,7 +42,7 @@ class PanierController extends Controller
     public function newAction(Request $request)
     {
         $panier = new Panier();
-        $form = $this->createForm('AdminBundle:\Form\PanierType', $panier);
+        $form = $this->createForm('AdminBundle\Form\PanierType', $panier);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -50,7 +50,7 @@ class PanierController extends Controller
             $em->persist($panier);
             $em->flush();
 
-            return $this->redirectToRoute('panier_show', array('id' => $panier->getId()));
+            return $this->redirectToRoute('panier_index');
         }
 
         return $this->render('AdminBundle:Panier:new.html.twig', array(

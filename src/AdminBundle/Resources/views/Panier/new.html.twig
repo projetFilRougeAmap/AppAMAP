@@ -1,16 +1,52 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
-    <h1>Panier creation</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading panel-heading-transparent">
+                <strong>Création d'un panier</strong>
+        </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <div class="panel-body">
+            {{ form_start(form) }}    
+            <fieldset>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Date mise à jour : </label>
+                            {{ form_widget(form.dateDerniereModif, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Prix : </label>
+                            {{ form_widget(form.prix, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Produit(s) : </label>
+                            {{ form_widget(form.produits, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Type de panier : </label>
+                            {{ form_widget(form.typePanier, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                        
+                <input type="submit" value="Ajouter" class="btn btn-success"/>
+            </fieldset>
+            {{ form_end(form) }}
+        </div>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('panier_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <a href="{{ path('panier_index') }}" class="btn btn-primary">Retour</a><br><br>
 {% endblock %}
