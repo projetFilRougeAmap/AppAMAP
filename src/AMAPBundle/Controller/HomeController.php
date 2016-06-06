@@ -29,4 +29,6 @@ class HomeController extends Controller
     	
         return $this->render('AMAPBundle:Default:index.html.twig');
     }
+    
+    
 }

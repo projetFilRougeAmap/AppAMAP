@@ -1,194 +1,259 @@
-{% extends 'base.html.twig'%}
-{% block body %} 
-  
+{% extends 'base.html.twig'%} {% block body %}
+{{ dump(app) }}
+<div class="row">
+	<form name="fos_user_registration_form" method="post"
+		action="/AppAMAP/web/app_dev.php/register/"
+		class="fos_user_registration_register">
+		<div id="fos_user_registration_form">
+			<div>
+				<label for="fos_user_registration_form_email" class="required">Adresse
+					e-mail</label><input type="email"
+					id="fos_user_registration_form_email"
+					name="fos_user_registration_form[email]" required="required">
+			</div>
+			<div>
+				<label for="fos_user_registration_form_username" class="required">Nom
+					d'utilisateur</label><input type="text"
+					id="fos_user_registration_form_username"
+					name="fos_user_registration_form[username]" required="required"
+					maxlength="255" pattern=".{2,}">
+			</div>
+			<div>
+				<label for="fos_user_registration_form_plainPassword_first"
+					class="required">Mot de passe</label><input type="password"
+					id="fos_user_registration_form_plainPassword_first"
+					name="fos_user_registration_form[plainPassword][first]"
+					required="required">
+			</div>
+			<div>
+				<label for="fos_user_registration_form_plainPassword_second"
+					class="required">Vérification</label><input type="password"
+					id="fos_user_registration_form_plainPassword_second"
+					name="fos_user_registration_form[plainPassword][second]"
+					required="required">
+			</div>
+			<div>
+				<label for="fos_user_registration_form_nom" class="required">Nom</label><input
+					type="text" id="fos_user_registration_form_nom"
+					name="fos_user_registration_form[nom]" required="required"
+					maxlength="255">
+			</div>
+			<div>
+				<label for="fos_user_registration_form_prenom" class="required">Prenom</label><input
+					type="text" id="fos_user_registration_form_prenom"
+					name="fos_user_registration_form[prenom]" required="required"
+					maxlength="255">
+			</div>
+			<input type="hidden" id="fos_user_registration_form__token"
+				name="fos_user_registration_form[_token]"
+				value="-pcio7HRyloENXMN3_avCTsU2yruPXuK5Z69AkMz0es">
+		</div>
+		<div>
+			<input type="submit" value="Créer un compte">
+		</div>
+	</form>
+</div>
 <!-- -->
-			<section>
-				<div class="container">
+<section>
+	<div class="container">
 
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
 
-							<div class="toggle toggle-transparent toggle-accordion toggle-noicon">
+				<div
+					class="toggle toggle-transparent toggle-accordion toggle-noicon">
 
-								<div class="toggle active">
-									<label class="size-20"><i class="fa fa-leaf"></i> &nbsp; I'm a returning customer</label>
-									<div class="toggle-content">
-
-
-										<!-- ALERT -->
-										<div class="alert alert-mini alert-danger margin-bottom-30">
-											<strong>Oh snap!</strong> Login Incorrect!
-										</div><!-- /ALERT -->
+					<div class="toggle active">
+						<label class="size-20"><i class="fa fa-leaf"></i> &nbsp; I'm a
+							returning customer</label>
+						<div class="toggle-content">
 
 
-										<form class="sky-form" method="post" action="#" autocomplete="off">
-											<div class="clearfix">
-
-												<!-- Email -->
-												<div class="form-group">
-													<label>Email</label>
-													<label class="input margin-bottom-10">
-														<i class="ico-append fa fa-envelope"></i>
-														<input required="" type="email">
-														<b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
-													</label>
-												</div>
-
-												<!-- Password -->
-												<div class="form-group">
-													<label>Password</label>
-													<label class="input margin-bottom-10">
-														<i class="ico-append fa fa-lock"></i>
-														<input required="" type="password">
-														<b class="tooltip tooltip-bottom-right">Type your account password</b>
-													</label>
-												</div>
-
-											</div>
-
-											<div class="row">
-
-												<div class="col-md-6 col-sm-6 col-xs-6">
-													
-													<!-- Inform Tip -->                                        
-													<div class="form-tip pt-20">
-														<a class="no-text-decoration size-13 margin-top-10 block bold" href="#">Forgot Password?</a>
-													</div>
-													
-												</div>
-
-												<div class="col-md-6 col-sm-6 col-xs-6 text-right">
-
-													<button class="btn btn-primary"><i class="fa fa-check"></i> LOGIN</button>
-
-												</div>
-
-											</div>
-
-										</form>
-
-
-									</div>
-								</div>
-
-								<div class="toggle">
-									<label class="size-20"><i class="glyphicon glyphicon-user"></i> &nbsp; Don't have an account yet?</label>
-									<div class="toggle-content">
-
-										<!-- ALERT -->
-										<div class="alert alert-mini alert-danger margin-bottom-30">
-											<strong>Oh snap!</strong> Password do not match!
-										</div><!-- /ALERT -->
-
-										<form class="nomargin sky-form" action="#" method="post" enctype="multipart/form-data">
-											<fieldset>
-
-												<div class="row">
-													<div class="form-group">
-
-														<div class="col-md-6 col-sm-6">
-															<label>First Name *</label>
-															<label class="input margin-bottom-10">
-																<i class="ico-append fa fa-user"></i>
-																<input required="" type="text">
-																<b class="tooltip tooltip-bottom-right">Your First Name</b>
-															</label>
-														</div>
-
-														<div class="col-md-6 col-sm-6">
-															<label for="register:last_name">Last Name *</label>
-															<label class="input margin-bottom-10">
-																<i class="ico-append fa fa-user"></i>
-																<input required="" type="text">
-																<b class="tooltip tooltip-bottom-right">Your Last Name</b>
-															</label>
-														</div>
-
-													</div>
-												</div>
-
-												<div class="row">
-													<div class="form-group">
-
-														<div class="col-md-6 col-sm-6">
-															<label for="register:email">Email *</label>
-															<label class="input margin-bottom-10">
-																<i class="ico-append fa fa-envelope"></i>
-																<input required="" type="text">
-																<b class="tooltip tooltip-bottom-right">Your Email</b>
-															</label>
-														</div>
-
-														<div class="col-md-6 col-sm-6">
-															<label for="register:phone">Phone</label>
-															<label class="input margin-bottom-10">
-																<i class="ico-append fa fa-phone"></i>
-																<input type="text">
-																<b class="tooltip tooltip-bottom-right">Your Phone (optional)</b>
-															</label>
-														</div>
-
-													</div>
-												</div>
-
-												<div class="row">
-													<div class="form-group">
-
-														<div class="col-md-6 col-sm-6">
-															<label for="register:pass1">Password *</label>
-															<label class="input margin-bottom-10">
-																<i class="ico-append fa fa-lock"></i>
-																<input required="" type="password" class="err">
-																<b class="tooltip tooltip-bottom-right">Min. 6 characters</b>
-															</label>
-														</div>
-
-														<div class="col-md-6 col-sm-6">
-															<label for="register:pass2">Password Again *</label>
-															<label class="input margin-bottom-10">
-																<i class="ico-append fa fa-lock"></i>
-																<input required="" type="password" class="err">
-																<b class="tooltip tooltip-bottom-right">Type the password again</b>
-															</label>
-														</div>
-
-													</div>
-												</div>
-
-												<hr />
-
-												<label class="checkbox nomargin"><input class="checked-agree" type="checkbox" name="checkbox"><i></i>I agree to the <a href="#" data-toggle="modal" data-target="#termsModal">Terms of Service</a></label>
-												<label class="checkbox nomargin"><input type="checkbox" name="checkbox"><i></i>I want to receive news and  special offers</label>
-
-											</fieldset>
-
-											<div class="row">
-												<div class="col-md-12">
-													<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> REGISTER</button>
-												</div>
-											</div>
-
-										</form>
-
-
-
-									</div>
-								</div>
-
+							<!-- ALERT -->
+							<div class="alert alert-mini alert-danger margin-bottom-30">
+								<strong>Oh snap!</strong> Login Incorrect!
 							</div>
+							<!-- /ALERT -->
+
+
+							<form class="sky-form" method="post" action="#"
+								autocomplete="off">
+								<div class="clearfix">
+
+									<!-- Email -->
+									<div class="form-group">
+										<label>Email</label> <label class="input margin-bottom-10"> <i
+											class="ico-append fa fa-envelope"></i> <input required=""
+											type="email"> <b class="tooltip tooltip-bottom-right">Needed
+												to verify your account</b>
+										</label>
+									</div>
+
+									<!-- Password -->
+									<div class="form-group">
+										<label>Password</label> <label class="input margin-bottom-10">
+											<i class="ico-append fa fa-lock"></i> <input required=""
+											type="password"> <b class="tooltip tooltip-bottom-right">Type
+												your account password</b>
+										</label>
+									</div>
+
+								</div>
+
+								<div class="row">
+
+									<div class="col-md-6 col-sm-6 col-xs-6">
+
+										<!-- Inform Tip -->
+										<div class="form-tip pt-20">
+											<a
+												class="no-text-decoration size-13 margin-top-10 block bold"
+												href="#">Forgot Password?</a>
+										</div>
+
+									</div>
+
+									<div class="col-md-6 col-sm-6 col-xs-6 text-right">
+
+										<button class="btn btn-primary">
+											<i class="fa fa-check"></i> LOGIN
+										</button>
+
+									</div>
+
+								</div>
+
+							</form>
+
+
+						</div>
+					</div>
+
+					<div class="toggle">
+						<label class="size-20"><i class="glyphicon glyphicon-user"></i>
+							&nbsp; Don't have an account yet?</label>
+						<div class="toggle-content">
+
+							<!-- ALERT -->
+							<div class="alert alert-mini alert-danger margin-bottom-30">
+								<strong>Oh snap!</strong> Password do not match!
+							</div>
+							<!-- /ALERT -->
+
+							<form class="nomargin sky-form" action="#" method="post"
+								enctype="multipart/form-data">
+								<fieldset>
+
+									<div class="row">
+										<div class="form-group">
+
+											<div class="col-md-6 col-sm-6">
+												<label>First Name *</label> <label
+													class="input margin-bottom-10"> <i
+													class="ico-append fa fa-user"></i> <input required=""
+													type="text"> <b class="tooltip tooltip-bottom-right">Your
+														First Name</b>
+												</label>
+											</div>
+
+											<div class="col-md-6 col-sm-6">
+												<label for="register:last_name">Last Name *</label> <label
+													class="input margin-bottom-10"> <i
+													class="ico-append fa fa-user"></i> <input required=""
+													type="text"> <b class="tooltip tooltip-bottom-right">Your
+														Last Name</b>
+												</label>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="form-group">
+
+											<div class="col-md-6 col-sm-6">
+												<label for="register:email">Email *</label> <label
+													class="input margin-bottom-10"> <i
+													class="ico-append fa fa-envelope"></i> <input required=""
+													type="text"> <b class="tooltip tooltip-bottom-right">Your
+														Email</b>
+												</label>
+											</div>
+
+											<div class="col-md-6 col-sm-6">
+												<label for="register:phone">Phone</label> <label
+													class="input margin-bottom-10"> <i
+													class="ico-append fa fa-phone"></i> <input type="text"> <b
+													class="tooltip tooltip-bottom-right">Your Phone (optional)</b>
+												</label>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="form-group">
+
+											<div class="col-md-6 col-sm-6">
+												<label for="register:pass1">Password *</label> <label
+													class="input margin-bottom-10"> <i
+													class="ico-append fa fa-lock"></i> <input required=""
+													type="password" class="err"> <b
+													class="tooltip tooltip-bottom-right">Min. 6 characters</b>
+												</label>
+											</div>
+
+											<div class="col-md-6 col-sm-6">
+												<label for="register:pass2">Password Again *</label> <label
+													class="input margin-bottom-10"> <i
+													class="ico-append fa fa-lock"></i> <input required=""
+													type="password" class="err"> <b
+													class="tooltip tooltip-bottom-right">Type the password
+														again</b>
+												</label>
+											</div>
+
+										</div>
+									</div>
+
+									<hr />
+
+									<label class="checkbox nomargin"><input class="checked-agree"
+										type="checkbox" name="checkbox"><i></i>I agree to the <a
+										href="#" data-toggle="modal" data-target="#termsModal">Terms
+											of Service</a></label> <label class="checkbox nomargin"><input
+										type="checkbox" name="checkbox"><i></i>I want to receive news
+										and special offers</label>
+
+								</fieldset>
+
+								<div class="row">
+									<div class="col-md-12">
+										<button type="submit" class="btn btn-primary">
+											<i class="fa fa-check"></i> REGISTER
+										</button>
+									</div>
+								</div>
+
+							</form>
+
+
 
 						</div>
 					</div>
 
 				</div>
-			</section>
-			<!-- / -->
-{% endblock body%}
 
-{% block javascripts %} 
-  			
+			</div>
+		</div>
+
+	</div>
+</section>
+<!-- / -->
+{% endblock body%} {% block javascripts %}
+
 <!-- PAGE LEVEL SCRIPTS -->
-		<script type="text/javascript">
+<script type="text/javascript">
 
 		/**
 				Checkbox on "I agree" modal Clicked!

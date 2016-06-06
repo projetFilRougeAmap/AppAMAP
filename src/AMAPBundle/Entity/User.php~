@@ -22,6 +22,21 @@ class User extends BaseUser
      */
     protected $id;
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255)
+     */
+    private $prenom;
+    
+    
 
     /**
      * Get id
@@ -31,6 +46,10 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+    
+    public function __toString(){
+    	return $this->libelle;
     }
 
 }
