@@ -1,0 +1,88 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<label class="size-20"><i class="glyphicon glyphicon-user"></i> &nbsp;
+	Vous n'avez pas encore de compte?</label>
+<div class="">
+
+{# 	<!-- ALERT -->#}
+{# 	<div class="alert alert-mini alert-danger margin-bottom-30">#}
+{# 		<strong>Oh snap!</strong> Password do not match!#}
+{# 	</div>#}
+	<!-- /ALERT -->
+	{{ form_start(form, {'method': 'post', 'action':path('fos_user_registration_register'), 'attr': {'class':
+	'nomargin sky-form'}}) }} 
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-6 col-sm-6">
+				<label>Email</label> 
+				<label
+					class="input margin-bottom-10"> <i
+					class="ico-append fa fa-envelope"></i>
+					{{ form_widget(form.email) }}  
+					<b class="tooltip tooltip-bottom-right">Votre Email</b>
+				</label>
+			</div>
+			<div class="col-md-6 col-sm-6">
+				<label>Nom d'utilisateur</label> 
+				<label
+					class="input margin-bottom-10"> <i
+					class="ico-append fa fa-user"></i>
+					{{form_widget(form.username) }} 
+					<b class="tooltip tooltip-bottom-right">Votre Nom d'utilisateur</b>
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-6 col-sm-6">
+				<label>Mot de passe</label> 
+				<label
+					class="input margin-bottom-10"> <i
+					class="ico-append fa fa-lock"></i>
+			{{ form_widget(form.plainPassword.first)}}
+			<b class="tooltip tooltip-bottom-right">Votre Mot de passe</b>
+				</label>
+				</div>
+			<div class="col-md-6 col-sm-6">
+				<label>Vérification</label> 
+				<label
+					class="input margin-bottom-10"> <i
+					class="ico-append fa fa-lock"></i>
+	 		{{ form_widget(form.plainPassword.second) }} 
+	 		<b class="tooltip tooltip-bottom-right">Votre Vérification de mot de passe</b>
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-6 col-sm-6">
+				<label>Nom</label> 
+				<label
+					class="input margin-bottom-10"> <i
+					class="ico-append fa fa-user"></i> 		
+	 {{	form_widget(form.nom) }} 
+	 <b class="tooltip tooltip-bottom-right">Votre Nom</b>
+				</label>
+				</div>
+			<div class="col-md-6 col-sm-6">
+				<label>Prenom</label> 
+				<label
+					class="input margin-bottom-10"> <i
+					class="ico-append fa fa-user"></i>
+	 {{ form_widget(form.prenom) }}
+	 <b class="tooltip tooltip-bottom-right">Votre Prenom</b>
+				</label>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<button type="submit" class="btn btn-primary">
+				<i class="fa fa-check"></i> {{ 'registration.submit'|trans }}
+			</button>
+		</div>
+	</div>
+	{{ form_end(form) }}
+</div>
