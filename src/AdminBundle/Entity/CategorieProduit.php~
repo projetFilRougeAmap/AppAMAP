@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * produit
  *
  * @ORM\Table(name="categorieProduit")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\CategorieProduitRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\CategorieProduitRepository")
  */
 class CategorieProduit
 {
@@ -29,7 +29,7 @@ class CategorieProduit
     private $libelle;
     
     /**
-    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Produit", mappedBy="categorieProduit")
+    * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Produit", mappedBy="categorieProduit")
     */
     private $produits;
 
@@ -78,11 +78,11 @@ class CategorieProduit
     /**
      * Add produit
      *
-     * @param \AMAPBundle\Entity\Produit $produit
+     * @param \AdminBundle\Entity\Produit $produit
      *
      * @return CategorieProduit
      */
-    public function addProduit(\AMAPBundle\Entity\Produit $produit)
+    public function addProduit(\AdminBundle\Entity\Produit $produit)
     {
         $this->produits[] = $produit;
 
@@ -92,9 +92,9 @@ class CategorieProduit
     /**
      * Remove produit
      *
-     * @param \AMAPBundle\Entity\Produit $produit
+     * @param \AdminBundle\Entity\Produit $produit
      */
-    public function removeProduit(\AMAPBundle\Entity\Produit $produit)
+    public function removeProduit(\AdminBundle\Entity\Produit $produit)
     {
         $this->produits->removeElement($produit);
     }

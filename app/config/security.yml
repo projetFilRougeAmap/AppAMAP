@@ -4,7 +4,7 @@ security:
 
     role_hierarchy:
         ROLE_USER:        ROLE_USER
-        ROLE_CLIENT:      ROLE_CLIENT
+        ROLE_CLIENT:      ROLE_USER
         ROLE_RESPONSABLE: ROLE_RESPONSABLE
         ROLE_PRODUCTEUR:  ROLE_PRODUCTEUR
         ROLE_SUPER_ADMIN: ROLE_ADMIN

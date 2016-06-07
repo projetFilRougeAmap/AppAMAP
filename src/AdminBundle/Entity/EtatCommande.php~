@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EtatCommande
  *
  * @ORM\Table(name="etat_commande")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\EtatCommandeRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\EtatCommandeRepository")
  */
 class EtatCommande
 {

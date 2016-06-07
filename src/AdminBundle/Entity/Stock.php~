@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Stock
  *
  * @ORM\Table(name="stock")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\StockRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\StockRepository")
  */
 class Stock
 {
@@ -37,12 +37,12 @@ class Stock
 
     
     /**
-    * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Entrepot", inversedBy="stock")
+    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Entrepot", inversedBy="stock")
     */
     private $entrepot;
     
     /**
-    * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Produit", inversedBy="stock")
+    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Produit", inversedBy="stock")
     */
     private $produits;
     
@@ -108,11 +108,11 @@ class Stock
     /**
      * Set entrepot
      *
-     * @param \AMAPBundle\Entity\Entrepot $entrepot
+     * @param \AdminBundle\Entity\Entrepot $entrepot
      *
      * @return Stock
      */
-    public function setEntrepot(\AMAPBundle\Entity\Entrepot $entrepot = null)
+    public function setEntrepot(\AdminBundle\Entity\Entrepot $entrepot = null)
     {
         $this->entrepot = $entrepot;
 
@@ -122,7 +122,7 @@ class Stock
     /**
      * Get entrepot
      *
-     * @return \AMAPBundle\Entity\Entrepot
+     * @return \AdminBundle\Entity\Entrepot
      */
     public function getEntrepot()
     {
@@ -132,11 +132,11 @@ class Stock
     /**
      * Set produits
      *
-     * @param \AMAPBundle\Entity\Produit $produits
+     * @param \AdminBundle\Entity\Produit $produits
      *
      * @return Stock
      */
-    public function setProduits(\AMAPBundle\Entity\Produit $produits = null)
+    public function setProduits(\AdminBundle\Entity\Produit $produits = null)
     {
         $this->produits = $produits;
 
@@ -146,7 +146,7 @@ class Stock
     /**
      * Get produits
      *
-     * @return \AMAPBundle\Entity\Produit
+     * @return \AdminBundle\Entity\Produit
      */
     public function getProduits()
     {

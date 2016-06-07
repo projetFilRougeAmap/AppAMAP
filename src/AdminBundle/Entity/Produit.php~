@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * produit
  *
  * @ORM\Table(name="produit")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\ProduitRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\ProduitRepository")
  */
 class Produit
 {
@@ -36,22 +36,22 @@ class Produit
     private $prix;
 
     /**
-    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Stock", mappedBy="produits")
+    * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Stock", mappedBy="produits")
     */
     private $stock;
     
     /**
-    * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\CategorieProduit", inversedBy="produits")
+    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\CategorieProduit", inversedBy="produits")
     */
     private $categorieProduit;
     
     /**
-    * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Panier", mappedBy="produits")
+    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Panier", mappedBy="produits")
     */
     private $paniers;
     
     /**
-    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\CommandeProduit", mappedBy="produits")
+    * @ORM\OneToMany(targetEntity="AdminBundle\Entity\CommandeProduit", mappedBy="produits")
     */
     private $commandeProduit;
 
@@ -127,11 +127,11 @@ class Produit
     /**
      * Add stock
      *
-     * @param \AMAPBundle\Entity\Stock $stock
+     * @param \AdminBundle\Entity\Stock $stock
      *
      * @return Produit
      */
-    public function addStock(\AMAPBundle\Entity\Stock $stock)
+    public function addStock(\AdminBundle\Entity\Stock $stock)
     {
         $this->stock[] = $stock;
 
@@ -141,9 +141,9 @@ class Produit
     /**
      * Remove stock
      *
-     * @param \AMAPBundle\Entity\Stock $stock
+     * @param \AdminBundle\Entity\Stock $stock
      */
-    public function removeStock(\AMAPBundle\Entity\Stock $stock)
+    public function removeStock(\AdminBundle\Entity\Stock $stock)
     {
         $this->stock->removeElement($stock);
     }
@@ -161,11 +161,11 @@ class Produit
     /**
      * Set categorieProduit
      *
-     * @param \AMAPBundle\Entity\CategorieProduit $categorieProduit
+     * @param \AdminBundle\Entity\CategorieProduit $categorieProduit
      *
      * @return Produit
      */
-    public function setCategorieProduit(\AMAPBundle\Entity\CategorieProduit $categorieProduit = null)
+    public function setCategorieProduit(\AdminBundle\Entity\CategorieProduit $categorieProduit = null)
     {
         $this->categorieProduit = $categorieProduit;
 
@@ -175,7 +175,7 @@ class Produit
     /**
      * Get categorieProduit
      *
-     * @return \AMAPBundle\Entity\CategorieProduit
+     * @return \AdminBundle\Entity\CategorieProduit
      */
     public function getCategorieProduit()
     {
@@ -185,11 +185,11 @@ class Produit
     /**
      * Add panier
      *
-     * @param \AMAPBundle\Entity\Panier $panier
+     * @param \AdminBundle\Entity\Panier $panier
      *
      * @return Produit
      */
-    public function addPanier(\AMAPBundle\Entity\Panier $panier)
+    public function addPanier(\AdminBundle\Entity\Panier $panier)
     {
         $this->paniers[] = $panier;
 
@@ -199,9 +199,9 @@ class Produit
     /**
      * Remove panier
      *
-     * @param \AMAPBundle\Entity\Panier $panier
+     * @param \AdminBundle\Entity\Panier $panier
      */
-    public function removePanier(\AMAPBundle\Entity\Panier $panier)
+    public function removePanier(\AdminBundle\Entity\Panier $panier)
     {
         $this->paniers->removeElement($panier);
     }
@@ -219,11 +219,11 @@ class Produit
     /**
      * Add commandeProduit
      *
-     * @param \AMAPBundle\Entity\CommandeProduit $commandeProduit
+     * @param \AdminBundle\Entity\CommandeProduit $commandeProduit
      *
      * @return Produit
      */
-    public function addCommandeProduit(\AMAPBundle\Entity\CommandeProduit $commandeProduit)
+    public function addCommandeProduit(\AdminBundle\Entity\CommandeProduit $commandeProduit)
     {
         $this->commandeProduit[] = $commandeProduit;
 
@@ -233,9 +233,9 @@ class Produit
     /**
      * Remove commandeProduit
      *
-     * @param \AMAPBundle\Entity\CommandeProduit $commandeProduit
+     * @param \AdminBundle\Entity\CommandeProduit $commandeProduit
      */
-    public function removeCommandeProduit(\AMAPBundle\Entity\CommandeProduit $commandeProduit)
+    public function removeCommandeProduit(\AdminBundle\Entity\CommandeProduit $commandeProduit)
     {
         $this->commandeProduit->removeElement($commandeProduit);
     }

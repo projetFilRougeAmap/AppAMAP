@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TypePanier
  *
  * @ORM\Table(name="type_panier")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\TypePanierRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\TypePanierRepository")
  */
 class TypePanier
 {
@@ -29,7 +29,7 @@ class TypePanier
     private $libelle;
     
     /**
-    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Panier", mappedBy="typePanier")
+    * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Panier", mappedBy="typePanier")
     */
     private $paniers;
 
@@ -78,11 +78,11 @@ class TypePanier
     /**
      * Add panier
      *
-     * @param \AMAPBundle\Entity\Panier $panier
+     * @param \AdminBundle\Entity\Panier $panier
      *
      * @return TypePanier
      */
-    public function addPanier(\AMAPBundle\Entity\Panier $panier)
+    public function addPanier(\AdminBundle\Entity\Panier $panier)
     {
         $this->paniers[] = $panier;
 
@@ -92,9 +92,9 @@ class TypePanier
     /**
      * Remove panier
      *
-     * @param \AMAPBundle\Entity\Panier $panier
+     * @param \AdminBundle\Entity\Panier $panier
      */
-    public function removePanier(\AMAPBundle\Entity\Panier $panier)
+    public function removePanier(\AdminBundle\Entity\Panier $panier)
     {
         $this->paniers->removeElement($panier);
     }

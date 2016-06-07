@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Commande
  *
  * @ORM\Table(name="commande")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\CommandeRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\CommandeRepository")
  */
 class Commande
 {
@@ -29,12 +29,12 @@ class Commande
     private $dateCommande;
     
     /**
-    * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\CommandeProduit", mappedBy="commandes")
+    * @ORM\OneToMany(targetEntity="AdminBundle\Entity\CommandeProduit", mappedBy="commandes")
     */
     private $commandeProduit;
     
     /**
-    * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Panier", mappedBy="commandes")
+    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Panier", mappedBy="commandes")
     */
     private $paniers;
     
@@ -84,11 +84,11 @@ class Commande
     /**
      * Add commandeProduit
      *
-     * @param \AMAPBundle\Entity\CommandeProduit $commandeProduit
+     * @param \AdminBundle\Entity\CommandeProduit $commandeProduit
      *
      * @return Commande
      */
-    public function addCommandeProduit(\AMAPBundle\Entity\CommandeProduit $commandeProduit)
+    public function addCommandeProduit(\AdminBundle\Entity\CommandeProduit $commandeProduit)
     {
         $this->commandeProduit[] = $commandeProduit;
 
@@ -98,9 +98,9 @@ class Commande
     /**
      * Remove commandeProduit
      *
-     * @param \AMAPBundle\Entity\CommandeProduit $commandeProduit
+     * @param \AdminBundle\Entity\CommandeProduit $commandeProduit
      */
-    public function removeCommandeProduit(\AMAPBundle\Entity\CommandeProduit $commandeProduit)
+    public function removeCommandeProduit(\AdminBundle\Entity\CommandeProduit $commandeProduit)
     {
         $this->commandeProduit->removeElement($commandeProduit);
     }
@@ -118,11 +118,11 @@ class Commande
     /**
      * Add panier
      *
-     * @param \AMAPBundle\Entity\Panier $panier
+     * @param \AdminBundle\Entity\Panier $panier
      *
      * @return Commande
      */
-    public function addPanier(\AMAPBundle\Entity\Panier $panier)
+    public function addPanier(\AdminBundle\Entity\Panier $panier)
     {
         $this->paniers[] = $panier;
 
@@ -132,9 +132,9 @@ class Commande
     /**
      * Remove panier
      *
-     * @param \AMAPBundle\Entity\Panier $panier
+     * @param \AdminBundle\Entity\Panier $panier
      */
-    public function removePanier(\AMAPBundle\Entity\Panier $panier)
+    public function removePanier(\AdminBundle\Entity\Panier $panier)
     {
         $this->paniers->removeElement($panier);
     }

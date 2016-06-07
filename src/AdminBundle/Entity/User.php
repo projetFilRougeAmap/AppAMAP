@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
@@ -9,7 +9,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * panier
  *
  * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {
@@ -52,4 +52,52 @@ class User extends BaseUser
     	return $this->libelle;
     }
 
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return User
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return User
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
 }

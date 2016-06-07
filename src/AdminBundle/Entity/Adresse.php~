@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Adresse
  *
  * @ORM\Table(name="adresse")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\AdresseRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\AdresseRepository")
  */
 class Adresse
 {

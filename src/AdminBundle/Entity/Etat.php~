@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Etat
  *
  * @ORM\Table(name="etat")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\EtatRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\EtatRepository")
  */
 class Etat
 {
@@ -61,5 +61,8 @@ class Etat
     public function getLibelle()
     {
         return $this->libelle;
+    }
+    public function __toString(){
+    	return $this->libelle;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
@@ -9,7 +9,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * panier
  *
  * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {

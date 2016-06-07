@@ -1,0 +1,116 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+
+   
+ <div id="content" class="padding-20">
+
+					<div class="row">
+
+						<div class="col-md-6">
+						
+							<!-- ------ -->
+							<div class="panel panel-default">
+								<div class="panel-heading panel-heading-transparent">
+									<strong>Ajouter un utilisateur</strong>
+								</div>
+
+								<div class="panel-body">
+
+										<form action="{{ path('user_new')}}" method="post" enctype="multipart/form-data">
+											<fieldset>
+
+												<div class="row">
+													<div class="form-group">
+														<div class="col-md-6 col-sm-6">
+															<label>Nom *</label>
+															<input name="nom" value="" class="form-control required" type="text" required>
+														</div>
+														<div class="col-md-6 col-sm-6">
+															<label>Prénom *</label>
+															<input name="prenom" value="" class="form-control required" type="text" required>
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="form-group">
+														<div class="col-md-6 col-sm-6">
+															<label>Email *</label>
+															<input name="email" value="" class="form-control required" type="email" required>
+														</div>
+														<div class="col-md-6 col-sm-6">
+															<label>Nom d'utilisateur *</label>
+															<input name="username" value="" class="form-control required" type="text" required> 
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="form-group">
+														<div class="col-md-6 col-sm-6">
+															<label>Mot de passe *</label>
+															<input id="password[first]" name="password[first]" value="" class="form-control required" type="password" required>
+														</div>
+														<div class="col-md-6 col-sm-6">
+															<label>Confirmation *</label>
+															<input id="password[second]" name="password[second]" value="" class="form-control required" type="password" required>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="form-group">
+														<div class="col-md-12 col-sm-12">
+															<label>Role *</label>
+															<select name="role" class="form-control pointer required" required> 
+																<option value="ROLE_RESPONSABLE" selected="selected">Responsable AMAP</option>
+																<option value="ROLE_USER">Utilisateur</option>
+																<option value="ROLE_PRODUCTEUR">Producteur</option>
+																<option value="ROLE_ADMIN">Administrateur</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</fieldset>
+
+											<div class="row">
+												<div class="col-md-12">
+													<button type="submit" class="btn btn-3d btn-teal btn-block margin-top-30">
+														Enregistrer
+													</button>
+												</div>
+											</div>
+
+
+								</div>
+
+							</div>
+							<!-- /----- -->
+
+						</div>
+
+					</div>
+
+				</div>
+				
+			    <ul>
+			        <li>
+			            <a href="{{ path('user_index') }}">Back to the list</a>
+			        </li>
+			    </ul>
+    
+<script type="text/javascript">
+var password = document.getElementById("password[first]")
+  , confirm_password = document.getElementById("password[second]");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Les mots de passes sont différents");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+password.onkeyup = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
+{% endblock %}

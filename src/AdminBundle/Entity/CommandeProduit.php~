@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CommandeProduit
  *
  * @ORM\Table(name="commande_produit")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\CommandeProduitRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\CommandeProduitRepository")
  */
 class CommandeProduit
 {
@@ -29,12 +29,12 @@ class CommandeProduit
     private $quantiteProduit;
     
     /**
-    * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Commande", inversedBy="commandeProduit")
+    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Commande", inversedBy="commandeProduit")
     */
     private $commandes;
     
     /**
-    * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Produit", inversedBy="commandeProduit")
+    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Produit", inversedBy="commandeProduit")
     */
     private $produits;
 
@@ -77,11 +77,11 @@ class CommandeProduit
     /**
      * Set commandes
      *
-     * @param \AMAPBundle\Entity\Commande $commandes
+     * @param \AdminBundle\Entity\Commande $commandes
      *
      * @return CommandeProduit
      */
-    public function setCommandes(\AMAPBundle\Entity\Commande $commandes = null)
+    public function setCommandes(\AdminBundle\Entity\Commande $commandes = null)
     {
         $this->commandes = $commandes;
 
@@ -91,7 +91,7 @@ class CommandeProduit
     /**
      * Get commandes
      *
-     * @return \AMAPBundle\Entity\Commande
+     * @return \AdminBundle\Entity\Commande
      */
     public function getCommandes()
     {
@@ -101,11 +101,11 @@ class CommandeProduit
     /**
      * Set produits
      *
-     * @param \AMAPBundle\Entity\Produit $produits
+     * @param \AdminBundle\Entity\Produit $produits
      *
      * @return CommandeProduit
      */
-    public function setProduits(\AMAPBundle\Entity\Produit $produits = null)
+    public function setProduits(\AdminBundle\Entity\Produit $produits = null)
     {
         $this->produits = $produits;
 
@@ -115,7 +115,7 @@ class CommandeProduit
     /**
      * Get produits
      *
-     * @return \AMAPBundle\Entity\Produit
+     * @return \AdminBundle\Entity\Produit
      */
     public function getProduits()
     {
