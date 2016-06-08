@@ -1,12 +1,95 @@
 {% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
-    <h1>User edit</h1>
+<div id="content" class="padding-20">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+					<div class="row">
+
+						<div class="col-md-6">
+						
+							<!-- ------ -->
+							<div class="panel panel-default">
+								<div class="panel-heading panel-heading-transparent">
+									<strong>Modifier un utilisateur</strong>
+								</div>
+
+								<div class="panel-body">
+
+										<form action="{{ path('user_edit', { 'id': user.id }) }}" method="post" enctype="multipart/form-data">
+											<fieldset>
+
+												<div class="row">
+													<div class="form-group">
+														<div class="col-md-6 col-sm-6">
+															<label>Nom *</label>
+															<input name="nom" value="{{ user.nom }}" class="form-control required" type="text" required>
+														</div>
+														<div class="col-md-6 col-sm-6">
+															<label>Prénom *</label>
+															<input value="{{ user.prenom }}" name="prenom" value="" class="form-control required" type="text" required>
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="form-group">
+														<div class="col-md-6 col-sm-6">
+															<label>Email *</label>
+															<input name="email" value="{{ user.email }}" class="form-control required" type="email" required>
+														</div>
+														<div class="col-md-6 col-sm-6">
+															<label>Nom d'utilisateur *</label>
+															<input name="username" value="{{ user.username }}"class="form-control required" type="text" required> 
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="form-group">
+														<div class="col-md-6 col-sm-6">
+															<label>Mot de passe</label>
+															<input id="password[first]" name="password[first]" value="" class="form-control required" type="password">
+														</div>
+														<div class="col-md-6 col-sm-6">
+															<label>Confirmation</label>
+															<input id="password[second]" name="password[second]" value="" class="form-control required" type="password">
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="form-group">
+														<div class="col-md-12 col-sm-12">
+															<label>Role *</label>
+															<select name="role" class="form-control pointer required" required> 
+																<option value="ROLE_RESPONSABLE" {%  if ( "ROLE_RESPONSABLE" in user.roles) %} selected="selected" {% endif %}>Responsable AMAP</option>
+																<option value="ROLE_USER" {%  if (user.roles | length ==1) %} selected="selected" {% endif %}>Utilisateur</option>
+																<option value="ROLE_PRODUCTEUR" {%  if ("ROLE_PRODUCTEUR" in user.roles) %} selected="selected" {% endif %}>Producteur</option>
+																<option value="ROLE_ADMIN" {%  if ( "ROLE_ADMIN" in user.roles) %} selected="selected" {% endif %}>Administrateur</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</fieldset>
+
+											<div class="row">
+												<div class="col-md-12">
+													<button type="submit" class="btn btn-3d btn-teal btn-block margin-top-30">
+														Enregistrer
+													</button>
+												</div>
+											</div>
+
+
+								</div>
+
+							</div>
+							<!-- /----- -->
+
+						</div>
+
+					</div>
+
+				</div>
 
     <ul>
         <li>

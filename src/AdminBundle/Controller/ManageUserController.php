@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AdminBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Util\Debug;
 
 /**
  * User controller.
@@ -88,20 +89,9 @@ class ManageUserController extends Controller
     public function editAction(Request $request, User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('AdminBundle\Form\UserType', $user);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-
-            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
-        }
-
+      
         return $this->render('AdminBundle:User:edit.html.twig', array(
             'user' => $user,
-            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
