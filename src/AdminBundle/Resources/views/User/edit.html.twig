@@ -17,7 +17,7 @@
 
 										<form action="{{ path('user_edit', { 'id': user.id }) }}" method="post" enctype="multipart/form-data">
 											<fieldset>
-
+<input name="id" value="{{ user.id }}" class="form-control required" type="hidden" >
 												<div class="row">
 													<div class="form-group">
 														<div class="col-md-6 col-sm-6">
@@ -73,7 +73,7 @@
 
 											<div class="row">
 												<div class="col-md-12">
-													<button type="submit" class="btn btn-3d btn-teal btn-block margin-top-30">
+													<button type="submit" class="btn btn-3d btn-teal btn-block margin-top-30" value="save">
 														Enregistrer
 													</button>
 												</div>
@@ -95,10 +95,6 @@
         <li>
             <a href="{{ path('user_index') }}">Back to the list</a>
         </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+        
     </ul>
 {% endblock %}

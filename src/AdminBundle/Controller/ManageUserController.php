@@ -54,15 +54,41 @@ class ManageUserController extends Controller
         	$user->setPlainPassword($_POST['password']['first']);
         	$user->setNom($_POST['nom']);
         	$user->setPrenom($_POST['prenom']);
-        	$em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-
+        	$userManager->updateUser($user);
+        	$this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
         return $this->render('AdminBundle:User:new.html.twig');
     }
+    
+    /**
+     * Creates a new User entity.
+     *
+     * @Route("/editAction", name="user_edit_action")
+     * @Method({"GET", "POST"})
+     
+    public function saveEditAction(Request $request)
+    {
+    	if (isset($_POST['nom'])&&isset($_POST['prenom'])&& isset($_POST['email'])
+    			&& isset($_POST['username'])&& isset($_POST['password'])&& isset($_POST['role'])) {
+    				$userManager = $this->get('fos_user.user_manager');
+    				$em = $this->getDoctrine()->getManager();
+    				$user = $em->getRepository('AdminBundle:User')->find($_POST['id']);
+    				
+    				$user->addRole($_POST['role']);
+    				$user->setEmail($_POST['email']);
+    				$user->setUsername($_POST['username']);
+    				$user->setPlainPassword($_POST['password']['first']);
+    				$user->setNom($_POST['nom']);
+    				$user->setPrenom($_POST['prenom']);
+    				$userManager->updateUser($user,false);
+    
+    				return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+    			}
+    
+    			return $this->render('AdminBundle:User:new.html.twig');
+    }*/
 
     /**
      * Finds and displays a User entity.
@@ -88,11 +114,25 @@ class ManageUserController extends Controller
      */
     public function editAction(Request $request, User $user)
     {
-        $deleteForm = $this->createDeleteForm($user);
-      
+        if (isset($_POST['nom'])&&isset($_POST['prenom'])&& isset($_POST['email'])
+        		&& isset($_POST['username'])&& isset($_POST['password'])&& isset($_POST['role'])) {
+        			$userManager = $this->get('fos_user.user_manager');
+        			
+        
+        			$user->addRole($_POST['role']);
+        			$user->setEmail($_POST['email']);
+        			$user->setUsername($_POST['username']);
+        			if(!empty($_POST['password']['first'])){
+        				$user->setPlainPassword($_POST['password']['first']);
+        			}
+        			$user->setNom($_POST['nom']);
+        			$user->setPrenom($_POST['prenom']);
+        			$userManager->updateUser($user,false);
+        			$this->getDoctrine()->getManager()->flush();
+        			
+        		}
         return $this->render('AdminBundle:User:edit.html.twig', array(
             'user' => $user,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
