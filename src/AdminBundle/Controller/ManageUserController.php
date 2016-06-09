@@ -62,34 +62,7 @@ class ManageUserController extends Controller
         return $this->render('AdminBundle:User:new.html.twig');
     }
     
-    /**
-     * Creates a new User entity.
-     *
-     * @Route("/editAction", name="user_edit_action")
-     * @Method({"GET", "POST"})
-     
-    public function saveEditAction(Request $request)
-    {
-    	if (isset($_POST['nom'])&&isset($_POST['prenom'])&& isset($_POST['email'])
-    			&& isset($_POST['username'])&& isset($_POST['password'])&& isset($_POST['role'])) {
-    				$userManager = $this->get('fos_user.user_manager');
-    				$em = $this->getDoctrine()->getManager();
-    				$user = $em->getRepository('AdminBundle:User')->find($_POST['id']);
-    				
-    				$user->addRole($_POST['role']);
-    				$user->setEmail($_POST['email']);
-    				$user->setUsername($_POST['username']);
-    				$user->setPlainPassword($_POST['password']['first']);
-    				$user->setNom($_POST['nom']);
-    				$user->setPrenom($_POST['prenom']);
-    				$userManager->updateUser($user,false);
-    
-    				return $this->redirectToRoute('user_show', array('id' => $user->getId()));
-    			}
-    
-    			return $this->render('AdminBundle:User:new.html.twig');
-    }*/
-
+   
     /**
      * Finds and displays a User entity.
      *
@@ -118,7 +91,9 @@ class ManageUserController extends Controller
         		&& isset($_POST['username'])&& isset($_POST['password'])&& isset($_POST['role'])) {
         			$userManager = $this->get('fos_user.user_manager');
         			
-        
+        			foreach ($user->getRoles() as $r){
+        				$user->removeRole($r);
+        			}
         			$user->addRole($_POST['role']);
         			$user->setEmail($_POST['email']);
         			$user->setUsername($_POST['username']);

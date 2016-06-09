@@ -49,14 +49,149 @@
 {% endblock %}
 
 {% block javascripts %}
-<script type="text/javascript" src="{{asset('assets/plugins/jquery/jquery-2.1.4.min.js')}}"></script>
-
-		<script type="text/javascript" src="{{asset('assets/js/scripts.js')}}"></script>
 <script>
-var availableTags = [
+	var fruits = [
+
                      "ActionScript",
                      "AppleScript"
                  ];
+
+    var legumes = [
+
+
+    ];
+
+    var availableTags = [
+"Abricot",
+
+"Ail",
+"Airelle",
+
+"Amande",
+"Ananas",
+
+"Artichaut",
+"Asperge blanche",
+"Asperge verte",
+"Aubergine",
+"Avocat",
+
+"Banane",
+
+"Bette",
+"Betterave rouge",
+"Brocoli",
+"Carotte",
+
+"Cassis",
+
+"Catalonia",
+"Céleri",
+"Céleri branche",
+"Céleri rave",
+
+"Cerise",
+"Châtaigne",
+
+"Chou blanc",
+"Chou de Bruxelles",
+"Chou frisé",
+"Chou Romanesco",
+"Chou rouge",
+"Chou-chinois",
+"Chou-fleur",
+"Chou-rave",
+"Cima di Rapa",
+
+"Citron",
+
+"Citrouille",
+
+"Clémentine",
+"Coing",
+
+"Concombre",
+"Courge",
+"Courgette",
+"Cresson",
+
+"Datte",
+
+"Endive",
+"Epinard",
+"Fenouil",
+
+"Figue fraîche",
+"Fraise",
+"Fraise des bois",
+"Framboise",
+"Fruit de la passion",
+"Grenade",
+"Groseille",
+"Groseille à maquereau",
+
+"Haricot",
+
+"Kaki",
+"Kiwi",
+"Kumquat",
+
+"Laitue romaine",
+
+"Litchi",
+
+"Mâche",
+"Maïs",
+
+"Mandarine",
+"Mangue",
+"Marron",
+
+"Melon",
+
+"Mirabelle",
+"Mûre",
+"Myrtille",
+
+"Navet",
+
+"Nectarine",
+"Noisette",
+"Noix",
+
+"Oignon",
+
+"Orange",
+"Orange sanguine",
+"Pamplemousse",
+"Panais",
+"Papaye",
+"Pastèque",
+"Pâtisson",
+"Pêche",
+"Petit oignon blanc",
+"Petit pois",
+"Poire",
+"Poireau",
+"Pois mange-tout",
+"Poivron",
+"Pomme",
+"Pomme de terre",
+"Potimarron",
+"Potiron",
+"Prune",
+"Quetsche",
+"Radis",
+"Radis long",
+"Raisin",
+"Reine-claude",
+"Rhubarbe",
+"Salsifis",
+"Tomate",
+"Tomate charnue",
+"Tomate Peretti",
+"Topinambour",
+                        ];
                  $("#produit_libelle").autocomplete({
                      source: availableTags,
                      change: function (event, ui) {
@@ -64,12 +199,13 @@ var availableTags = [
                              //http://api.jqueryui.com/autocomplete/#event-change -
                              // The item selected from the menu, if any. Otherwise the property is null
                              //so clear the item for force selection
-                             $("#tags").val("");
+                             $("#produit_libelle").val("");
                          }
 
                      }
 
                  });
 </script>
+
 {% endblock %}
             

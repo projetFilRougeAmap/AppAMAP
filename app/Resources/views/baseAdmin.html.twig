@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		<title>Admin AMAP</title>
 
-	
+	<link href="{{asset('admin/assets/plugins/jquery/jquery-ui.min.css')}}" rel="stylesheet" type="text/css" />
 
 		<!-- mobile settings -->
 		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
@@ -119,9 +119,9 @@
 					<img src="{{ asset('assets/images/logo_dark.png') }}" alt="admin panel" height="50" />
 				</span>
 
-				<form method="get" action="page-search.html" class="search pull-left hidden-xs">
-					<input type="text" class="form-control" name="k" placeholder="Search for something..." />
-				</form>
+{# 				<form method="get" action="page-search.html" class="search pull-left hidden-xs">#}
+{# 					<input type="text" class="form-control" name="k" placeholder="Search for something..." />#}
+{# 				</form>#}
 
 				<nav>
 
@@ -190,6 +190,7 @@
 		<!-- JAVASCRIPT FILES -->
 		<script type="text/javascript">var plugin_path = "{{asset('admin/assets/plugins/')}}";</script>
 		<script type="text/javascript" src="{{asset('admin/assets/plugins/jquery/jquery-2.1.4.min.js')}}"></script>
+		<script type="text/javascript" src="{{asset('admin/assets/plugins/jquery/jquery-ui.min.js')}}"></script>
 		<script type="text/javascript" src="{{asset('admin/assets/js/app.js')}}"></script>
 		{% block javascripts %}{% endblock %}
 		
