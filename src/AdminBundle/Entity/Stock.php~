@@ -46,6 +46,10 @@ class Stock
     */
     private $produits;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Producteur", inversedBy="stocks")
+     */
+    private $producteur;
 
     /**
      * Get id
@@ -151,5 +155,29 @@ class Stock
     public function getProduits()
     {
         return $this->produits;
+    }
+
+    /**
+     * Set producteur
+     *
+     * @param \AdminBundle\Entity\Producteur $producteur
+     *
+     * @return Stock
+     */
+    public function setProducteur(\AdminBundle\Entity\Producteur $producteur = null)
+    {
+        $this->producteur = $producteur;
+
+        return $this;
+    }
+
+    /**
+     * Get producteur
+     *
+     * @return \AdminBundle\Entity\Producteur
+     */
+    public function getProducteur()
+    {
+        return $this->producteur;
     }
 }

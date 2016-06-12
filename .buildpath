@@ -14,6 +14,7 @@
 	<buildpathentry kind="src" path="vendor/doctrine/collections/lib"/>
 	<buildpathentry kind="src" path="vendor/doctrine/doctrine-cache-bundle"/>
 	<buildpathentry kind="src" path="vendor/sensio/framework-extra-bundle"/>
+	<buildpathentry kind="src" path="vendor/willdurand/jsonp-callback-validator/src"/>
 	<buildpathentry kind="src" path="vendor/doctrine/lexer/lib"/>
 	<buildpathentry kind="src" path="vendor/psr/log"/>
 	<buildpathentry kind="src" path="vendor/friendsofsymfony/user-bundle"/>
@@ -21,6 +22,7 @@
 	<buildpathentry kind="src" path="vendor/swiftmailer/swiftmailer/lib"/>
 	<buildpathentry kind="src" path="vendor/composer"/>
 	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+	<buildpathentry kind="src" path="vendor/friendsofsymfony/jsrouting-bundle"/>
 	<buildpathentry kind="src" path="vendor/symfony/symfony/src/Symfony/Bridge/Twig"/>
 	<buildpathentry kind="src" path="vendor/paragonie/random_compat/lib"/>
 	<buildpathentry kind="src" path="vendor/symfony/symfony/src/Symfony/Bridge/Monolog"/>

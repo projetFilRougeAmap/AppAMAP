@@ -28,6 +28,19 @@ class TypePanier
      */
     private $libelle;
     
+//     /**
+//      * @var string
+//      *
+//      * @ORM\Column(name="taille", type="string", length=255)
+//      */
+//     private $taille;
+//     /**
+//      * @var string
+//      *
+//      * @ORM\Column(name="saison", type="string", length=255)
+//      */
+//     private $saison;
+    
     /**
     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Panier", mappedBy="typePanier")
     */

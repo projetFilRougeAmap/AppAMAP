@@ -47,6 +47,7 @@ class PanierController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $panier->setDateDerniereModif(new \DateTime());
             $em->persist($panier);
             $em->flush();
 
@@ -89,6 +90,7 @@ class PanierController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $panier->setDateDerniereModif(new \DateTime());
             $em->persist($panier);
             $em->flush();
 

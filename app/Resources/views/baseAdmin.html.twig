@@ -20,6 +20,9 @@
 		<link href="{{asset('admin/assets/css/essentials.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('admin/assets/css/layout.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('admin/assets/css/color_scheme/green.css')}}" rel="stylesheet" type="text/css" id="color_scheme" />
+		
+	
+   		{% block css %}{%  endblock css %}
 
 	</head>
 	<!--
@@ -84,7 +87,8 @@
 							</a>
 							<ul>
 								<li><a href="{{ path('user_index') }}">Utilisateurs</a></li>
-								<li><a href="">Entreprots</a></li>
+								<li><a href="{{ path('Entrepot_index') }}">Entreprots</a></li>
+								<li><a href="{{ path('producteur_index') }}">Producteurs</a></li>
 							</ul>
 						</li>
 						
@@ -190,8 +194,11 @@
 		<!-- JAVASCRIPT FILES -->
 		<script type="text/javascript">var plugin_path = "{{asset('admin/assets/plugins/')}}";</script>
 		<script type="text/javascript" src="{{asset('admin/assets/plugins/jquery/jquery-2.1.4.min.js')}}"></script>
+		
 		<script type="text/javascript" src="{{asset('admin/assets/plugins/jquery/jquery-ui.min.js')}}"></script>
 		<script type="text/javascript" src="{{asset('admin/assets/js/app.js')}}"></script>
+		
+		
 		{% block javascripts %}{% endblock %}
 		
 	</body>

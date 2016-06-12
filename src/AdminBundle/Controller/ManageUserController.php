@@ -52,6 +52,7 @@ class ManageUserController extends Controller
         	$user->setEmail($_POST['email']);
         	$user->setUsername($_POST['username']);
         	$user->setPlainPassword($_POST['password']['first']);
+        	$user->setEnabled(true);
         	$user->setNom($_POST['nom']);
         	$user->setPrenom($_POST['prenom']);
         	$userManager->updateUser($user);

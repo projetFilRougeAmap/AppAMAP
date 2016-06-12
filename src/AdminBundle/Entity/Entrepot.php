@@ -34,9 +34,11 @@ class Entrepot
     private $stock;
     
     /**
-    * @ORM\OneToOne(targetEntity="AdminBundle\Entity\Adresse")
-    */
+     * @ORM\OneToOne(targetEntity="AdminBundle\Entity\Adresse",cascade={"persist"})
+     */
     private $adresse;
+    
+    
     /**
      * Constructor
      */
@@ -139,4 +141,6 @@ class Entrepot
     public function __toString(){
     	return $this->libelle;
     }
+
+   
 }

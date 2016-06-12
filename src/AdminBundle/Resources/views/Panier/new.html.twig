@@ -1,52 +1,82 @@
-{% extends 'baseAdmin.html.twig' %}
+{% extends 'baseAdmin.html.twig' %} {% block body %}
+<div class="panel panel-default">
+	<div class="panel-heading panel-heading-transparent">
+		<strong>Création d'un panier</strong>
+	</div>
 
-{% block body %}
-    <div class="panel panel-default">
-        <div class="panel-heading panel-heading-transparent">
-                <strong>Création d'un panier</strong>
-        </div>
+	<div class="panel-body">
+		{{ form_start(form) }}
+		<fieldset>
+			{# <div class="row">#} {# <div class="form-group">#} {# <div
+			class="col-md-6 col-sm-6">#} {# <label>Date mise à jour : </label>#}
+			{# {{ form_widget(form.dateDerniereModif,
+			{'attr':{'class':'required'}}) }}#} {# </div>#} {# </div>#} {#
+			</div>#}
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-6 col-sm-6">
+						<label>Prix : </label> {{ form_widget(form.prix,
+						{'attr':{'class':'form-control','required':'required'}}) }}
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-6 col-sm-6">
+						<div class="form-group">
+							<label class="font-noraml">Produit(s) : </label>
+							<div class="input-group">{{ form_widget(form.produits,
+								{'attr':{'class':'chosen-select','required':'required','data-placeholder':'Choisir des produits',
+								'multiple':'multiple','tabindex':'4','style':'width: 39em;'}}) }}</div>
+						</div>
 
-        <div class="panel-body">
-            {{ form_start(form) }}    
-            <fieldset>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 col-sm-6">
-                            <label>Date mise à jour : </label>
-                            {{ form_widget(form.dateDerniereModif, {'attr':{'class':'form-control required'}}) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 col-sm-6">
-                            <label>Prix : </label>
-                            {{ form_widget(form.prix, {'attr':{'class':'form-control required'}}) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 col-sm-6">
-                            <label>Produit(s) : </label>
-                            {{ form_widget(form.produits, {'attr':{'class':'form-control required'}}) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 col-sm-6">
-                            <label>Type de panier : </label>
-                            {{ form_widget(form.typePanier, {'attr':{'class':'form-control required'}}) }}
-                        </div>
-                    </div>
-                </div>
-                        
-                <input type="submit" value="Ajouter" class="btn btn-success"/>
-            </fieldset>
-            {{ form_end(form) }}
-        </div>
-    </div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-6 col-sm-6">
+						<label>Type de panier : </label> {{ form_widget(form.typePanier,
+						{'attr':{'class':'form-control','required':'required'}}) }}
+					</div>
+				</div>
+			</div>
 
-    <a href="{{ path('panier_index') }}" class="btn btn-primary">Retour</a><br><br>
-{% endblock %}
+			<input type="submit" value="Ajouter" class="btn btn-success" />
+		</fieldset>
+		{{ form_end(form) }}
+	</div>
+</div>
+
+<a href="{{ path('panier_index') }}" class="btn btn-primary">Retour</a>
+<br>
+<br>
+{% endblock %} {% block javascripts %}
+<!-- Chosen -->
+<script src="{{asset('admin/assets/plugins/chosen/chosen.jquery.js')}}"></script>
+
+<!-- Select2 -->
+<script
+	src="{{asset('admin/assets/plugins/select2/js/select2.full.min.js')}}"></script>
+<script>
+  
+        var config = {
+                '.chosen-select'           : {},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                '.chosen-select-width'     : {width:"95%"}
+                }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+
+    </script>
+{% endblock javascripts %} {% block css %}
+<link href="{{asset('admin/assets/css/chosen/chosen.css')}}"
+	rel="stylesheet">
+<link
+	href="{{asset('admin/assets/plugins/select2/css/select2.min.css')}}"
+	rel="stylesheet">
+
+{% endblock css %}

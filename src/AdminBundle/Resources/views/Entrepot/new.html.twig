@@ -1,0 +1,109 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+<div>
+    <a href="{{ path('Entrepot_index') }}" class="btn btn-primary">Retour</a><br><br>
+</div>
+    <div class="panel panel-default">
+        <div class="panel-heading panel-heading-transparent">
+                <strong>Création d'un entreprot</strong>
+        </div>
+
+        <div class="panel-body">
+            {{ form_start(form) }}    
+            <fieldset>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label> Libelle : </label>
+                            {{ form_widget(form.libelle, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Numéro : </label>
+                            {{ form_widget(form.adresse.numeroRue, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Complément d'adresse : </label>
+                            {{ form_widget(form.adresse.complementAdresse, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Nom de Rue : </label>
+                            {{ form_widget(form.adresse.nomRue, {'attr':{'class':'form-control','required':'required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Ville : </label>
+                            {{ form_widget(form.adresse.ville, {'attr':{'class':'form-control','required':'required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Code postal : </label>
+                            {{ form_widget(form.adresse.codePostal, {'attr':{'class':'form-control','required':'required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                        
+                <input type="submit" value="Ajouter" class="btn btn-success"/>
+            </fieldset>
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+
+                 $("#entrepot_adresse_ville").autocomplete({
+                	 minLength: 2,
+                     source: "{{ path('Entrepot_recupVille') }}",
+                     change: function (event, ui) {
+                         if(!ui.item){
+                             //http://api.jqueryui.com/autocomplete/#event-change -
+                             // The item selected from the menu, if any. Otherwise the property is null
+                             //so clear the item for force selection
+                             $("#entrepot_adresse_ville").val("");
+                         }
+
+                     },
+                     select: function(event,ui){
+
+
+                    	 $.ajax({
+                    			method : "POST",
+                    			url : "{{ path('Entrepot_setCP') }}",
+                    			cache : false,
+                    			data : "ville="+ui.item.label,
+                    			success : function(data, statut, xhr) {
+                    				
+                    				$("#entrepot_adresse_codePostal").val(data);
+
+                    			}
+                    		})
+
+                         }
+
+                 });
+
+</script>
+
+{% endblock %}

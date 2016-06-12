@@ -1,0 +1,48 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block body %}
+<a href="{{ path('producteur_new') }}" class="btn btn-primary">Ajouter un
+	nouveau producteur</a>
+
+<div id="content" class="padding-20">
+	<div class="panel panel-default">
+		<div class="panel-heading panel-heading-transparent">
+			<strong>Liste des producteurs</strong>
+		</div>
+
+		<div class="panel-body">
+			<table class="table table-striped table-hover table-bordered"
+				id="sample_editable_1">
+				<thead>
+					<tr>
+						<th>Numero</th>
+						<th>Nom - Prenom</th>
+ 						<th>Modifier</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for producteur in producteurs %}
+					<tr>
+						<td>{{ producteur.numero }}</td>
+						<td>{{ producteur.nom }} - {{ producteur.prenom }}</td>
+						
+						<td><a href="{{path('producteur_add_product', { 'id': producteur.id }) }}">Ajouter des produits</a>
+						</td>
+						<td>
+							<a href="{{path('producteur_edit', { 'id': producteur.id }) }}" title="Modifier">
+						 		<i class="fa fa-pencil-square-o"></i>
+							</a>
+							&nbsp;&nbsp;
+							<a data-toggle="modal" href="{{path('producteur_delete', { 'id': producteur.id }) }}" title="Supprimer" >
+								 <i class="fa fa-trash"> </i>
+							</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+

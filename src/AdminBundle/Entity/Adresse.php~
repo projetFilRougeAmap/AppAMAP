@@ -24,14 +24,14 @@ class Adresse
     /**
      * @var int
      *
-     * @ORM\Column(name="numeroRue", type="integer")
+     * @ORM\Column(name="numeroRue", type="integer", nullable=true)
      */
     private $numeroRue;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="complementAdresse", type="string", length=255)
+     * @ORM\Column(name="complementAdresse", type="string", length=255, nullable=true)
      */
     private $complementAdresse;
 

@@ -10,6 +10,9 @@ use FOS\UserBundle\Model\User as BaseUser;
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AdminBundle\Repository\UserRepository")
+ * @InheritanceType("SINGLE_TABLE")
+ * @DiscriminatorColumn(name="id", type="integer")
+ * @DiscriminatorMap({"user" = "User", "producteur" = "Producteur"})
  */
 class User extends BaseUser
 {

@@ -5,6 +5,8 @@ namespace AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class AdresseType extends AbstractType
 {
@@ -15,8 +17,8 @@ class AdresseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('numeroRue')
-            ->add('complementAdresse')
+            ->add('numeroRue', NumberType::class,array('required'    => false))
+            ->add('complementAdresse',TextType::class,array('required'    => false))
             ->add('nomRue')
             ->add('ville')
             ->add('codePostal')

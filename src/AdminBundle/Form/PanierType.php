@@ -16,7 +16,7 @@ class PanierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateDerniereModif', \Symfony\Component\Form\Extension\Core\Type\DateType::class, array('format' => 'dd-MM-yyyy'))
+//             ->add('dateDerniereModif', \Symfony\Component\Form\Extension\Core\Type\DateType::class, array('format' => 'dd-MM-yyyy'))
             ->add('prix')
             ->add('produits')
             ->add('typePanier')
