@@ -57,7 +57,7 @@ class ManageUserController extends Controller
         	$user->setPrenom($_POST['prenom']);
         	$userManager->updateUser($user);
         	$this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_index', array('id' => $user->getId()));
         }
 
         return $this->render('AdminBundle:User:new.html.twig');

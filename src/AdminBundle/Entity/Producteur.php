@@ -9,15 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="producteur")
  * @ORM\Entity(repositoryClass="AdminBundle\Repository\ProducteurRepository")
- * @ORM\AttributeOverrides({
- * 		@ORM\AttributeOverride(name="password", column=@ORM\Column(type="string", name="password", length=255, unique=false, nullable=true)),
- * 		@ORM\AttributeOverride(name="username", column=@ORM\Column(type="string", name="username", length=255, unique=false, nullable=true)),
- * 		@ORM\AttributeOverride(name="usernameCanonical", column=@ORM\Column(type="string", name="username_canonical", length=255, unique=false, nullable=true)),
- *      @ORM\AttributeOverride(name="email", column=@ORM\Column(type="string", name="email", length=255, unique=false, nullable=true)),
- *      @ORM\AttributeOverride(name="emailCanonical", column=@ORM\Column(type="string", name="email_canonical", length=255, unique=false, nullable=true))
- * })
+
  */
-class Producteur extends User
+class Producteur
 {
     /**
      * @var int
@@ -39,6 +33,11 @@ class Producteur extends User
      * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Stock", mappedBy="producteur")
      */
     private $stocks;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="AdminBundle\Entity\User")
+     */
+    private $user;
 
     /**
      * Get id
@@ -106,5 +105,40 @@ class Producteur extends User
     public function getStocks()
     {
         return $this->stocks;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->stocks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AdminBundle\Entity\User $user
+     *
+     * @return Producteur
+     */
+    public function setUser(\AdminBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AdminBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+    
+    public function __toString() {
+    	return $this->user->getNom().' - '.$this->user->getPrenom();
     }
 }

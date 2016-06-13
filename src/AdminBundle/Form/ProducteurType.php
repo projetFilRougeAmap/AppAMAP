@@ -5,7 +5,6 @@ namespace AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 
 class ProducteurType extends AbstractType
 {
@@ -17,7 +16,9 @@ class ProducteurType extends AbstractType
     {
         $builder
         ->add('numero')
-            ->add('nom')->add('prenom')
+            ->add( $builder->create('user', UserType::class)
+            ->add('nom')
+            ->add('prenom'))
         ;
     }
     

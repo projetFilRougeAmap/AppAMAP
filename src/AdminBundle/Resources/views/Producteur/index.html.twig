@@ -24,7 +24,7 @@
 					{% for producteur in producteurs %}
 					<tr>
 						<td>{{ producteur.numero }}</td>
-						<td>{{ producteur.nom }} - {{ producteur.prenom }}</td>
+						<td>{{ producteur.user.nom }} - {{ producteur.user.prenom }}</td>
 						
 						<td><a href="{{path('producteur_add_product', { 'id': producteur.id }) }}">Ajouter des produits</a>
 						</td>

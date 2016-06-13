@@ -3,13 +3,22 @@
 namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+
 use FOS\UserBundle\Model\User as BaseUser;
+
 
 /**
  * panier
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AdminBundle\Repository\UserRepository")
+ * @ORM\AttributeOverrides({
+ * 		@ORM\AttributeOverride(name="password", column=@ORM\Column(type="string", name="password", length=255, unique=false, nullable=true)),
+ * 		@ORM\AttributeOverride(name="username", column=@ORM\Column(type="string", name="username", length=255, unique=false, nullable=true)),
+ * 		@ORM\AttributeOverride(name="usernameCanonical", column=@ORM\Column(type="string", name="username_canonical", length=255, unique=false, nullable=true)),
+ *      @ORM\AttributeOverride(name="email", column=@ORM\Column(type="string", name="email", length=255, unique=false, nullable=true)),
+ *      @ORM\AttributeOverride(name="emailCanonical", column=@ORM\Column(type="string", name="email_canonical", length=255, unique=false, nullable=true))
+ * })
  */
 class User extends BaseUser
 {

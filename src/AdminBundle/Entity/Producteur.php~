@@ -9,11 +9,18 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="producteur")
  * @ORM\Entity(repositoryClass="AdminBundle\Repository\ProducteurRepository")
- *
+
  */
-class Producteur extends User
+class Producteur
 {
-    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
     
     /**
      * @var String
@@ -26,6 +33,11 @@ class Producteur extends User
      * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Stock", mappedBy="producteur")
      */
     private $stocks;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="AdminBundle\Entity\User")
+     */
+    private $user;
 
     /**
      * Get id

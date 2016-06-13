@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AdminBundle\Entity\Producteur;
 use AdminBundle\Form\ProducteurType;
+use AdminBundle\Entity\Stock;
 
 /**
  * Producteur controller.
@@ -48,8 +49,9 @@ class ProducteurController extends Controller
             $em = $this->getDoctrine()->getManager();
            
              
-            $producteur->addRole("ROLE_PRODUCTEUR");
-            
+            $producteur->getUser()->addRole("ROLE_PRODUCTEUR");
+            var_dump($producteur->getUser());
+            $em->persist($producteur->getUser());
             $em->persist($producteur);
             $em->flush();
             return $this->redirectToRoute('producteur_index', array('id' => $producteur->getId()));
@@ -129,15 +131,28 @@ class ProducteurController extends Controller
     /**
      * Lists all Producteur entities.
      *
-     * @Route("/AjouterProduits/", name="producteur_add_product")
-     * @Method("GET")
+     * @Route("/AjouterProduits/{id}", name="producteur_add_product")
      */
-    public function addProduitsAction(Request $request)
+    public function addProduitsAction(Request $request,$id)
     {
     	$em = $this->getDoctrine()->getManager();
-    	$producteur = $em->getRepository('AdminBundle:Producteur')->find($_GET['id']);
+    	$producteur = $em->getRepository('AdminBundle:Producteur')->find($id);
     
-    	return $this->render('AdminBundle:Producteur:index.html.twig', array('producteur'=>$producteur
+    	$stock = new Stock();
+    	$form = $this->createForm('AdminBundle\Form\StockType', $stock);
+    	$form->handleRequest($request);
+    	
+    	if ($form->isSubmitted() && $form->isValid()) {
+    		$stock->setProducteur($producteur);
+    		$em = $this->getDoctrine()->getManager();
+    		$em->persist($stock);
+    		$em->flush();
+    	
+    		return $this->redirectToRoute('producteur_index', array('id' => $stock->getId()));
+    	}
+    	
+    	return $this->render('AdminBundle:Producteur:addProducts.html.twig', array('producteur'=>$producteur,'stock' => $stock,
+    			'form' => $form->createView()
     	));
     }
 }
