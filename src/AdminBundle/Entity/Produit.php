@@ -46,9 +46,9 @@ class Produit
     private $categorieProduit;
     
     /**
-    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Panier", mappedBy="produits")
+    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\PanierProduit", inversedBy="produits")
     */
-    private $paniers;
+    private $panierProduit;
     
     /**
     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\CommandeProduit", mappedBy="produits")
@@ -251,5 +251,29 @@ class Produit
     }
     public function __toString() {
     	return $this->libelle;
+    }
+
+    /**
+     * Set panierProduit
+     *
+     * @param \AdminBundle\Entity\Panier $panierProduit
+     *
+     * @return Produit
+     */
+    public function setPanierProduit(\AdminBundle\Entity\Panier $panierProduit = null)
+    {
+        $this->panierProduit = $panierProduit;
+
+        return $this;
+    }
+
+    /**
+     * Get panierProduit
+     *
+     * @return \AdminBundle\Entity\Panier
+     */
+    public function getPanierProduit()
+    {
+        return $this->panierProduit;
     }
 }

@@ -36,9 +36,9 @@ class Panier
     private $prix;
 
     /**
-    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Produit", inversedBy="paniers")
+    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\PanierProduit", inversedBy="paniers")
     */
-    private $produits;
+    private $panierProduit;
     
     /**
     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\TypePanier", inversedBy="paniers")

@@ -1,0 +1,44 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Panier
+ *
+ * @ORM\Table(name="panier_produit")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\PanierRepository")
+ */
+class PanierProduit
+{
+    
+
+	/**
+	 * @var int
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
+	
+    /**
+    * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Produit", mappedBy="panierProduit")
+    */
+    private $produits;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Panier", mappedBy="panierProduit")
+     */
+    private $paniers;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="quantite", type="integer")
+     */
+    private $quantite;
+    
+    
+}

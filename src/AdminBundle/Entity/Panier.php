@@ -36,9 +36,9 @@ class Panier
     private $prix;
 
     /**
-    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Produit", inversedBy="paniers")
+    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\PanierProduit", inversedBy="paniers")
     */
-    private $produits;
+    private $panierProduit;
     
     /**
     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\TypePanier", inversedBy="paniers")
@@ -207,5 +207,29 @@ class Panier
     public function getCommandes()
     {
         return $this->commandes;
+    }
+
+    /**
+     * Set panierProduit
+     *
+     * @param \AdminBundle\Entity\PanierProduit $panierProduit
+     *
+     * @return Panier
+     */
+    public function setPanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit = null)
+    {
+        $this->panierProduit = $panierProduit;
+
+        return $this;
+    }
+
+    /**
+     * Get panierProduit
+     *
+     * @return \AdminBundle\Entity\PanierProduit
+     */
+    public function getPanierProduit()
+    {
+        return $this->panierProduit;
     }
 }
