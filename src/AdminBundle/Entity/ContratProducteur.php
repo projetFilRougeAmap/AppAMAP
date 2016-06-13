@@ -43,7 +43,7 @@ class ContratProducteur
     private $nbPanier;
 
     /**
-    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Produit")
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ContratProducteurProduit", mappedBy="contratProducteur")
     */
     private $produits;
 

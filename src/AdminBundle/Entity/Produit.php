@@ -45,15 +45,21 @@ class Produit
     */
     private $categorieProduit;
     
+    
     /**
-    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\PanierProduit", inversedBy="produits")
-    */
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\PanierProduit", mappedBy="produits")
+     */
     private $panierProduit;
     
     /**
     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\CommandeProduit", mappedBy="produits")
     */
     private $commandeProduit;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ContratProducteurProduit", mappedBy="produit")
+     */
+    private $contratProducteur;
 
    
     /**

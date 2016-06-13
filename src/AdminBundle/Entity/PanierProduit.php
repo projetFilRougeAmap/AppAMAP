@@ -24,19 +24,18 @@ class PanierProduit
 	private $id;
 	
     /**
-    * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Produit", mappedBy="panierProduit")
-    */
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Produit", inversedBy="panierProduit")
+     */
     private $produits;
-
     /**
-     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Panier", mappedBy="panierProduit")
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Panier", inversedBy="panierProduit")
      */
     private $paniers;
     
     /**
      * @var int
      *
-     * @ORM\Column(name="quantiteProduit", type="integer")
+     * @ORM\Column(name="quantiteProduit", type="integer", nullable=true)
      */
     private $quantiteProduit;
     
