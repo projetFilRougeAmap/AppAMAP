@@ -32,6 +32,7 @@
                 <link href="{{asset('assets/css/layout-shop.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('assets/css/color_scheme/green.css')}}" rel="stylesheet" type="text/css" id="color_scheme" />
                 
+                
                 {% block css %}{%endblock%}
 	</head>
 <body class="smoothscroll enable-animation">
@@ -205,41 +206,51 @@
 									</li>
 								-->
 								<ul id="topMain" class="nav nav-pills nav-main">
-									<li class="active"><!-- Accueil -->
+                                                                        {% if app.request.attributes.get('_route') == "amap_homepage" %}
+                                                                            <li class="active"><!-- Accueil -->
+                                                                        {% else %}
+                                                                            <li><!-- Accueil -->
+                                                                        {% endif %}
 										<a href="{{path('amap_homepage')}}">
 											Accueil
 										</a>
 									</li>
                                                                         
-                                   <li class=""><!-- Gestion des paniers -->
+                                                                        {% if app.request.attributes.get('_route') == "produits_index" %}
+                                                                            <li class="active">
+                                                                        {% else %}
+                                                                            <li>
+                                                                        {% endif %}
 										<a class="" href="{{path('produits_index')}}">
 											Nos produits
 										</a>
 									</li>
-                                    <li class=""><!-- Gestion des paniers -->
-										<a class="" href="{{path('paniers_index')}}">
-											Nos paniers
-										</a>
+                                                                        
+                                                                        {% if app.request.attributes.get('_route') == "paniers_index" %}
+                                                                            <li class="active">
+                                                                        {% else %}
+                                                                            <li>
+                                                                        {% endif %}
+                                                                            <a class="" href="{{path('paniers_index')}}">
+                                                                                    Nos paniers
+                                                                            </a>
 									</li>
                                                                         
-									<li class=""><!-- Gestion des commandes -->
-										<a class="" href="">
-											A propos
-										</a>
-										
+                                                                        <li>
+                                                                            <a class="" href="">
+                                                                                    A propos
+                                                                            </a>
 									</li>
 									
                                                                         
-                                     <li class=""><!-- Gestion administrative -->
-										<a class="" href="">
-											Contacts
-										</a>
-										
+                                                                        <li class="">
+                                                                            <a class="" href="">
+                                                                                Contacts
+                                                                            </a>
 									</li>
-									
 									
 									<li>
-										<a id="sidepanel_btn" href="#" class="fa fa-bars"></a>
+                                                                            <a id="sidepanel_btn" href="#" class="fa fa-bars"></a>
 									</li>
 								</ul>
 
@@ -264,11 +275,11 @@
 				<div class="copyright">
 					<div class="container">
 						<ul class="pull-right nomargin list-inline mobile-block">
-							<li><a href="#">Terms &amp; Conditions</a></li>
+							<li><a href="#">Termes &amp; Conditions</a></li>
 							<li>&bull;</li>
-							<li><a href="#">Privacy</a></li>
+							<li><a href="#">Sécurité</a></li>
 						</ul>
-						&copy; All Rights Reserved, Company LTD
+						&copy; Company CICLG
 					</div>
 				</div>
 			</footer>
