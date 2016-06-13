@@ -63,11 +63,12 @@
                                                                     <li><a tabindex="-1" href="{{path('fos_user_security_login')}}"><i class="fa fa-history"></i> Se connecter</a></li>
                                                                     <li><a tabindex="-1" href="{{path('fos_user_registration_register')}}"><i class="fa fa-edit""></i> S'enregistrer</a></li>
                                                                     <li class="divider"></li>
-                                                                {% endif %}
+                                                                {% else %}
 								<li><a tabindex="-1" href="#"><i class="fa fa-bookmark"></i> Mes Contrats</a></li>
 								<li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> Mon Compte</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1" href="{{path('fos_user_security_logout')}}"><i class="glyphicon glyphicon-off"></i> Se deconnecter</a></li>
+                                                                {% endif %}
 							</ul>
 						</li>
 					</ul>
