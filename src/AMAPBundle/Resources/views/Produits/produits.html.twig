@@ -1,0 +1,52 @@
+{% extends 'base.html.twig'%}
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="heading-title heading-dotted">
+                <h2 class="size-20">Nos produits</h2>
+            </div>
+            
+            <ul class="shop-item-list row list-inline nomargin">     
+            {% for p in produits %}
+
+                <!-- ITEM -->
+                <li class="col-lg-2 col-sm-4">
+                    <div class="shop-item">
+
+                        <div class="thumbnail noborder nopadding">
+                            <!-- product image(s) -->
+                            <a class="shop-item-image" href="">
+                                    <img class="img-responsive" src="{{asset('assets/images/demo/shop/home/products/noimg.jpg')}}"  alt="" />
+                            </a>
+                            <!-- /product image(s) -->
+
+                            <!-- Bouton ajout au panier -->
+                            {#<div class="shop-option-over">
+                                    <a class="btn btn-default" href=""><i class="fa fa-cart-plus size-18"></i></a>
+                            </div>#}
+                            <!-- /hover buttons -->
+                        </div>
+
+                        <div class="shop-item-summary text-center">
+                            <h2 class="size-14">{{p.getLibelle()}}</h2>
+
+                            <!-- rating -->
+                            <div class="shop-item-rating-line">
+                            </div>
+                            <!-- /rating -->
+
+                            <!-- price -->
+                            <div class="shop-item-price">
+                                {{p.getPrix()}}€
+                            </div>
+                            <!-- /price -->
+                        </div>
+                    </div>
+                </li>
+                <!-- /ITEM -->
+                
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock body%}

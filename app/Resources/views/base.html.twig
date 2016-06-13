@@ -29,6 +29,7 @@
 
 		<!-- PAGE LEVEL SCRIPTS -->
 		<link href="{{asset('assets/css/header-1.css')}}" rel="stylesheet" type="text/css" />
+                <link href="{{asset('assets/css/layout-shop.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('assets/css/color_scheme/green.css')}}" rel="stylesheet" type="text/css" id="color_scheme" />
                 
                 {% block css %}{%endblock%}
@@ -211,10 +212,14 @@
 									</li>
                                                                         
                                    <li class=""><!-- Gestion des paniers -->
-										<a class="" href="">
-											Nos Produits et Paniers
+										<a class="" href="{{path('produits_index')}}">
+											Nos produits
 										</a>
-										
+									</li>
+                                    <li class=""><!-- Gestion des paniers -->
+										<a class="" href="">
+											Nos paniers
+										</a>
 									</li>
                                                                         
 									<li class=""><!-- Gestion des commandes -->
