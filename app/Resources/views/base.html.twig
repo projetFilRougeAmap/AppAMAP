@@ -50,17 +50,24 @@
 
 					<!-- right -->
 					<ul class="top-links list-inline pull-right">
-						<li class="text-welcome hidden-xs"> <strong>John Doe</strong></li>
 						<li>
-							<a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-user hidden-xs"></i> Mon Compte</a>
+							<a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-user hidden-xs"></i> 
+                                                            {% if app.user != null %}
+                                                                {{app.user.prenom}} {{app.user.nom}} ({{app.user.username}})
+                                                            {% else %}
+                                                                Mon compte
+                                                            {% endif %}
+                                                        </a>
 							<ul class="dropdown-menu pull-right">
-								<li><a tabindex="-1" href="#"><i class="fa fa-history"></i> ORDER HISTORY</a></li>
+                                                                {% if app.user == null %}
+                                                                    <li><a tabindex="-1" href="{{path('fos_user_security_login')}}"><i class="fa fa-history"></i> Se connecter</a></li>
+                                                                    <li><a tabindex="-1" href="{{path('fos_user_registration_register')}}"><i class="fa fa-edit""></i> S'enregistrer</a></li>
+                                                                    <li class="divider"></li>
+                                                                {% endif %}
+								<li><a tabindex="-1" href="#"><i class="fa fa-bookmark"></i> Mes Contrats</a></li>
+								<li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> Mon Compte</a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="#"><i class="fa fa-bookmark"></i> MY WISHLIST</a></li>
-								<li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> MY REVIEWS</a></li>
-								<li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> MY SETTINGS</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1" href="#"><i class="glyphicon glyphicon-off"></i> LOGOUT</a></li>
+								<li><a tabindex="-1" href="{{path('fos_user_security_logout')}}"><i class="glyphicon glyphicon-off"></i> Se deconnecter</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -244,7 +251,7 @@
 
                                                                         <li class="">
                                                                             <a class="" href="">
-                                                                                Contacts
+                                                                                Contact
                                                                             </a>
 									</li>
 									
