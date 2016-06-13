@@ -9,30 +9,31 @@ use \Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use AdminBundle\Entity\Produit;
+use AdminBundle\Entity\Panier;
+use AdminBundle\Entity\TypePanier;
 
 
 /**
  * Produit controller.
  *
- * @Route("/produits")
+ * @Route("/paniers")
  */
-class ProduitsController extends Controller
+class PaniersController extends Controller
 {
     /**
-     * Affiche tous les produits
+     * Affiche tous les paniers
      *
-     * @Route("/", name="produits_index")
+     * @Route("/", name="paniers_index")
      * @Method({"GET"})
      */
     public function indexAction(\Symfony\Component\HttpFoundation\Request $request)
     {
     	$em = $this->getDoctrine()->getManager();
 
-        $produits = $em->getRepository('AdminBundle:Produit')->findAll();
+        $paniers = $em->getRepository('AdminBundle:Panier')->findAll();
 
-        return $this->render('AMAPBundle:Produits:index.html.twig', array(
-            'produits' => $produits,
+        return $this->render('AMAPBundle:Paniers:index.html.twig', array(
+            'paniers' => $paniers,
         ));
     }
 }
