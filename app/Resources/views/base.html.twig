@@ -211,9 +211,15 @@
                                                                         {% else %}
                                                                             <li><!-- Accueil -->
                                                                         {% endif %}
-										<a href="{{path('amap_homepage')}}">
-											Accueil
-										</a>
+                                                                            <a href="{{path('amap_homepage')}}">
+                                                                                Accueil
+                                                                            </a>
+									</li>
+                                                                        
+                                                                        <li>
+                                                                            <a class="" href="">
+                                                                                Une AMAP ?
+                                                                            </a>
 									</li>
                                                                         
                                                                         {% if app.request.attributes.get('_route') == "produits_index" %}
@@ -221,9 +227,9 @@
                                                                         {% else %}
                                                                             <li>
                                                                         {% endif %}
-										<a class="" href="{{path('produits_index')}}">
-											Nos produits
-										</a>
+                                                                            <a class="" href="{{path('produits_index')}}">
+                                                                                Nos produits
+                                                                            </a>
 									</li>
                                                                         
                                                                         {% if app.request.attributes.get('_route') == "paniers_index" %}
@@ -232,17 +238,10 @@
                                                                             <li>
                                                                         {% endif %}
                                                                             <a class="" href="{{path('paniers_index')}}">
-                                                                                    Nos paniers
+                                                                                Nos paniers
                                                                             </a>
 									</li>
-                                                                        
-                                                                        <li>
-                                                                            <a class="" href="">
-                                                                                    A propos
-                                                                            </a>
-									</li>
-									
-                                                                        
+
                                                                         <li class="">
                                                                             <a class="" href="">
                                                                                 Contacts
