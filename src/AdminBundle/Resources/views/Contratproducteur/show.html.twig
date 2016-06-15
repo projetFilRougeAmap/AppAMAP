@@ -1,0 +1,51 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <h1>ContratProducteur</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contratProducteur.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ contratProducteur.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Document</th>
+                <td>{{ contratProducteur.document }}</td>
+            </tr>
+            <tr>
+                <th>Nbpanier</th>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{% if contratProducteur.dateDebut %}{{ contratProducteur.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{% if contratProducteur.dateFin %}{{ contratProducteur.dateFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modepaiement</th>
+                <td>{{ contratProducteur.modePaiement }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contratproducteur_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('contratproducteur_edit', { 'id': contratProducteur.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

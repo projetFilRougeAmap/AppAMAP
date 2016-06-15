@@ -141,4 +141,6 @@ class Producteur
     public function __toString() {
     	return $this->user->getNom().' - '.$this->user->getPrenom();
     }
+    
+    
 }

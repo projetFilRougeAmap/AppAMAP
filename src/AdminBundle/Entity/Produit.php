@@ -282,4 +282,62 @@ class Produit
     {
         return $this->panierProduit;
     }
+
+    /**
+     * Add panierProduit
+     *
+     * @param \AdminBundle\Entity\PanierProduit $panierProduit
+     *
+     * @return Produit
+     */
+    public function addPanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit)
+    {
+        $this->panierProduit[] = $panierProduit;
+
+        return $this;
+    }
+
+    /**
+     * Remove panierProduit
+     *
+     * @param \AdminBundle\Entity\PanierProduit $panierProduit
+     */
+    public function removePanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit)
+    {
+        $this->panierProduit->removeElement($panierProduit);
+    }
+
+    /**
+     * Add contratProducteur
+     *
+     * @param \AdminBundle\Entity\ContratProducteurProduit $contratProducteur
+     *
+     * @return Produit
+     */
+    public function addContratProducteur(\AdminBundle\Entity\ContratProducteurProduit $contratProducteur)
+    {
+        $this->contratProducteur[] = $contratProducteur;
+
+        return $this;
+    }
+
+    /**
+     * Remove contratProducteur
+     *
+     * @param \AdminBundle\Entity\ContratProducteurProduit $contratProducteur
+     */
+    public function removeContratProducteur(\AdminBundle\Entity\ContratProducteurProduit $contratProducteur)
+    {
+        $this->contratProducteur->removeElement($contratProducteur);
+    }
+
+    /**
+     * Get contratProducteur
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContratProducteur()
+    {
+        return $this->contratProducteur;
+    }
 }

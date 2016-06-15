@@ -43,7 +43,7 @@ class ContratClient
     private $nbPanier;
 
      /**
-    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Panier")
+    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Panier",cascade={"persist"})
     */
     private $paniers;
 

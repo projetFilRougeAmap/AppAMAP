@@ -35,15 +35,9 @@ class ContratProducteur
      */
     private $document;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="nbPanier", type="integer")
-     */
-    private $nbPanier;
 
     /**
-     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ContratProducteurProduit", mappedBy="contratProducteur")
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ContratProducteurProduit", mappedBy="contratProducteur",cascade={"persist"})
     */
     private $produits;
 
@@ -117,6 +111,15 @@ class ContratProducteur
         return $this;
     }
 
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get document
      *
@@ -128,59 +131,11 @@ class ContratProducteur
     }
 
     /**
-     * Set nbPanier
-     *
-     * @param integer $nbPanier
-     *
-     * @return ContratClient
-     */
-    public function setNbPanier($nbPanier)
-    {
-        $this->nbPanier = $nbPanier;
-
-        return $this;
-    }
-
-    /**
-     * Get nbPanier
-     *
-     * @return int
-     */
-    public function getNbPanier()
-    {
-        return $this->nbPanier;
-    }
-
-    /**
-     * Set paniers
-     *
-     * @param string $paniers
-     *
-     * @return ContratClient
-     */
-    public function setPaniers($paniers)
-    {
-        $this->paniers = $paniers;
-
-        return $this;
-    }
-
-    /**
-     * Get paniers
-     *
-     * @return string
-     */
-    public function getPaniers()
-    {
-        return $this->paniers;
-    }
-
-    /**
      * Set dateDebut
      *
      * @param \DateTime $dateDebut
      *
-     * @return ContratClient
+     * @return ContratProducteur
      */
     public function setDateDebut($dateDebut)
     {
@@ -204,7 +159,7 @@ class ContratProducteur
      *
      * @param \DateTime $dateFin
      *
-     * @return ContratClient
+     * @return ContratProducteur
      */
     public function setDateFin($dateFin)
     {
@@ -228,7 +183,7 @@ class ContratProducteur
      *
      * @param string $modePaiement
      *
-     * @return ContratClient
+     * @return ContratProducteur
      */
     public function setModePaiement($modePaiement)
     {
@@ -246,22 +201,15 @@ class ContratProducteur
     {
         return $this->modePaiement;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add produit
      *
-     * @param \AdminBundle\Entity\Produit $produit
+     * @param \AdminBundle\Entity\ContratProducteurProduit $produit
      *
      * @return ContratProducteur
      */
-    public function addProduit(\AdminBundle\Entity\Produit $produit)
+    public function addProduit(\AdminBundle\Entity\ContratProducteurProduit $produit)
     {
         $this->produits[] = $produit;
 
@@ -271,9 +219,9 @@ class ContratProducteur
     /**
      * Remove produit
      *
-     * @param \AdminBundle\Entity\Produit $produit
+     * @param \AdminBundle\Entity\ContratProducteurProduit $produit
      */
-    public function removeProduit(\AdminBundle\Entity\Produit $produit)
+    public function removeProduit(\AdminBundle\Entity\ContratProducteurProduit $produit)
     {
         $this->produits->removeElement($produit);
     }
@@ -286,5 +234,10 @@ class ContratProducteur
     public function getProduits()
     {
         return $this->produits;
+    }
+    
+    public function __toString()
+    {
+    	return (string) $this->getLibelle();
     }
 }

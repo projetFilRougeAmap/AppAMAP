@@ -233,4 +233,28 @@ class Panier
     {
         return $this->panierProduit;
     }
+
+    /**
+     * Add panierProduit
+     *
+     * @param \AdminBundle\Entity\PanierProduit $panierProduit
+     *
+     * @return Panier
+     */
+    public function addPanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit)
+    {
+        $this->panierProduit[] = $panierProduit;
+
+        return $this;
+    }
+
+    /**
+     * Remove panierProduit
+     *
+     * @param \AdminBundle\Entity\PanierProduit $panierProduit
+     */
+    public function removePanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit)
+    {
+        $this->panierProduit->removeElement($panierProduit);
+    }
 }

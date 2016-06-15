@@ -157,4 +157,80 @@ class PanierProduit
     {
         return $this->paniers;
     }
+
+    /**
+     * Set quantiteProduit
+     *
+     * @param integer $quantiteProduit
+     *
+     * @return PanierProduit
+     */
+    public function setQuantiteProduit($quantiteProduit)
+    {
+        $this->quantiteProduit = $quantiteProduit;
+
+        return $this;
+    }
+
+    /**
+     * Get quantiteProduit
+     *
+     * @return integer
+     */
+    public function getQuantiteProduit()
+    {
+        return $this->quantiteProduit;
+    }
+
+    /**
+     * Set poidProduit
+     *
+     * @param float $poidProduit
+     *
+     * @return PanierProduit
+     */
+    public function setPoidProduit($poidProduit)
+    {
+        $this->poidProduit = $poidProduit;
+
+        return $this;
+    }
+
+    /**
+     * Get poidProduit
+     *
+     * @return float
+     */
+    public function getPoidProduit()
+    {
+        return $this->poidProduit;
+    }
+
+    /**
+     * Set produits
+     *
+     * @param \AdminBundle\Entity\Produit $produits
+     *
+     * @return PanierProduit
+     */
+    public function setProduits(\AdminBundle\Entity\Produit $produits = null)
+    {
+        $this->produits = $produits;
+
+        return $this;
+    }
+
+    /**
+     * Set paniers
+     *
+     * @param \AdminBundle\Entity\Panier $paniers
+     *
+     * @return PanierProduit
+     */
+    public function setPaniers(\AdminBundle\Entity\Panier $paniers = null)
+    {
+        $this->paniers = $paniers;
+
+        return $this;
+    }
 }

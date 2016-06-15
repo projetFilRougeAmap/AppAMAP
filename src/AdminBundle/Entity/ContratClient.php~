@@ -246,5 +246,35 @@ class ContratClient
     {
         return $this->modePaiement;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->paniers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add panier
+     *
+     * @param \AdminBundle\Entity\Panier $panier
+     *
+     * @return ContratClient
+     */
+    public function addPanier(\AdminBundle\Entity\Panier $panier)
+    {
+        $this->paniers[] = $panier;
+
+        return $this;
+    }
+
+    /**
+     * Remove panier
+     *
+     * @param \AdminBundle\Entity\Panier $panier
+     */
+    public function removePanier(\AdminBundle\Entity\Panier $panier)
+    {
+        $this->paniers->removeElement($panier);
+    }
+}

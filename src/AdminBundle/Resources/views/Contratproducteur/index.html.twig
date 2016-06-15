@@ -1,0 +1,47 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <h1>ContratProducteur list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Document</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>Modepaiement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contratProducteur in contratProducteurs %}
+            <tr>
+                <td><a href="{{ path('contratproducteur_show', { 'id': contratProducteur.id }) }}">{{ contratProducteur.id }}</a></td>
+                <td>{{ contratProducteur.libelle }}</td>
+                <td>{{ contratProducteur.document }}</td>
+                <td>{% if contratProducteur.dateDebut %}{{ contratProducteur.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if contratProducteur.dateFin %}{{ contratProducteur.dateFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ contratProducteur.modePaiement }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contratproducteur_show', { 'id': contratProducteur.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contratproducteur_edit', { 'id': contratProducteur.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contratproducteur_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

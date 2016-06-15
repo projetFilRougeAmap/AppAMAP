@@ -1,0 +1,97 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+<div>
+    <a href="{{ path('contratproducteur_index') }}" class="btn btn-primary">Retour</a><br><br>
+</div>
+    <div class="panel panel-default">
+        <div class="panel-heading panel-heading-transparent">
+                <strong>Création d'un Contrat de producteur</strong>
+        </div>
+
+        <div class="panel-body">
+            {{ form_start(form) }}    
+            <fieldset>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label> Libelle : </label>
+                            {{ form_widget(form.libelle, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Prix : </label>
+                            {{ form_widget(form.document, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Nombre de produit : </label>
+                            {{ form_widget(form.produits, {'attr':{'class':'form-control','required':'required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Date de début : </label>
+                            {{ form_widget(form.dateDebut, {'attr':{'required':'required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Date de fin : </label>
+                            {{ form_widget(form.dateFin, {'attr':{'required':'required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Mode de paiement : </label>
+                            {{ form_widget(form.modePaiement, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>  
+                 <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6"> 
+               				  <div id="champs"></div>   
+                 		</div>
+                    </div>
+                </div> 
+                <input type="submit" value="Ajouter" class="btn btn-success"/>
+            </fieldset>
+            {{ form_end(form) }}
+            
+            
+            <button id="b" class="btn btn-success">azazaz</button>
+           
+        </div>
+
+    </div>
+    
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+function add() {
+    var collectionHolder = $('#contrat_producteur_produits');
+    var prototype = collectionHolder.attr('data-prototype');
+    form = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length);
+    $('#champs').append(form);
+}
+
+$('#b').click(function (event) {
+    event.preventDefault();
+    add();
+});
+</script>
+{% endblock javascripts %}

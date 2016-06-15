@@ -35,15 +35,9 @@ class ContratProducteur
      */
     private $document;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="nbPanier", type="integer")
-     */
-    private $nbPanier;
 
     /**
-    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Produit")
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ContratProducteurProduit", mappedBy="contratProducteur")
     */
     private $produits;
 
@@ -117,134 +111,5 @@ class ContratProducteur
         return $this;
     }
 
-    /**
-     * Get document
-     *
-     * @return string
-     */
-    public function getDocument()
-    {
-        return $this->document;
-    }
-
-    /**
-     * Set nbPanier
-     *
-     * @param integer $nbPanier
-     *
-     * @return ContratClient
-     */
-    public function setNbPanier($nbPanier)
-    {
-        $this->nbPanier = $nbPanier;
-
-        return $this;
-    }
-
-    /**
-     * Get nbPanier
-     *
-     * @return int
-     */
-    public function getNbPanier()
-    {
-        return $this->nbPanier;
-    }
-
-    /**
-     * Set paniers
-     *
-     * @param string $paniers
-     *
-     * @return ContratClient
-     */
-    public function setPaniers($paniers)
-    {
-        $this->paniers = $paniers;
-
-        return $this;
-    }
-
-    /**
-     * Get paniers
-     *
-     * @return string
-     */
-    public function getPaniers()
-    {
-        return $this->paniers;
-    }
-
-    /**
-     * Set dateDebut
-     *
-     * @param \DateTime $dateDebut
-     *
-     * @return ContratClient
-     */
-    public function setDateDebut($dateDebut)
-    {
-        $this->dateDebut = $dateDebut;
-
-        return $this;
-    }
-
-    /**
-     * Get dateDebut
-     *
-     * @return \DateTime
-     */
-    public function getDateDebut()
-    {
-        return $this->dateDebut;
-    }
-
-    /**
-     * Set dateFin
-     *
-     * @param \DateTime $dateFin
-     *
-     * @return ContratClient
-     */
-    public function setDateFin($dateFin)
-    {
-        $this->dateFin = $dateFin;
-
-        return $this;
-    }
-
-    /**
-     * Get dateFin
-     *
-     * @return \DateTime
-     */
-    public function getDateFin()
-    {
-        return $this->dateFin;
-    }
-
-    /**
-     * Set modePaiement
-     *
-     * @param string $modePaiement
-     *
-     * @return ContratClient
-     */
-    public function setModePaiement($modePaiement)
-    {
-        $this->modePaiement = $modePaiement;
-
-        return $this;
-    }
-
-    /**
-     * Get modePaiement
-     *
-     * @return string
-     */
-    public function getModePaiement()
-    {
-        return $this->modePaiement;
-    }
+    
 }
-

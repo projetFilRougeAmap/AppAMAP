@@ -35,9 +35,10 @@ class Panier
      */
     private $prix;
 
+    
     /**
-    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\PanierProduit", inversedBy="paniers")
-    */
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\PanierProduit", mappedBy="paniers")
+     */
     private $panierProduit;
     
     /**
@@ -207,5 +208,53 @@ class Panier
     public function getCommandes()
     {
         return $this->commandes;
+    }
+
+    /**
+     * Set panierProduit
+     *
+     * @param \AdminBundle\Entity\PanierProduit $panierProduit
+     *
+     * @return Panier
+     */
+    public function setPanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit = null)
+    {
+        $this->panierProduit = $panierProduit;
+
+        return $this;
+    }
+
+    /**
+     * Get panierProduit
+     *
+     * @return \AdminBundle\Entity\PanierProduit
+     */
+    public function getPanierProduit()
+    {
+        return $this->panierProduit;
+    }
+
+    /**
+     * Add panierProduit
+     *
+     * @param \AdminBundle\Entity\PanierProduit $panierProduit
+     *
+     * @return Panier
+     */
+    public function addPanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit)
+    {
+        $this->panierProduit[] = $panierProduit;
+
+        return $this;
+    }
+
+    /**
+     * Remove panierProduit
+     *
+     * @param \AdminBundle\Entity\PanierProduit $panierProduit
+     */
+    public function removePanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit)
+    {
+        $this->panierProduit->removeElement($panierProduit);
     }
 }
