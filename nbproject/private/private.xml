@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/AppAMAP/src/AdminBundle/Resources/views/Panier/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/AppAMAP/src/AdminBundle/Form/PanierType.php</file>
-            <file>file:/C:/xampp/htdocs/AppAMAP/src/AdminBundle/Resources/views/Panier/edit.html.twig</file>
-            <file>file:/C:/xampp/htdocs/AppAMAP/src/AdminBundle/Controller/PanierController.php</file>
-            <file>file:/C:/xampp/htdocs/AppAMAP/src/AdminBundle/Resources/views/Panier/new.html.twig</file>
+            <file>file:/C:/xampp/htdocs/AppAMAP/app/Resources/views/base.html.twig</file>
+            <file>file:/C:/xampp/htdocs/AppAMAP/src/AMAPBundle/Controller/PaniersController.php</file>
         </group>
     </open-files>
 </project-private>
