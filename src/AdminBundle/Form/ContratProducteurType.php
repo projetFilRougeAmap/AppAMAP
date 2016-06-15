@@ -26,7 +26,6 @@ class ContratProducteurType extends AbstractType
             ))
             ->add('dateDebut', DateType::class)
             ->add('dateFin', DateType::class)
-            ->add('modePaiement')
         ;
     }
     

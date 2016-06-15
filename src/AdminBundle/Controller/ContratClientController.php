@@ -29,7 +29,7 @@ class ContratClientController extends Controller
         $contratCLients = $em->getRepository('AdminBundle:ContratClient')->findAll();
 
         return $this->render('AdminBundle:ContratClient:index.html.twig', array(
-            'contratCLients' => $contratCLients,
+            'contratClients' => $contratCLients,
         ));
     }
 
@@ -54,7 +54,7 @@ class ContratClientController extends Controller
         }
 
         return $this->render('AdminBundle:ContratClient:new.html.twig', array(
-            'contratCLient' => $contratCLient,
+            'contratClient' => $contratCLient,
             'form' => $form->createView(),
         ));
     }
@@ -96,7 +96,7 @@ class ContratClientController extends Controller
         }
 
         return $this->render('AdminBundle:ContratClient:edit.html.twig', array(
-            'contratCLient' => $contratCLient,
+            'contratClient' => $contratCLient,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
