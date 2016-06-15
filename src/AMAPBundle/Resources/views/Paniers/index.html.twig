@@ -41,8 +41,8 @@
                             </div>
                             <!-- /price -->
                             
-                            {% for unProduit in p.getProduits() %}
-                                - {{unProduit.getLibelle()}}<br>
+                            {% for unProduit in p.panierProduit %}
+                                - {#{unProduit.getLibelle()}#}<br>
                             {% endfor %}
                         </div>
                     </div>
