@@ -55,13 +55,6 @@ class ContratProducteur
      */
     private $dateFin;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="modePaiement", type="string", length=255, nullable=true)
-     */
-    private $modePaiement;
-
 
     /**
      * Get id
@@ -176,30 +169,6 @@ class ContratProducteur
     public function getDateFin()
     {
         return $this->dateFin;
-    }
-
-    /**
-     * Set modePaiement
-     *
-     * @param string $modePaiement
-     *
-     * @return ContratProducteur
-     */
-    public function setModePaiement($modePaiement)
-    {
-        $this->modePaiement = $modePaiement;
-
-        return $this;
-    }
-
-    /**
-     * Get modePaiement
-     *
-     * @return string
-     */
-    public function getModePaiement()
-    {
-        return $this->modePaiement;
     }
 
     /**

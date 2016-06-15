@@ -1,16 +1,99 @@
 {% extends 'baseAdmin.html.twig' %}
 
+{% block css %}
+    <link href="{{asset('admin/assets/css/chosen/chosen.css')}}"
+        rel="stylesheet">
+    <link
+        href="{{asset('admin/assets/plugins/select2/css/select2.min.css')}}"
+        rel="stylesheet">
+{% endblock css %}
+
 {% block body %}
-    <h1>ContratCLient creation</h1>
+<div>
+    <a href="{{ path('contratclient_index') }}" class="btn btn-primary">Retour</a><br><br>
+</div>
+    <div class="panel panel-default">
+        <div class="panel-heading panel-heading-transparent">
+                <strong>Création d'un Contrat de client</strong>
+        </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('contratclient_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <div class="panel-body">
+            {{ form_start(form) }}    
+            <fieldset>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label> Libelle : </label>
+                            {{ form_widget(form.libelle, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Document : </label>
+                            {{ form_widget(form.document, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Date de début : </label>
+                            {{ form_widget(form.dateDebut, {'attr':{'required':'required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Date de fin : </label>
+                            {{ form_widget(form.dateFin, {'attr':{'required':'required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Mode de paiement : </label>
+                            {{ form_widget(form.modePaiement, {'attr':{'required':'required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Paniers : </label>
+                            <div class="input-group">{{ form_widget(form.paniers,
+                                {'attr':{'class':'chosen-select','required':'required','data-placeholder':'Choisir des paniers',
+                                'multiple':'multiple','tabindex':'4','style':'width: 39em;'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Ajouter" class="btn btn-success"/>
+            </fieldset>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}
+
+{% block javascripts %}
+    <!-- Chosen -->
+    <script src="{{asset('admin/assets/plugins/chosen/chosen.jquery.js')}}"></script>
+    <!-- Select2 -->
+    <script src="{{asset('admin/assets/plugins/select2/js/select2.full.min.js')}}"></script>
+    
+    <script>
+        var config = {
+                '.chosen-select'           : {},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                '.chosen-select-width'     : {width:"95%"}
+                }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+    </script>
+{% endblock javascripts %} 

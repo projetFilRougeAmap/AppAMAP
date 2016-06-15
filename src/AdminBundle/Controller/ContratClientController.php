@@ -29,7 +29,7 @@ class ContratClientController extends Controller
         $contratCLients = $em->getRepository('AdminBundle:ContratClient')->findAll();
 
         return $this->render('AdminBundle:ContratClient:index.html.twig', array(
-            'contratCLients' => $contratCLients,
+            'contratClients' => $contratCLients,
         ));
     }
 
@@ -49,12 +49,11 @@ class ContratClientController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($contratCLient);
             $em->flush();
-
-            return $this->redirectToRoute('contratclient_show', array('id' => $contratCLient->getId()));
+            return $this->redirectToRoute('contratclient_index');
         }
 
         return $this->render('AdminBundle:ContratClient:new.html.twig', array(
-            'contratCLient' => $contratCLient,
+            'contratClient' => $contratCLient,
             'form' => $form->createView(),
         ));
     }
@@ -96,7 +95,7 @@ class ContratClientController extends Controller
         }
 
         return $this->render('AdminBundle:ContratClient:edit.html.twig', array(
-            'contratCLient' => $contratCLient,
+            'contratClient' => $contratCLient,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -105,18 +104,16 @@ class ContratClientController extends Controller
     /**
      * Deletes a ContratClient entity.
      *
-     * @Route("/{id}", name="contratclient_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="contratclient_delete")
      */
     public function deleteAction(Request $request, ContratClient $contratCLient)
     {
-        $form = $this->createDeleteForm($contratCLient);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        try{
             $em = $this->getDoctrine()->getManager();
             $em->remove($contratCLient);
             $em->flush();
+        }catch(\Exception $e){
+            
         }
 
         return $this->redirectToRoute('contratclient_index');

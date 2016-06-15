@@ -44,13 +44,11 @@ class ContratProducteurController extends Controller
         $contratProducteur = new ContratProducteur();
         $form = $this->createForm('AdminBundle\Form\ContratProducteurType', $contratProducteur);
         $form->handleRequest($request);
-		var_dump($_POST);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($contratProducteur);
             $em->flush();
-
-            //return $this->redirectToRoute('contratproducteur_show', array('id' => $contratProducteur->getId()));
+            return $this->redirectToRoute('contratproducteur_index');
         }
 
         return $this->render('AdminBundle:Contratproducteur:new.html.twig', array(
@@ -95,7 +93,7 @@ class ContratProducteurController extends Controller
             return $this->redirectToRoute('contratproducteur_edit', array('id' => $contratProducteur->getId()));
         }
 
-        return $this->render('contratproducteur/edit.html.twig', array(
+        return $this->render('AdminBundle:Contratproducteur:edit.html.twig', array(
             'contratProducteur' => $contratProducteur,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -105,18 +103,16 @@ class ContratProducteurController extends Controller
     /**
      * Deletes a ContratProducteur entity.
      *
-     * @Route("/{id}", name="contratproducteur_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="contratproducteur_delete")
      */
     public function deleteAction(Request $request, ContratProducteur $contratProducteur)
     {
-        $form = $this->createDeleteForm($contratProducteur);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        try{
             $em = $this->getDoctrine()->getManager();
             $em->remove($contratProducteur);
             $em->flush();
+        }catch(\Exception $e){
+            
         }
 
         return $this->redirectToRoute('contratproducteur_index');

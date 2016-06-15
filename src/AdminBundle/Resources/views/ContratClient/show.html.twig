@@ -1,48 +1,31 @@
 {% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
-    <h1>ContratClient</h1>
+<div>
+    <a href="{{ path('contratclient_index') }}" class="btn btn-primary">Retour</a><br><br>
+</div>
+    <div class="panel panel-default">
+        <div class="panel-heading panel-heading-transparent">
+                <strong>Affichage d'un contrat client</strong>
+        </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ contratClient.id }}</td>
-            </tr>
-            <tr>
-                <th>Libelle</th>
-                <td>{{ contratClient.libelle }}</td>
-            </tr>
-            <tr>
-                <th>Document</th>
-                <td>{{ contratClient.document }}</td>
-            </tr>
-            <tr>
-                <th>Datedebut</th>
-                <td>{% if contratClient.dateDebut %}{{ contratClient.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Datefin</th>
-                <td>{% if contratClient.dateFin %}{{ contratClient.dateFin|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Modepaiement</th>
-                <td>{{ contratClient.modePaiement }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('contratclient_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('contratclient_edit', { 'id': contratClient.id }) }}">Edit</a>
-        </li>
-        <li>
+        <div class="panel-body">    
+            <fieldset>
+                <b>Libelle : </b>{{ contratClient.libelle }}<br>
+                <b>Document : </b>{{ contratClient.document }}<br>
+                <b>Date de début : </b>{% if contratClient.dateDebut %}{{ contratClient.dateDebut|date('d/m/Y') }}{% endif %}<br>
+                <b>Date de fin : </b>{% if contratClient.dateFin %}{{ contratClient.dateFin|date('d/m/Y') }}{% endif %}<br>
+                <b>Mode de paiement : </b>{{ contratClient.modePaiement }}<br>
+                <b>Paniers : </b>
+                {% for panier in contratClient.paniers %}
+                    <br>- {{panier.typePanier}}
+                {% endfor %}
+            </fieldset><br><br>
+            
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer" class="btn btn-danger">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </div>
+
+    </div>
 {% endblock %}

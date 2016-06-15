@@ -1,21 +1,60 @@
 {% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
-    <h1>ContratProducteur edit</h1>
+<div>
+    <a href="{{ path('contratproducteur_index') }}" class="btn btn-primary">Retour</a><br><br>
+</div>
+    <div class="panel panel-default">
+        <div class="panel-heading panel-heading-transparent">
+                <strong>Editer un contrat producteur</strong>
+        </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('contratproducteur_index') }}">Back to the list</a>
-        </li>
-        <li>
+        <div class="panel-body">
+            {{ form_start(edit_form) }}    
+            <fieldset>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label> Libelle : </label>
+                            {{ form_widget(edit_form.libelle, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Document : </label>
+                            {{ form_widget(edit_form.document, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Date de début : </label>
+                            {{ form_widget(edit_form.dateDebut, {'attr':{'required':'required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Date de fin : </label>
+                            {{ form_widget(edit_form.dateFin, {'attr':{'required':'required'}}) }}
+                        </div>
+                    </div>
+                </div>
+                        
+                <input type="submit" value="Modifier" class="btn btn-success"/>
+            </fieldset>
+            {{ form_end(edit_form) }}
+            
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer" class="btn btn-danger">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </div>
+
+    </div>
 {% endblock %}
+
+
