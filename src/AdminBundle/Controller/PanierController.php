@@ -12,7 +12,7 @@ use AdminBundle\Form\PanierType;
 /**
  * Panier controller.
  *
- * @Route("/panier")
+ * @Route("/Panier")
  */
 class PanierController extends Controller
 {

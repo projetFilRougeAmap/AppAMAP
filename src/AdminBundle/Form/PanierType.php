@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Doctrine\DBAL\Types\DateType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class PanierType extends AbstractType
 {
@@ -18,7 +19,11 @@ class PanierType extends AbstractType
         $builder
 //             ->add('dateDerniereModif', \Symfony\Component\Form\Extension\Core\Type\DateType::class, array('format' => 'dd-MM-yyyy'))
             ->add('prix')
-            ->add('produits')
+            ->add('panierProduit', CollectionType::class, array('entry_type' => PanierProduitType::class,
+            		'allow_add' => true,
+            		'prototype' => true
+            
+            ))
             ->add('typePanier')
         ;
     }

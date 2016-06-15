@@ -20,19 +20,26 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="form-group">
-					<div class="col-md-6 col-sm-6">
-						<div class="form-group">
-							<label class="font-noraml">Produit(s) : </label>
-							<div class="input-group">{{ form_widget(form.produits,
-								{'attr':{'class':'chosen-select','required':'required','data-placeholder':'Choisir des produits',
-								'multiple':'multiple','tabindex':'4','style':'width: 39em;'}}) }}</div>
-						</div>
+			 <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6"> 
+               				  <div id="champs"></div>   
+                 		</div>
+                    </div>
+                </div> 
+{# 			<div class="row">#}
+{# 				<div class="form-group">#}
+{# 					<div class="col-md-6 col-sm-6">#}
+{# 						<div class="form-group">#}
+{# 							<label class="font-noraml">Produit(s) : </label>#}
+{# 							<div class="input-group">{{ form_widget(form.produits,#}
+{# 								{'attr':{'class':'chosen-select','required':'required','data-placeholder':'Choisir des produits',#}
+{# 								'multiple':'multiple','tabindex':'4','style':'width: 39em;'}}) }}</div>#}
+{# 						</div>#}
 
-					</div>
-				</div>
-			</div>
+{# 					</div>#}
+{# 				</div>#}
+{# 			</div>#}
 			<div class="row">
 				<div class="form-group">
 					<div class="col-md-6 col-sm-6">
@@ -43,6 +50,7 @@
 			</div>
 
 			<input type="submit" value="Ajouter" class="btn btn-success" />
+			<button id="b" class="btn btn-success">Ajouter un produit</button>
 		</fieldset>
 		{{ form_end(form) }}
 	</div>
@@ -72,6 +80,20 @@
             }
 
     </script>
+    
+    <script type="text/javascript">
+function add() {
+    var collectionHolder = $('#panier_panierProduit');
+    var prototype = collectionHolder.attr('data-prototype');
+    form = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length);
+    $('#champs').append(form);
+}
+
+$('#b').click(function (event) {
+    event.preventDefault();
+    add();
+});
+</script>
 {% endblock javascripts %} {% block css %}
 <link href="{{asset('admin/assets/css/chosen/chosen.css')}}"
 	rel="stylesheet">

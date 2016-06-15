@@ -25,7 +25,7 @@
 					<tr>
 						<td>{{ panier.typePanier.libelle }}</td>
 						<td>{{ panier.prix }}</td>
-						<td>{% for produit in panier.produits %} {{ produit.libelle }}<br>
+						<td>{% for panierProduit in panier.panierProduit %} {{ dump(panierProduit)}}<br>
 							{% endfor %}
 						</td>
 						<td><a href="{{path('panier_edit', { 'id': panier.id }) }}">Modifier</a>

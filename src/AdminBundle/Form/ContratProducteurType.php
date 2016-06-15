@@ -21,8 +21,8 @@ class ContratProducteurType extends AbstractType
             ->add('document')
             ->add('produits', CollectionType::class, array('entry_type' => ContratProducteurProduitType::class,
 			    'allow_add' => true,
-			    'prototype' => true
-            		
+			    'prototype' => true,
+            		'label'=>'',
             ))
             ->add('dateDebut', DateType::class)
             ->add('dateFin', DateType::class)
