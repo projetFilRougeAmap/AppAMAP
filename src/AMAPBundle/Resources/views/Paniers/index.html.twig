@@ -42,6 +42,7 @@
                             <!-- /price -->
                             
                             {% for unProduit in p.panierProduit %}
+                                {{dump(unProduit)}}
                                 - {#{unProduit.getLibelle()}#}<br>
                             {% endfor %}
                         </div>

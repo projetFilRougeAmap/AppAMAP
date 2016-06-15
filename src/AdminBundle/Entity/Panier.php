@@ -257,4 +257,8 @@ class Panier
     {
         $this->panierProduit->removeElement($panierProduit);
     }
+    
+    public function __toString(){
+    	return $this->typePanier->getLibelle();
+    }
 }

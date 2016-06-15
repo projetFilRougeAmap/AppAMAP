@@ -1,0 +1,47 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <h1>ContratCLient list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Document</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>Modepaiement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contratCLient in contratCLients %}
+            <tr>
+                <td><a href="{{ path('contratclient_show', { 'id': contratCLient.id }) }}">{{ contratCLient.id }}</a></td>
+                <td>{{ contratCLient.libelle }}</td>
+                <td>{{ contratCLient.document }}</td>
+                <td>{% if contratCLient.dateDebut %}{{ contratCLient.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if contratCLient.dateFin %}{{ contratCLient.dateFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ contratCLient.modePaiement }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contratclient_show', { 'id': contratCLient.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contratclient_edit', { 'id': contratCLient.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contratclient_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
