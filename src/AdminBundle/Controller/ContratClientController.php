@@ -49,8 +49,7 @@ class ContratClientController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($contratCLient);
             $em->flush();
-
-            return $this->redirectToRoute('contratclient_show', array('id' => $contratCLient->getId()));
+            return $this->redirectToRoute('contratclient_index');
         }
 
         return $this->render('AdminBundle:ContratClient:new.html.twig', array(
@@ -105,18 +104,16 @@ class ContratClientController extends Controller
     /**
      * Deletes a ContratClient entity.
      *
-     * @Route("/{id}", name="contratclient_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="contratclient_delete")
      */
     public function deleteAction(Request $request, ContratClient $contratCLient)
     {
-        $form = $this->createDeleteForm($contratCLient);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        try{
             $em = $this->getDoctrine()->getManager();
             $em->remove($contratCLient);
             $em->flush();
+        }catch(\Exception $e){
+            
         }
 
         return $this->redirectToRoute('contratclient_index');
