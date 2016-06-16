@@ -122,7 +122,7 @@
 
 				<!-- Logo -->
 				<span class="logo pull-left">
-					<img src="{{ asset('assets/images/logo_dark.png') }}" alt="admin panel" height="50" />
+					<img src="{{ asset('assets/images/logo_amap_site.png') }}" alt="admin panel" height="50" />
 				</span>
 
 {# 				<form method="get" action="page-search.html" class="search pull-left hidden-xs">#}
@@ -140,30 +140,21 @@
 								<img class="user-avatar" alt="" src="{{ asset('admin/assets/images/noavatar.jpg')}}" height="34" /> 
 								<span class="user-name">
 									<span class="hidden-xs">
-										John Doe <i class="fa fa-angle-down"></i>
+                                                                            {% if app.user != null %}
+                                                                                {{app.user.prenom}} {{app.user.nom}} ({{app.user.username}})
+                                                                            {% else %}
+                                                                                Mon compte
+                                                                            {% endif %} 
+                                                                            <i class="fa fa-angle-down"></i>
 									</span>
 								</span>
 							</a>
 							<ul class="dropdown-menu hold-on-click">
-								<li><!-- my calendar -->
-									<a href="calendar.html"><i class="fa fa-calendar"></i> Calendar</a>
-								</li>
-								<li><!-- my inbox -->
-									<a href="#"><i class="fa fa-envelope"></i> Inbox
-										<span class="pull-right label label-default">0</span>
-									</a>
-								</li>
-								<li><!-- settings -->
-									<a href="page-user-profile.html"><i class="fa fa-cogs"></i> Settings</a>
-								</li>
-
-								<li class="divider"></li>
-
 								<li><!-- lockscreen -->
-									<a href="page-lock.html"><i class="fa fa-lock"></i> Lock Screen</a>
+									<a href="{{path('amap_homepage')}}"><i class="fa fa-lock"></i> Site client</a>
 								</li>
 								<li><!-- logout -->
-									<a href="/logout"><i class="fa fa-power-off"></i> Log Out</a>
+									<a href="{{path('fos_user_security_logout')}}"><i class="fa fa-power-off"></i> Se deconnecter</a>
 								</li>
 							</ul>
 						</li>
