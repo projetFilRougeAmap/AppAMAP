@@ -46,7 +46,9 @@ class ContratProducteurController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-           
+           foreach ($contratProducteur->getProduits() as $p){
+           	$p->setContratProducteur($contratProducteur);
+           }
             $em->persist($contratProducteur);
             $em->flush();
             return $this->redirectToRoute('contratproducteur_index');

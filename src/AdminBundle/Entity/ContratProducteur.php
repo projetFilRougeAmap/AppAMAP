@@ -56,10 +56,22 @@ class ContratProducteur
     private $dateFin;
 
 
+    public function __toString()
+    {
+    	return (string) $this->getLibelle();
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -71,7 +83,7 @@ class ContratProducteur
      *
      * @param string $libelle
      *
-     * @return ContratClient
+     * @return ContratProducteur
      */
     public function setLibelle($libelle)
     {
@@ -95,22 +107,13 @@ class ContratProducteur
      *
      * @param string $document
      *
-     * @return ContratClient
+     * @return ContratProducteur
      */
     public function setDocument($document)
     {
         $this->document = $document;
 
         return $this;
-    }
-
-    
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -203,10 +206,5 @@ class ContratProducteur
     public function getProduits()
     {
         return $this->produits;
-    }
-    
-    public function __toString()
-    {
-    	return (string) $this->getLibelle();
     }
 }

@@ -52,4 +52,162 @@ class Panier
     private $commandes;
     
   
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->panierProduit = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commandes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dateDerniereModif
+     *
+     * @param \DateTime $dateDerniereModif
+     *
+     * @return Panier
+     */
+    public function setDateDerniereModif($dateDerniereModif)
+    {
+        $this->dateDerniereModif = $dateDerniereModif;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDerniereModif
+     *
+     * @return \DateTime
+     */
+    public function getDateDerniereModif()
+    {
+        return $this->dateDerniereModif;
+    }
+
+    /**
+     * Set prix
+     *
+     * @param float $prix
+     *
+     * @return Panier
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return float
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Add panierProduit
+     *
+     * @param \AdminBundle\Entity\PanierProduit $panierProduit
+     *
+     * @return Panier
+     */
+    public function addPanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit)
+    {
+        $this->panierProduit[] = $panierProduit;
+
+        return $this;
+    }
+
+    /**
+     * Remove panierProduit
+     *
+     * @param \AdminBundle\Entity\PanierProduit $panierProduit
+     */
+    public function removePanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit)
+    {
+        $this->panierProduit->removeElement($panierProduit);
+    }
+
+    /**
+     * Get panierProduit
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPanierProduit()
+    {
+        return $this->panierProduit;
+    }
+
+    /**
+     * Set typePanier
+     *
+     * @param \AdminBundle\Entity\TypePanier $typePanier
+     *
+     * @return Panier
+     */
+    public function setTypePanier(\AdminBundle\Entity\TypePanier $typePanier = null)
+    {
+        $this->typePanier = $typePanier;
+
+        return $this;
+    }
+
+    /**
+     * Get typePanier
+     *
+     * @return \AdminBundle\Entity\TypePanier
+     */
+    public function getTypePanier()
+    {
+        return $this->typePanier;
+    }
+
+    /**
+     * Add commande
+     *
+     * @param \AdminBundle\Entity\Commande $commande
+     *
+     * @return Panier
+     */
+    public function addCommande(\AdminBundle\Entity\Commande $commande)
+    {
+        $this->commandes[] = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Remove commande
+     *
+     * @param \AdminBundle\Entity\Commande $commande
+     */
+    public function removeCommande(\AdminBundle\Entity\Commande $commande)
+    {
+        $this->commandes->removeElement($commande);
+    }
+
+    /**
+     * Get commandes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommandes()
+    {
+        return $this->commandes;
+    }
 }
