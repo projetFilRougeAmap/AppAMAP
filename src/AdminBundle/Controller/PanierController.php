@@ -44,13 +44,17 @@ class PanierController extends Controller
         $panier = new Panier();
         $form = $this->createForm('AdminBundle\Form\PanierType', $panier);
         $form->handleRequest($request);
-
+		
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $panier->setDateDerniereModif(new \DateTime());
+            foreach ($panier->getPanierProduit() as $p){
+            	$p->setPaniers($panier);
+            }
             $em->persist($panier);
             $em->flush();
-
+           
             return $this->redirectToRoute('panier_index');
         }
 

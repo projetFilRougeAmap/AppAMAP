@@ -35,15 +35,8 @@ class ContratClient
      */
     private $document;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="nbPanier", type="integer")
-     */
-    private $nbPanier;
-
      /**
-    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Panier")
+    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Panier",cascade={"persist"})
     */
     private $paniers;
 
@@ -125,30 +118,6 @@ class ContratClient
     public function getDocument()
     {
         return $this->document;
-    }
-
-    /**
-     * Set nbPanier
-     *
-     * @param integer $nbPanier
-     *
-     * @return ContratClient
-     */
-    public function setNbPanier($nbPanier)
-    {
-        $this->nbPanier = $nbPanier;
-
-        return $this;
-    }
-
-    /**
-     * Get nbPanier
-     *
-     * @return int
-     */
-    public function getNbPanier()
-    {
-        return $this->nbPanier;
     }
 
     /**

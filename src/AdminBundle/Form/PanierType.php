@@ -21,8 +21,8 @@ class PanierType extends AbstractType
             ->add('prix')
             ->add('panierProduit', CollectionType::class, array('entry_type' => PanierProduitType::class,
             		'allow_add' => true,
-            		'prototype' => true
-            
+            		'prototype' => true,
+            		'by_reference' => false,
             ))
             ->add('typePanier')
         ;

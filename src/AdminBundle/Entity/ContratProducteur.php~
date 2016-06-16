@@ -37,7 +37,7 @@ class ContratProducteur
 
 
     /**
-     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ContratProducteurProduit", mappedBy="contratProducteur")
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ContratProducteurProduit", mappedBy="contratProducteur",cascade={"persist"})
     */
     private $produits;
 
@@ -54,13 +54,6 @@ class ContratProducteur
      * @ORM\Column(name="dateFin", type="datetime")
      */
     private $dateFin;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="modePaiement", type="string", length=255, nullable=true)
-     */
-    private $modePaiement;
 
 
     /**
@@ -112,4 +105,108 @@ class ContratProducteur
     }
 
     
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get document
+     *
+     * @return string
+     */
+    public function getDocument()
+    {
+        return $this->document;
+    }
+
+    /**
+     * Set dateDebut
+     *
+     * @param \DateTime $dateDebut
+     *
+     * @return ContratProducteur
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDebut
+     *
+     * @return \DateTime
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * Set dateFin
+     *
+     * @param \DateTime $dateFin
+     *
+     * @return ContratProducteur
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFin
+     *
+     * @return \DateTime
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    /**
+     * Add produit
+     *
+     * @param \AdminBundle\Entity\ContratProducteurProduit $produit
+     *
+     * @return ContratProducteur
+     */
+    public function addProduit(\AdminBundle\Entity\ContratProducteurProduit $produit)
+    {
+        $this->produits[] = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Remove produit
+     *
+     * @param \AdminBundle\Entity\ContratProducteurProduit $produit
+     */
+    public function removeProduit(\AdminBundle\Entity\ContratProducteurProduit $produit)
+    {
+        $this->produits->removeElement($produit);
+    }
+
+    /**
+     * Get produits
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduits()
+    {
+        return $this->produits;
+    }
+    
+    public function __toString()
+    {
+    	return (string) $this->getLibelle();
+    }
 }

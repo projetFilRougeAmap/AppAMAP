@@ -37,26 +37,27 @@ class Panier
 
     
     /**
-     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\PanierProduit", mappedBy="paniers")
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\PanierProduit", mappedBy="paniers",cascade={"persist"})
      */
     private $panierProduit;
     
     /**
-    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\TypePanier", inversedBy="paniers")
+    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\TypePanier", inversedBy="paniers",cascade={"persist"})
     */
     private $typePanier;
     
     /**
-    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Commande", inversedBy="paniers")
+    * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Commande", inversedBy="paniers",cascade={"persist"})
     */
     private $commandes;
     
+  
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->panierProduit = new \Doctrine\Common\Collections\ArrayCollection();
         $this->commandes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -119,37 +120,37 @@ class Panier
     }
 
     /**
-     * Add produit
+     * Add panierProduit
      *
-     * @param \AdminBundle\Entity\Produit $produit
+     * @param \AdminBundle\Entity\PanierProduit $panierProduit
      *
      * @return Panier
      */
-    public function addProduit(\AdminBundle\Entity\Produit $produit)
+    public function addPanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit)
     {
-        $this->produits[] = $produit;
+        $this->panierProduit[] = $panierProduit;
 
         return $this;
     }
 
     /**
-     * Remove produit
+     * Remove panierProduit
      *
-     * @param \AdminBundle\Entity\Produit $produit
+     * @param \AdminBundle\Entity\PanierProduit $panierProduit
      */
-    public function removeProduit(\AdminBundle\Entity\Produit $produit)
+    public function removePanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit)
     {
-        $this->produits->removeElement($produit);
+        $this->panierProduit->removeElement($panierProduit);
     }
 
     /**
-     * Get produits
+     * Get panierProduit
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getProduits()
+    public function getPanierProduit()
     {
-        return $this->produits;
+        return $this->panierProduit;
     }
 
     /**
@@ -208,57 +209,5 @@ class Panier
     public function getCommandes()
     {
         return $this->commandes;
-    }
-
-    /**
-     * Set panierProduit
-     *
-     * @param \AdminBundle\Entity\PanierProduit $panierProduit
-     *
-     * @return Panier
-     */
-    public function setPanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit = null)
-    {
-        $this->panierProduit = $panierProduit;
-
-        return $this;
-    }
-
-    /**
-     * Get panierProduit
-     *
-     * @return \AdminBundle\Entity\PanierProduit
-     */
-    public function getPanierProduit()
-    {
-        return $this->panierProduit;
-    }
-
-    /**
-     * Add panierProduit
-     *
-     * @param \AdminBundle\Entity\PanierProduit $panierProduit
-     *
-     * @return Panier
-     */
-    public function addPanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit)
-    {
-        $this->panierProduit[] = $panierProduit;
-
-        return $this;
-    }
-
-    /**
-     * Remove panierProduit
-     *
-     * @param \AdminBundle\Entity\PanierProduit $panierProduit
-     */
-    public function removePanierProduit(\AdminBundle\Entity\PanierProduit $panierProduit)
-    {
-        $this->panierProduit->removeElement($panierProduit);
-    }
-    
-    public function __toString(){
-    	return $this->typePanier->getLibelle();
     }
 }

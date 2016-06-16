@@ -22,13 +22,13 @@ class ContratProducteurProduit
 	private $id;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Produit", inversedBy="contratProducteur")
+	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Produit", inversedBy="contratProducteur",cascade={"persist"})
 	 * 
 	 */
 	private $produit;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\ContratProducteur", inversedBy="produits")
+	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\ContratProducteur", inversedBy="produits",cascade={"persist"})
 	 */
 	private $contratProducteur;
 	
@@ -122,4 +122,5 @@ class ContratProducteurProduit
     {
         return $this->contratProducteur;
     }
+    
 }

@@ -48,17 +48,45 @@
 					</div>
 				</div>
 			</div>
-
+			<div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6"> 
+               				  <div id="champs"></div>  
+               				  <div id="collection" data-prototype="{{ _self.ajouter_produit_prototype(form.panierProduit.vars.prototype)|e }}">
+               				  
+							    {% for produit in form.panierProduit %}
+							        {{ _self.ajouter_produit_prototype(produit) }}
+							    {% endfor %}
+							    <button id="b" class="btn btn-success">Ajouter un produit</button>
+							</div> 
+                 		</div>
+                    </div>
+                </div> 
 			<input type="submit" value="Ajouter" class="btn btn-success" />
-			<button id="b" class="btn btn-success">Ajouter un produit</button>
 		</fieldset>
-		{{ form_end(form) }}
+		<div class="hidden">{{ form_end(form) }}</div>
 	</div>
 </div>
 
 <a href="{{ path('panier_index') }}" class="btn btn-primary">Retour</a>
 <br>
 <br>
+
+{% macro ajouter_produit_prototype(produit) %}
+    <div class="row">
+		<div class="form-group">
+			<div class="col-md-3 col-sm-3"> 
+			<label>Poid : </label>
+				<div >{{ form_widget(produit.poidProduit) }}</div>   
+			</div>
+			
+			<div class="col-md-3 col-sm-3"> 
+			<label>Produit : </label>
+				<div>{{ form_widget(produit.produits) }}</div>   
+			</div>
+		</div>
+	</div> 
+{% endmacro %}
 {% endblock %} {% block javascripts %}
 <!-- Chosen -->
 <script src="{{asset('admin/assets/plugins/chosen/chosen.jquery.js')}}"></script>
@@ -83,10 +111,10 @@
     
     <script type="text/javascript">
 function add() {
-    var collectionHolder = $('#panier_panierProduit');
+    var collectionHolder = $('#collection');
     var prototype = collectionHolder.attr('data-prototype');
-    form = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length);
-    $('#champs').append(form);
+    form = prototype.replace(new RegExp("_name_", 'g'), collectionHolder.children().length);
+    $('#collection').append(form);
 }
 
 $('#b').click(function (event) {

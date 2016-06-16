@@ -19,6 +19,7 @@ class PanierProduitType extends AbstractType
             ->add('produits');
     }
     
+    
     /**
      * @param OptionsResolver $resolver
      */
