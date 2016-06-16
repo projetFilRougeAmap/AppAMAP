@@ -1,0 +1,39 @@
+{% extends 'base.html.twig'%}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-5">
+                        <img class="img-responsive" src="{{asset('assets/images/logo_amap.jpg')}}" alt="">
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-7">
+                        <h2 class="size-25">Un peu d’histoire</h2>
+
+                        <p>Les AMAP, Association pour le Maintien d’une Agriculture Paysanne, ont pour rôle principal d’établir un lien entre les consommateurs et les producteurs locaux. Elles s’inspirent des TEIKEI qui ont vu le jour au Japon.</p>
+                        <p>La première AMAP fut créée en 2001 par des agriculteurs près de Toulon. Cela leur a permis de maintenir leur activité et de faire face aux difficultés économiques du monde agricole.</p>
+                        <p>Le réseau des AMAP en France se composait en 2007 de 750 AMAP qui permettaient d’approvisionner 30 000 familles. Afin de continuer à se développer et de toucher plus de consommateurs mais également de producteurs, les AMAP ont commencé à se grouper en MIRAMAP, Mouvement Inter Régional des AMAP. Cela permet aux AMAP d’avoir une visibilité non plus locale mais nationale et d’élargir leur champ d’action.</p>
+                </div>
+            </div>
+                
+            <div class="row" style="margin-top: 5%;">
+                <div class="col-lg-7 col-md-7 col-sm-7">
+                        <h2 class="size-25">Le fonctionnement des AMAP</h2>
+
+                        <p>Les AMAP sont donc des regroupements entre les consommateurs et les producteurs. Elles établissent un contrat qui respectera les saisons et les conditions de production respectueuses de l’environnement et saines pour la santé des consommateurs et des producteurs. Les aliments produits sont vendus sous forme de paniers que le consommateur s’engage à acheter pendant une certaine période.</p>
+                        <p>Les produits peuvent être des fruits, des légumes, des œufs, des céréales, du fromage ou encore de la viande. Les produits proposés sont les plus diversifiés possibles afin de pouvoir consommer de nombreux aliments mais aussi limiter les problèmes liés au climat. Il s’agit toujours de produits frais. Tout ce qui est produit est forcément consommé car cette production n’est pas dépendante de la standardisation omniprésente dans la grande distribution.</p>
+                        <p>Les AMAP participent ainsi à lutter contre la pollution, l’agriculture industrielle et permet d’éveiller les consommateurs au partage des biens communs.</p>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5">
+                        <img class="img-responsive" src="{{asset('assets/images/fruit_amap.jpg')}}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock body%}
+
+{% block javascripts %}
+{% endblock %}
