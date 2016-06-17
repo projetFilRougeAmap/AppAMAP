@@ -210,4 +210,8 @@ class Panier
     {
         return $this->commandes;
     }
+    
+    public function __toString(){
+    	return $this->typePanier->getLibelle();
+    }
 }
