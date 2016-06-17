@@ -30,19 +30,34 @@ class Producteur
     private $numero;
     
     /**
-     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Stock", mappedBy="producteur")
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Production", mappedBy="producteur")
      */
-    private $stocks;
+    private $production;
     
     /**
      * @ORM\OneToOne(targetEntity="AdminBundle\Entity\User")
      */
     private $user;
 
+   
+    
+    public function __toString() {
+    	return $this->user->getNom().' - '.$this->user->getPrenom();
+    }
+    
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->production = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -74,44 +89,37 @@ class Producteur
     }
 
     /**
-     * Add stock
+     * Add production
      *
-     * @param \AdminBundle\Entity\Stock $stock
+     * @param \AdminBundle\Entity\Production $production
      *
      * @return Producteur
      */
-    public function addStock(\AdminBundle\Entity\Stock $stock)
+    public function addProduction(\AdminBundle\Entity\Production $production)
     {
-        $this->stocks[] = $stock;
+        $this->production[] = $production;
 
         return $this;
     }
 
     /**
-     * Remove stock
+     * Remove production
      *
-     * @param \AdminBundle\Entity\Stock $stock
+     * @param \AdminBundle\Entity\Production $production
      */
-    public function removeStock(\AdminBundle\Entity\Stock $stock)
+    public function removeProduction(\AdminBundle\Entity\Production $production)
     {
-        $this->stocks->removeElement($stock);
+        $this->production->removeElement($production);
     }
 
     /**
-     * Get stocks
+     * Get production
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getStocks()
+    public function getProduction()
     {
-        return $this->stocks;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->stocks = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->production;
     }
 
     /**
@@ -137,10 +145,4 @@ class Producteur
     {
         return $this->user;
     }
-    
-    public function __toString() {
-    	return $this->user->getNom().' - '.$this->user->getPrenom();
-    }
-    
-    
 }

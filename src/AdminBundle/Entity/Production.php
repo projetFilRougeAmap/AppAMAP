@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
  * Stock
  *
  * @ORM\Table(name="stock")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\StockRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\ProductionRepository")
  */
-class Stock
+class Production
 {
     /**
      * @var int
@@ -37,11 +37,6 @@ class Stock
 
     
     /**
-    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Entrepot", inversedBy="stock")
-    */
-    private $entrepot;
-    
-    /**
     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Produit", inversedBy="stock")
     */
     private $produits;
@@ -66,7 +61,7 @@ class Stock
      *
      * @param integer $quantite
      *
-     * @return Stock
+     * @return Production
      */
     public function setQuantite($quantite)
     {
@@ -90,7 +85,7 @@ class Stock
      *
      * @param float $poids
      *
-     * @return Stock
+     * @return Production
      */
     public function setPoids($poids)
     {
@@ -114,7 +109,7 @@ class Stock
      *
      * @param \AdminBundle\Entity\Entrepot $entrepot
      *
-     * @return Stock
+     * @return Production
      */
     public function setEntrepot(\AdminBundle\Entity\Entrepot $entrepot = null)
     {
@@ -138,7 +133,7 @@ class Stock
      *
      * @param \AdminBundle\Entity\Produit $produits
      *
-     * @return Stock
+     * @return Production
      */
     public function setProduits(\AdminBundle\Entity\Produit $produits = null)
     {
@@ -162,7 +157,7 @@ class Stock
      *
      * @param \AdminBundle\Entity\Producteur $producteur
      *
-     * @return Stock
+     * @return Production
      */
     public function setProducteur(\AdminBundle\Entity\Producteur $producteur = null)
     {

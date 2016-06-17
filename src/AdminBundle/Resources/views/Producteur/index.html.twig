@@ -16,7 +16,7 @@
 					<tr>
 						<th>Numero</th>
 						<th>Nom - Prenom</th>
- 						<th>Modifier</th>
+ 						<th></th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -26,7 +26,7 @@
 						<td>{{ producteur.numero }}</td>
 						<td>{{ producteur.user.nom }} - {{ producteur.user.prenom }}</td>
 						
-						<td><a href="{{path('producteur_add_product', { 'id': producteur.id }) }}">Ajouter des produits</a>
+						<td><a href="{{path('producteur_add_product', { 'id': producteur.id }) }}">Ajouter les produits livrés</a>
 						</td>
 						<td>
 							<a href="{{path('producteur_edit', { 'id': producteur.id }) }}" title="Modifier">

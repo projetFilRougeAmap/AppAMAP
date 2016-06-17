@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AdminBundle\Entity\Stock;
+use AdminBundle\Entity\Production;
 use AdminBundle\Form\StockType;
 
 /**
@@ -41,7 +41,7 @@ class StockController extends Controller
      */
     public function newAction(Request $request)
     {
-        $stock = new Stock();
+        $stock = new Production();
         $form = $this->createForm('AdminBundle\Form\StockType', $stock);
         $form->handleRequest($request);
 
@@ -65,7 +65,7 @@ class StockController extends Controller
      * @Route("/{id}", name="stock_show")
      * @Method("GET")
      */
-    public function showAction(Stock $stock)
+    public function showAction(Production $stock)
     {
         $deleteForm = $this->createDeleteForm($stock);
 
@@ -81,7 +81,7 @@ class StockController extends Controller
      * @Route("/{id}/edit", name="stock_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Stock $stock)
+    public function editAction(Request $request, Production $stock)
     {
         $deleteForm = $this->createDeleteForm($stock);
         $editForm = $this->createForm('AdminBundle\Form\StockType', $stock);
@@ -108,7 +108,7 @@ class StockController extends Controller
      * @Route("/{id}", name="stock_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Stock $stock)
+    public function deleteAction(Request $request, Production $stock)
     {
         $form = $this->createDeleteForm($stock);
         $form->handleRequest($request);
@@ -125,11 +125,11 @@ class StockController extends Controller
     /**
      * Creates a form to delete a Stock entity.
      *
-     * @param Stock $stock The Stock entity
+     * @param Production $stock The Stock entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Stock $stock)
+    private function createDeleteForm(Production $stock)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('stock_delete', array('id' => $stock->getId())))

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class StockType extends AbstractType
+class ProductionType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -28,7 +28,7 @@ class StockType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AdminBundle\Entity\Stock'
+            'data_class' => 'AdminBundle\Entity\Production'
         ));
     }
 }
