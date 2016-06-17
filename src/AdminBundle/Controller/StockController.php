@@ -28,7 +28,7 @@ class StockController extends Controller
 
         $stocks = $em->getRepository('AdminBundle:Stock')->findAll();
 
-        return $this->render('stock/index.html.twig', array(
+        return $this->render('AdminBundle:Stock:index.html.twig', array(
             'stocks' => $stocks,
         ));
     }
@@ -53,7 +53,7 @@ class StockController extends Controller
             return $this->redirectToRoute('stock_show', array('id' => $stock->getId()));
         }
 
-        return $this->render('stock/new.html.twig', array(
+        return $this->render('AdminBundle:Stock:new.html.twig', array(
             'stock' => $stock,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class StockController extends Controller
     {
         $deleteForm = $this->createDeleteForm($stock);
 
-        return $this->render('stock/show.html.twig', array(
+        return $this->render('AdminBundle:Stock:show.html.twig', array(
             'stock' => $stock,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class StockController extends Controller
             return $this->redirectToRoute('stock_edit', array('id' => $stock->getId()));
         }
 
-        return $this->render('stock/edit.html.twig', array(
+        return $this->render('AdminBundle:Stock:edit.html.twig', array(
             'stock' => $stock,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
