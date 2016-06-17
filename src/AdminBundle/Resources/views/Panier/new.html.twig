@@ -48,21 +48,21 @@
 					</div>
 				</div>
 			</div>
+			 <div>
+               	<div id="collection" data-prototype="{{ _self.ajouter_produit_prototype(form.panierProduit.vars.prototype)|e }}">
+					{% for produit in form.panierProduit %}
+						{{ _self.ajouter_produit_prototype(produit) }}
+					{% endfor %}
+				</div> 
+						<br>	
+				<button id="b" class="btn btn-success" >Ajouter un produit</button>
+			</div>
+			<br>
 			<div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 col-sm-6"> 
-               				  <div id="champs"></div>  
-               				  <div id="collection" data-prototype="{{ _self.ajouter_produit_prototype(form.panierProduit.vars.prototype)|e }}">
-               				  
-							    {% for produit in form.panierProduit %}
-							        {{ _self.ajouter_produit_prototype(produit) }}
-							    {% endfor %}
-							    <button id="b" class="btn btn-success">Ajouter un produit</button>
-							</div> 
-                 		</div>
-                    </div>
-                </div> 
-			<input type="submit" value="Ajouter" class="btn btn-success" />
+				<div class="form-group">
+					<input type="submit" value="Créer un panier" class="btn btn-success" style="margin-left: 320px"/>
+				</div>
+			</div>
 		</fieldset>
 		<div class="hidden">{{ form_end(form) }}</div>
 	</div>
@@ -77,12 +77,12 @@
 		<div class="form-group">
 			<div class="col-md-3 col-sm-3"> 
 			<label>Poid : </label>
-				<div >{{ form_widget(produit.poidProduit) }}</div>   
+				<div >{{ form_widget(produit.poidProduit,{'attr':{'class':'form-control'}}) }}</div>   
 			</div>
 			
 			<div class="col-md-3 col-sm-3"> 
 			<label>Produit : </label>
-				<div>{{ form_widget(produit.produits) }}</div>   
+				<div>{{ form_widget(produit.produits,{'attr':{'class':'form-control'}}) }}</div>   
 			</div>
 		</div>
 	</div> 
@@ -116,7 +116,7 @@ function add() {
     form = prototype.replace(new RegExp("_name_", 'g'), collectionHolder.children().length);
     $('#collection').append(form);
 }
-
+add();
 $('#b').click(function (event) {
     event.preventDefault();
     add();

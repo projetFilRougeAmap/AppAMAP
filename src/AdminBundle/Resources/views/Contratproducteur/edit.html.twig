@@ -6,7 +6,7 @@
 </div>
     <div class="panel panel-default">
         <div class="panel-heading panel-heading-transparent">
-                <strong>Editer un contrat producteur</strong>
+                <strong>Editer un contrat de producteur</strong>
         </div>
 
         <div class="panel-body">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                 <div class="row">
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6">
                             <label>Date de début : </label>
@@ -44,17 +44,66 @@
                         </div>
                     </div>
                 </div>
-                        
-                <input type="submit" value="Modifier" class="btn btn-success"/>
+                 <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6"> 
+               				  <div id="collection" data-prototype="{{ _self.ajouter_produit_prototype(edit_form.produits.vars.prototype)|e }}">
+               				  
+							    {% for produit in edit_form.produits %}
+							        {{ _self.ajouter_produit_prototype(produit) }}
+							    {% endfor %}
+							   
+							</div> 
+							 <button id="b" class="btn btn-success">Ajouter un produit</button>
+                 		</div>
+                    </div>
+                </div> 
+                
+                <input type="submit" value="Ajouter" class="btn btn-success"/>
             </fieldset>
-            {{ form_end(edit_form) }}
             
-            {{ form_start(delete_form) }}
+            <div class="hidden">{{ form_end(edit_form) }}</div>
+            
+             {{ form_start(delete_form) }}
                 <input type="submit" value="Supprimer" class="btn btn-danger">
             {{ form_end(delete_form) }}
+           
         </div>
 
     </div>
+    
+{% macro ajouter_produit_prototype(produit) %}
+    <div class="row">
+		<div class="form-group">
+			<div class="col-md-3 col-sm-3"> 
+			<label>Poid : </label>
+				<div >{{ form_widget(produit.poidProduit,{'attr':{'class':'form-control'}}) }}</div>   
+			</div>
+			
+			<div class="col-md-3 col-sm-3"> 
+			<label>Produit : </label>
+				<div>{{ form_widget(produit.produit) }}</div>   
+			</div>
+		</div>
+	</div> 
+{% endmacro %}
+    
 {% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+function add() {
+    var collectionHolder = $('#collection');
+    var prototype = collectionHolder.attr('data-prototype');
+    form = prototype.replace(new RegExp("_name_", 'g'), "_"+collectionHolder.children().length+"_");
+    
+    $('#collection').append(form);
+}
+$('#b').click(function (event) {
+    event.preventDefault();
+    add();
+});
+</script>
+{% endblock javascripts %}
 
 

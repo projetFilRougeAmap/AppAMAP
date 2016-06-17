@@ -52,8 +52,9 @@
 							    {% for produit in form.produits %}
 							        {{ _self.ajouter_produit_prototype(produit) }}
 							    {% endfor %}
-							    <button id="b" class="btn btn-success">Ajouter un produit</button>
+							   
 							</div> 
+							 <button id="b" class="btn btn-success">Ajouter un produit</button>
                  		</div>
                     </div>
                 </div> 
@@ -74,7 +75,7 @@
 		<div class="form-group">
 			<div class="col-md-3 col-sm-3"> 
 			<label>Poid : </label>
-				<div >{{ form_widget(produit.poidProduit) }}</div>   
+				<div >{{ form_widget(produit.poidProduit,{'attr':{'class':'form-control'}}) }}</div>   
 			</div>
 			
 			<div class="col-md-3 col-sm-3"> 
@@ -96,7 +97,7 @@ function add() {
     
     $('#collection').append(form);
 }
-
+add();
 $('#b').click(function (event) {
     event.preventDefault();
     add();

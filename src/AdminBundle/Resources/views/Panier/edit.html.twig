@@ -1,57 +1,131 @@
-{% extends 'baseAdmin.html.twig' %}
+{% extends 'baseAdmin.html.twig' %} {% block body %}
+<div class="panel panel-default">
+	<div class="panel-heading panel-heading-transparent">
+		<strong>Modification d'un panier</strong>
+	</div>
 
-{% block body %}
-    <div class="panel panel-default">
-        <div class="panel-heading panel-heading-transparent">
-                <strong>Création d'un panier</strong>
-        </div>
+	<div class="panel-body">
+		{{ form_start(edit_form) }}
+		<fieldset>
+			{# <div class="row">#} {# <div class="form-group">#} {# <div
+			class="col-md-6 col-sm-6">#} {# <label>Date mise à jour : </label>#}
+			{# {{ form_widget(form.dateDerniereModif,
+			{'attr':{'class':'required'}}) }}#} {# </div>#} {# </div>#} {#
+			</div>#}
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-6 col-sm-6">
+						<label>Prix : </label> {{ form_widget(edit_form.prix,
+						{'attr':{'class':'form-control','required':'required'}}) }}
+					</div>
+				</div>
+			</div>
+			 <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6"> 
+               				  <div id="champs"></div>   
+                 		</div>
+                    </div>
+                </div> 
+{# 			<div class="row">#}
+{# 				<div class="form-group">#}
+{# 					<div class="col-md-6 col-sm-6">#}
+{# 						<div class="form-group">#}
+{# 							<label class="font-noraml">Produit(s) : </label>#}
+{# 							<div class="input-group">{{ form_widget(form.produits,#}
+{# 								{'attr':{'class':'chosen-select','required':'required','data-placeholder':'Choisir des produits',#}
+{# 								'multiple':'multiple','tabindex':'4','style':'width: 39em;'}}) }}</div>#}
+{# 						</div>#}
 
-        <div class="panel-body">
-            {{ form_start(edit_form) }}    
-            <fieldset>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 col-sm-6">
-                            <label>Date mise à jour : </label>
-                            {{ form_widget(edit_form.dateDerniereModif, {'attr':{'class':'required'}}) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 col-sm-6">
-                            <label>Prix : </label>
-                            {{ form_widget(edit_form.prix, {'attr':{'class':'form-control required'}}) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 col-sm-6">
-                            <label>Produit(s) : </label>
-                            {{ form_widget(edit_form.produits, {'attr':{'class':'form-control required'}}) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 col-sm-6">
-                            <label>Type de panier : </label>
-                            {{ form_widget(edit_form.typePanier, {'attr':{'class':'form-control required'}}) }}
-                        </div>
-                    </div>
-                </div>
-                        
-                <input type="submit" value="Modifier" class="btn btn-success"/>
-            </fieldset>     
-            {{ form_end(edit_form) }}
-            
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer" class="btn btn-danger">
-            {{ form_end(delete_form) }}
-        </div>
-    </div>
+{# 					</div>#}
+{# 				</div>#}
+{# 			</div>#}
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-6 col-sm-6">
+						<label>Type de panier : </label> {{ form_widget(edit_form.typePanier,
+						{'attr':{'class':'form-control','required':'required'}}) }}
+					</div>
+				</div>
+			</div>
+			 <div>
+               	<div id="collection" data-prototype="{{ _self.ajouter_produit_prototype(edit_form.panierProduit.vars.prototype)|e }}">
+					{% for produit in edit_form.panierProduit %}
+						{{ _self.ajouter_produit_prototype(produit) }}
+					{% endfor %}
+				</div> 
+						<br>	
+				<button id="b" class="btn btn-success" >Ajouter un produit</button>
+			</div>
+			<br>
+			<div class="row">
+				<div class="form-group">
+					<input type="submit" value="Modifier le panier" class="btn btn-success" style="margin-left: 320px"/>
+				</div>
+			</div>
+		</fieldset>
+		<div class="hidden">{{ form_end(edit_form) }}</div>
+	</div>
+</div>
 
-    <a href="{{ path('panier_index') }}" class="btn btn-primary">Retour</a><br><br>
-{% endblock %}
+<a href="{{ path('panier_index') }}" class="btn btn-primary">Retour</a>
+<br>
+<br>
 
+{% macro ajouter_produit_prototype(produit) %}
+    <div class="row">
+		<div class="form-group">
+			<div class="col-md-3 col-sm-3"> 
+			<label>Poid : </label>
+				<div >{{ form_widget(produit.poidProduit,{'attr':{'class':'form-control'}}) }}</div>   
+			</div>
+			
+			<div class="col-md-3 col-sm-3"> 
+			<label>Produit : </label>
+				<div>{{ form_widget(produit.produits,{'attr':{'class':'form-control'}}) }}</div>   
+			</div>
+		</div>
+	</div> 
+{% endmacro %}
+{% endblock %} {% block javascripts %}
+<!-- Chosen -->
+<script src="{{asset('admin/assets/plugins/chosen/chosen.jquery.js')}}"></script>
+
+<!-- Select2 -->
+<script
+	src="{{asset('admin/assets/plugins/select2/js/select2.full.min.js')}}"></script>
+<script>
+  
+        var config = {
+                '.chosen-select'           : {},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                '.chosen-select-width'     : {width:"95%"}
+                }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+
+    </script>
+    
+    <script type="text/javascript">
+function add() {
+    var collectionHolder = $('#collection');
+    var prototype = collectionHolder.attr('data-prototype');
+    form = prototype.replace(new RegExp("_name_", 'g'), collectionHolder.children().length);
+    $('#collection').append(form);
+}
+$('#b').click(function (event) {
+    event.preventDefault();
+    add();
+});
+</script>
+{% endblock javascripts %} {% block css %}
+<link href="{{asset('admin/assets/css/chosen/chosen.css')}}"
+	rel="stylesheet">
+<link
+	href="{{asset('admin/assets/plugins/select2/css/select2.min.css')}}"
+	rel="stylesheet">
+
+{% endblock css %}
