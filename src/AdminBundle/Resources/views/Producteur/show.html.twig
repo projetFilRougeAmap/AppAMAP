@@ -15,11 +15,10 @@
                 <b>Nom - Prénom : </b>{{producteur.user.nom  }} - {{producteur.user.prenom  }}<br>
                 <b>Produits livrés : </b><br>
                 
-                 {% for production in producteur.production %}
-                 <b>le {{ production.dateDepot|date('d/m/Y') }} :</b>
-                 	{% for produit in production.produits %}
-                 		{{ produit.libelle }}	
-                 	{% endfor %}
+                 {% for produit in produits %}
+                 
+                 <b>le {{ produit.dateDepot|date('d/m/Y') }} : </b>{{ produit.produits.libelle }} ({{ produit.poids }} kg)
+                 	
                  <br>
                 {% endfor %}
             </fieldset>

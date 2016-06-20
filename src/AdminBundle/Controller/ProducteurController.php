@@ -164,9 +164,12 @@ class ProducteurController extends Controller
      */
     public function showAction(Producteur $producteur)
     {
+    	$em = $this->getDoctrine()->getManager();
+    	
     	$deleteForm = $this->createDeleteForm($producteur);
+    	$produits= $em->getRepository('AdminBundle:Production')->findBy(array('producteur'=>$producteur),array('dateDepot' => 'ASC'));
     	return $this->render('AdminBundle:Producteur:show.html.twig', array(
-    			'producteur' => $producteur,
+    			'producteur' => $producteur,'produits'=> $produits,
             'delete_form' => $deleteForm->createView(),
     	));
     }
