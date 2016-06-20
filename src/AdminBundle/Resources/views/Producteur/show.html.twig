@@ -13,11 +13,14 @@
             <fieldset>
                 <b> Numero : </b>{{ producteur.numero  }}<br>
                 <b>Nom - Prénom : </b>{{producteur.user.nom  }} - {{producteur.user.prenom  }}<br>
-                <b>Produits livrés : </b>
-                <b>le </b>
-                 {% for p in producteur.production %}
-                 	
-                 	{{ dump(p) }}
+                <b>Produits livrés : </b><br>
+                
+                 {% for production in producteur.production %}
+                 <b>le {{ production.dateDepot|date('d/m/Y') }} :</b>
+                 	{% for produit in production.produits %}
+                 		{{ produit.libelle }}	
+                 	{% endfor %}
+                 <br>
                 {% endfor %}
             </fieldset>
             <br><br>

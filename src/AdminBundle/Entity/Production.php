@@ -52,7 +52,17 @@ class Production
      * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Producteur", inversedBy="production")
      */
     private $producteur;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="AdminBundle\Entity\Entrepot", cascade={"persist"})
+     */
+    private $entrepot;
 
+    public function __construct()
+    {
+    	$this->dateDepot = new \DateTime();
+    }
+    
     /**
      * Get id
      *
@@ -182,5 +192,29 @@ class Production
     public function getDateDepot()
     {
         return $this->dateDepot;
+    }
+
+    /**
+     * Set entrepot
+     *
+     * @param \AdminBundle\Entity\Entrepot $entrepot
+     *
+     * @return Production
+     */
+    public function setEntrepot(\AdminBundle\Entity\Entrepot $entrepot = null)
+    {
+        $this->entrepot = $entrepot;
+
+        return $this;
+    }
+
+    /**
+     * Get entrepot
+     *
+     * @return \AdminBundle\Entity\Entrepot
+     */
+    public function getEntrepot()
+    {
+        return $this->entrepot;
     }
 }

@@ -20,6 +20,7 @@ class ProductionType extends AbstractType
             ->add('poids')
             ->add('produits')
             ->add('dateDepot', DateType::class)
+            ->add('entrepot')
         ;
     }
     
