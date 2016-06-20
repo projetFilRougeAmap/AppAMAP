@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AdminBundle\Entity\Producteur;
 use AdminBundle\Form\ProducteurType;
 use AdminBundle\Entity\Production;
+use AdminBundle\Entity\Stock;
 
 /**
  * Producteur controller.
@@ -143,12 +144,23 @@ class ProducteurController extends Controller
     	$form->handleRequest($request);
     	
     	if ($form->isSubmitted() && $form->isValid()) {
-    		$production->setProducteur($producteur);
-    		$em = $this->getDoctrine()->getManager();
-    		$em->persist($production);
-    		$em->flush();
-    	
-    		return $this->redirectToRoute('producteur_index', array('id' => $production->getId()));
+            $production->setProducteur($producteur);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($production);
+            
+            $stock = $em->getRepository('AdminBundle:Stock')->findOneBy(array("produits" => $production->getProduits(), "entrepot" => $production->getEntrepot()));
+          
+            if (!$stock) {
+                $stock = new Stock();
+                $stock->setEntrepot($production->getEntrepot());
+                $stock->setProduits($production->getProduits());
+            }
+            $stock->setQuantite($stock->getQuantite() + $production->getQuantite());
+            $stock->setPoids($stock->getPoids() + $production->getPoids());
+            $em->persist($stock);
+            
+            $em->flush();
+            return $this->redirectToRoute('stock_index', array('id' => $production->getId()));
     	}
     	
     	return $this->render('AdminBundle:Producteur:addProducts.html.twig', array('producteur'=>$producteur,'production' => $production,

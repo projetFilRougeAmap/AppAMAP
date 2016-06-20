@@ -26,14 +26,14 @@ class Stock
      *
      * @ORM\Column(name="quantite", type="integer")
      */
-    private $quantite;
+    private $quantite = 0;
 
     /**
      * @var float
      *
      * @ORM\Column(name="poids", type="float")
      */
-    private $poids;
+    private $poids = 0;
 
     
     /**

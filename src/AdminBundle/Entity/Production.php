@@ -54,7 +54,7 @@ class Production
     private $producteur;
     
     /**
-     * @ORM\OneToOne(targetEntity="AdminBundle\Entity\Entrepot", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Entrepot", cascade={"persist"})
      */
     private $entrepot;
 

@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AdminBundle\Entity\Production;
 use AdminBundle\Form\StockType;
+use AdminBundle\Entity\Stock;
 
 /**
  * Stock controller.
@@ -41,16 +42,26 @@ class StockController extends Controller
      */
     public function newAction(Request $request)
     {
-        $stock = new Production();
+        $stock = new Stock();
         $form = $this->createForm('AdminBundle\Form\StockType', $stock);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($stock);
+            
+            $existStock = $em->getRepository('AdminBundle:Stock')->findOneBy(array("produits" => $stock->getProduits(), "entrepot" => $stock->getEntrepot()));
+          
+            if ($existStock) {
+                $existStock->setQuantite($stock->getQuantite() + $existStock->getQuantite());
+                $existStock->setPoids($stock->getPoids() + $existStock->getPoids());
+                $em->persist($existStock);
+            } else {
+                $em->persist($stock);
+            }
+
             $em->flush();
 
-            return $this->redirectToRoute('stock_show', array('id' => $stock->getId()));
+            return $this->redirectToRoute('stock_index');
         }
 
         return $this->render('AdminBundle:Stock:new.html.twig', array(
@@ -65,7 +76,7 @@ class StockController extends Controller
      * @Route("/{id}", name="stock_show")
      * @Method("GET")
      */
-    public function showAction(Production $stock)
+    public function showAction(Stock $stock)
     {
         $deleteForm = $this->createDeleteForm($stock);
 
@@ -81,7 +92,7 @@ class StockController extends Controller
      * @Route("/{id}/edit", name="stock_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Production $stock)
+    public function editAction(Request $request, Stock $stock)
     {
         $deleteForm = $this->createDeleteForm($stock);
         $editForm = $this->createForm('AdminBundle\Form\StockType', $stock);
@@ -92,7 +103,7 @@ class StockController extends Controller
             $em->persist($stock);
             $em->flush();
 
-            return $this->redirectToRoute('stock_edit', array('id' => $stock->getId()));
+            return $this->redirectToRoute('stock_index');
         }
 
         return $this->render('AdminBundle:Stock:edit.html.twig', array(
@@ -105,18 +116,16 @@ class StockController extends Controller
     /**
      * Deletes a Stock entity.
      *
-     * @Route("/{id}", name="stock_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="stock_delete")
      */
-    public function deleteAction(Request $request, Production $stock)
+    public function deleteAction(Request $request, Stock $stock)
     {
-        $form = $this->createDeleteForm($stock);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        try{
             $em = $this->getDoctrine()->getManager();
             $em->remove($stock);
             $em->flush();
+        }catch(\Exception $e){
+        	
         }
 
         return $this->redirectToRoute('stock_index');
@@ -129,7 +138,7 @@ class StockController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Production $stock)
+    private function createDeleteForm(Stock $stock)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('stock_delete', array('id' => $stock->getId())))

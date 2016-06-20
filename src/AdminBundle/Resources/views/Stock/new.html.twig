@@ -1,16 +1,56 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
-    <h1>Stock creation</h1>
+    
+<div>
+    <a href="{{ path('stock_index') }}" class="btn btn-primary">Retour</a><br><br>
+</div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+<div class="panel panel-default">
+    <div class="panel-heading panel-heading-transparent">
+            <strong>Ajout au stock</strong>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('stock_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="panel-body">
+        {{ form_start(form) }}    
+        <fieldset>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6">
+                        <label> Entrepot : </label>
+                        {{ form_widget(form.entrepot, {'attr':{'class':'form-control required'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6">
+                        <label>Produit : </label>
+                        {{ form_widget(form.produits, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6">
+                        <label>Quantité : </label>
+                        {{ form_widget(form.quantite, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6">
+                        <label>Poids : </label>
+                        {{ form_widget(form.poids, {'attr':{'class':'form-control','required':'required'}}) }}
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" value="Ajouter" class="btn btn-success"/>
+        </fieldset>
+        {{ form_end(form) }}
+    </div>
+</div>
+
 {% endblock %}
