@@ -34,7 +34,14 @@ class Production
      * @ORM\Column(name="poids", type="float")
      */
     private $poids;
-
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDepot", type="datetime")
+     */
+    private $dateDepot;
+    
     
     /**
     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Produit", inversedBy="stock")
@@ -104,29 +111,6 @@ class Production
         return $this->poids;
     }
 
-    /**
-     * Set entrepot
-     *
-     * @param \AdminBundle\Entity\Entrepot $entrepot
-     *
-     * @return Production
-     */
-    public function setEntrepot(\AdminBundle\Entity\Entrepot $entrepot = null)
-    {
-        $this->entrepot = $entrepot;
-
-        return $this;
-    }
-
-    /**
-     * Get entrepot
-     *
-     * @return \AdminBundle\Entity\Entrepot
-     */
-    public function getEntrepot()
-    {
-        return $this->entrepot;
-    }
 
     /**
      * Set produits

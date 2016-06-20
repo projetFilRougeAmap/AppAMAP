@@ -96,7 +96,7 @@ class ProducteurController extends Controller
     /**
      * Deletes a Producteur entity.
      *
-     * @Route("/{id}", name="producteur_delete")
+     * @Route("/{id}/delete", name="producteur_delete")
      */
     public function deleteAction(Request $request, Producteur $producteur)
     {
@@ -153,6 +153,21 @@ class ProducteurController extends Controller
     	
     	return $this->render('AdminBundle:Producteur:addProducts.html.twig', array('producteur'=>$producteur,'production' => $production,
     			'form' => $form->createView()
+    	));
+    }
+    
+    /**
+     * Finds and displays a Producteur entity.
+     *
+     * @Route("/{id}", name="producteur_show")
+     * @Method("GET")
+     */
+    public function showAction(Producteur $producteur)
+    {
+    	$deleteForm = $this->createDeleteForm($producteur);
+    	return $this->render('AdminBundle:Producteur:show.html.twig', array(
+    			'producteur' => $producteur,
+            'delete_form' => $deleteForm->createView(),
     	));
     }
 }

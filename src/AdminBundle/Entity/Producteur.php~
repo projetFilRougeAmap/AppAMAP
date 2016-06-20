@@ -46,4 +46,103 @@ class Producteur
     }
     
     
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->production = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set numero
+     *
+     * @param string $numero
+     *
+     * @return Producteur
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
+     * Get numero
+     *
+     * @return string
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * Add production
+     *
+     * @param \AdminBundle\Entity\Production $production
+     *
+     * @return Producteur
+     */
+    public function addProduction(\AdminBundle\Entity\Production $production)
+    {
+        $this->production[] = $production;
+
+        return $this;
+    }
+
+    /**
+     * Remove production
+     *
+     * @param \AdminBundle\Entity\Production $production
+     */
+    public function removeProduction(\AdminBundle\Entity\Production $production)
+    {
+        $this->production->removeElement($production);
+    }
+
+    /**
+     * Get production
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduction()
+    {
+        return $this->production;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AdminBundle\Entity\User $user
+     *
+     * @return Producteur
+     */
+    public function setUser(\AdminBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AdminBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

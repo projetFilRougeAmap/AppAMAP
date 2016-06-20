@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Stock
  *
- * @ORM\Table(name="production")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\ProductionRepository")
+ * @ORM\Table(name="stock")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\StockRepository")
  */
-class Production
+class Stock
 {
     /**
      * @var int
@@ -34,24 +34,18 @@ class Production
      * @ORM\Column(name="poids", type="float")
      */
     private $poids;
+
     
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateDepot", type="datetime")
-     */
-    private $dateDepot;
-    
+    * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Entrepot", inversedBy="stock")
+    */
+    private $entrepot;
     
     /**
     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Produit", inversedBy="stock")
     */
     private $produits;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Producteur", inversedBy="production")
-     */
-    private $producteur;
 
     /**
      * Get id
@@ -68,7 +62,7 @@ class Production
      *
      * @param integer $quantite
      *
-     * @return Production
+     * @return Stock
      */
     public function setQuantite($quantite)
     {
@@ -92,7 +86,7 @@ class Production
      *
      * @param float $poids
      *
-     * @return Production
+     * @return Stock
      */
     public function setPoids($poids)
     {
@@ -111,13 +105,36 @@ class Production
         return $this->poids;
     }
 
+    /**
+     * Set entrepot
+     *
+     * @param \AdminBundle\Entity\Entrepot $entrepot
+     *
+     * @return Stock
+     */
+    public function setEntrepot(\AdminBundle\Entity\Entrepot $entrepot = null)
+    {
+        $this->entrepot = $entrepot;
+
+        return $this;
+    }
+
+    /**
+     * Get entrepot
+     *
+     * @return \AdminBundle\Entity\Entrepot
+     */
+    public function getEntrepot()
+    {
+        return $this->entrepot;
+    }
 
     /**
      * Set produits
      *
      * @param \AdminBundle\Entity\Produit $produits
      *
-     * @return Production
+     * @return Stock
      */
     public function setProduits(\AdminBundle\Entity\Produit $produits = null)
     {
@@ -134,53 +151,5 @@ class Production
     public function getProduits()
     {
         return $this->produits;
-    }
-
-    /**
-     * Set producteur
-     *
-     * @param \AdminBundle\Entity\Producteur $producteur
-     *
-     * @return Production
-     */
-    public function setProducteur(\AdminBundle\Entity\Producteur $producteur = null)
-    {
-        $this->producteur = $producteur;
-
-        return $this;
-    }
-
-    /**
-     * Get producteur
-     *
-     * @return \AdminBundle\Entity\Producteur
-     */
-    public function getProducteur()
-    {
-        return $this->producteur;
-    }
-
-    /**
-     * Set dateDepot
-     *
-     * @param \DateTime $dateDepot
-     *
-     * @return Production
-     */
-    public function setDateDepot($dateDepot)
-    {
-        $this->dateDepot = $dateDepot;
-
-        return $this;
-    }
-
-    /**
-     * Get dateDepot
-     *
-     * @return \DateTime
-     */
-    public function getDateDepot()
-    {
-        return $this->dateDepot;
     }
 }

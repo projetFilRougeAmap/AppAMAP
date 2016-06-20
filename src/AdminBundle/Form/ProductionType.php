@@ -5,6 +5,7 @@ namespace AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class ProductionType extends AbstractType
 {
@@ -17,8 +18,8 @@ class ProductionType extends AbstractType
         $builder
             ->add('quantite')
             ->add('poids')
-            ->add('entrepot')
             ->add('produits')
+            ->add('dateDepot', DateType::class)
         ;
     }
     

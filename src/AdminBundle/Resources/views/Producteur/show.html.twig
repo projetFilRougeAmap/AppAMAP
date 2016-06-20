@@ -1,0 +1,34 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+<div>
+    <a href="{{ path('producteur_index') }}" class="btn btn-primary">Retour</a><br><br>
+</div>
+    <div class="panel panel-default">
+        <div class="panel-heading panel-heading-transparent">
+                <strong>Détail d'un producteur</strong>
+        </div>
+
+        <div class="panel-body">    
+            <fieldset>
+                <b> Numero : </b>{{ producteur.numero  }}<br>
+                <b>Nom - Prénom : </b>{{producteur.user.nom  }} - {{producteur.user.prenom  }}<br>
+                <b>Produits livrés : </b>
+                <b>le </b>
+                 {% for p in producteur.production %}
+                 	
+                 	{{ dump(p) }}
+                {% endfor %}
+            </fieldset>
+            <br><br>
+            
+           
+        </div>
+
+    </div>
+<div>     
+	{{ form_start(delete_form) }}
+		<input type="submit" value="Supprimer" class="btn btn-danger">
+	{{ form_end(delete_form) }}
+</div>
+{% endblock %}
