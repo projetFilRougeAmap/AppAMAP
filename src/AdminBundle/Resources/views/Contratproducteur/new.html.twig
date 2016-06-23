@@ -28,6 +28,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Producteur : </label>
+                            {{ form_widget(form.producteur, {'attr':{'class':'form-control required'}}) }}
+                        </div>
+                    </div>
+                </div>
                  <div class="row">
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6">
@@ -74,7 +82,7 @@
     <div class="row">
 		<div class="form-group">
 			<div class="col-md-3 col-sm-3"> 
-			<label>Poid : </label>
+			<label>Poids (kg) : </label>
 				<div >{{ form_widget(produit.poidProduit,{'attr':{'class':'form-control'}}) }}</div>   
 			</div>
 			

@@ -13,6 +13,7 @@
             <fieldset>
                 <b> Libelle : </b>{{ contratProducteur.libelle }}<br>
                 <b>Document : </b>{{ contratProducteur.document }}<br>
+                <b>Producteur : </b>{{ contratProducteur.producteur }}<br>
                 <b>Date de début : </b>{% if contratProducteur.dateDebut %}{{ contratProducteur.dateDebut|date('d/m/Y') }}{% endif %}<br>
                 <b>Date de fin : </b>{% if contratProducteur.dateFin %}{{ contratProducteur.dateFin|date('d/m/Y') }}{% endif %}<br>
             </fieldset><br><br>

@@ -54,6 +54,11 @@ class ContratProducteur
      * @ORM\Column(name="dateFin", type="datetime")
      */
     private $dateFin;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Producteur", inversedBy="contrats",cascade={"persist"})
+     */
+    private $producteur;
 
 
     public function __toString()

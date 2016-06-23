@@ -17,7 +17,7 @@
                 
                  {% for produit in produits %}
                  
-                 <b>le {{ produit.dateDepot|date('d/m/Y') }} : </b>{{ produit.produits.libelle }} ({{ produit.poids }} kg)
+                 <b>&nbsp;&nbsp;-&nbsp;le {{ produit.dateDepot|date('d/m/Y') }} : </b>{{ produit.produits.libelle }} ({{ produit.poids }} kg)
                  	
                  <br>
                 {% endfor %}

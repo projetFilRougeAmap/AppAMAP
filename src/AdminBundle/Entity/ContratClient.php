@@ -74,6 +74,11 @@ class ContratClient
      * @ORM\Column(name="nbPanier", type="integer")
      */
     private $nbPanier;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="contrats",cascade={"persist"})
+     */
+    private $utilisateur;
 
 
     /**
@@ -308,5 +313,29 @@ class ContratClient
     public function getNbPanier()
     {
     	return $this->nbPanier;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \AdminBundle\Entity\User $utilisateur
+     *
+     * @return ContratClient
+     */
+    public function setUtilisateur(\AdminBundle\Entity\User $utilisateur = null)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \AdminBundle\Entity\User
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
     }
 }

@@ -40,11 +40,9 @@ class Producteur
     private $user;
     
     /**
-     * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\ContratProducteur")
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ContratProducteur", mappedBy="producteur", cascade={"persist"})
      */
     private $contrats;
-
-   
     
     public function __toString() {
     	return $this->user->getNom().' - '.$this->user->getPrenom();
@@ -150,6 +148,8 @@ class Producteur
     {
         return $this->user;
     }
+
+    
 
     /**
      * Add contrat

@@ -74,6 +74,11 @@ class ContratClient
      * @ORM\Column(name="nbPanier", type="integer")
      */
     private $nbPanier;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="contrats",cascade={"persist"})
+     */
+    private $utilisateur;
 
 
     /**

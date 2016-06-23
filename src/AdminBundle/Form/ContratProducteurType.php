@@ -18,6 +18,7 @@ class ContratProducteurType extends AbstractType
     {
         $builder
             ->add('libelle')
+            ->add('producteur')
             ->add('document')
             ->add('produits', CollectionType::class, array('entry_type' => ContratProducteurProduitType::class,
 			    'allow_add' => true,

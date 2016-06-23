@@ -54,6 +54,11 @@ class ContratProducteur
      * @ORM\Column(name="dateFin", type="datetime")
      */
     private $dateFin;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Producteur", inversedBy="contrats",cascade={"persist"})
+     */
+    private $producteur;
 
 
     public function __toString()
@@ -208,5 +213,29 @@ class ContratProducteur
     public function getProduits()
     {
         return $this->produits;
+    }
+
+    /**
+     * Set producteur
+     *
+     * @param \AdminBundle\Entity\Producteur $producteur
+     *
+     * @return ContratProducteur
+     */
+    public function setProducteur(\AdminBundle\Entity\Producteur $producteur = null)
+    {
+        $this->producteur = $producteur;
+
+        return $this;
+    }
+
+    /**
+     * Get producteur
+     *
+     * @return \AdminBundle\Entity\Producteur
+     */
+    public function getProducteur()
+    {
+        return $this->producteur;
     }
 }

@@ -46,7 +46,7 @@ class User extends BaseUser
     private $prenom;
     
     /**
-     * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\ContratClient")
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ContratClient", mappedBy="utilisateur", cascade={"persist"})
      */
     private $contrats;
 
@@ -146,5 +146,10 @@ class User extends BaseUser
     public function getContrats()
     {
         return $this->contrats;
+    }
+    
+    public function toString()
+    {
+    	return $this->nom." - ".$this->prenom;
     }
 }

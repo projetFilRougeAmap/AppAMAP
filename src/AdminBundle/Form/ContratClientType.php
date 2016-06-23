@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class ContratClientType extends AbstractType
 {
@@ -18,7 +19,7 @@ class ContratClientType extends AbstractType
     {
         $builder
             ->add('libelle')
-            
+            ->add('utilisateur',EntityType::class,array('class'=>'AdminBundle:User','choice_label'=>'toString'))
             ->add('document')
             ->add('dateDebut', DateType::class)
             ->add('dateFin', DateType::class)

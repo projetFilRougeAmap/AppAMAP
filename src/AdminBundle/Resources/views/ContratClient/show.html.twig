@@ -13,6 +13,7 @@
             <fieldset>
                 <b>Libelle : </b>{{ contratClient.libelle }}<br>
                 <b>Document : </b>{{ contratClient.document }}<br>
+                <b>Client : </b>{{ contratClient.utilisateur.toString }}<br>
                 <b>Date de début : </b>{% if contratClient.dateDebut %}{{ contratClient.dateDebut|date('d/m/Y') }}{% endif %}<br>
                 <b>Date de fin : </b>{% if contratClient.dateFin %}{{ contratClient.dateFin|date('d/m/Y') }}{% endif %}<br>
                 <b>Mode de paiement : </b>{{ contratClient.modePaiement }}<br>
