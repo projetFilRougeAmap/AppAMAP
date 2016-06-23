@@ -16,7 +16,7 @@ class ProductionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('quantite')
+//             ->add('quantite')
             ->add('poids')
             ->add('produits')
             ->add('dateDepot', DateType::class)

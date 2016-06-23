@@ -1,8 +1,16 @@
 {% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
-    <h1>Liste des utilisateurs</h1>
+    <a href="{{ path('user_new') }}" class="btn btn-primary">Ajouter un nouvel utilisateur</a>
+<div id="content" class="padding-20">
 
+	<!-- ------ -->
+	<div class="panel panel-default">
+		<div class="panel-heading panel-heading-transparent">
+			<strong>Liste des utilisateurs</strong>
+		</div>
+
+		<div class="panel-body">
    <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
     <thead>
         <tr>
@@ -45,6 +53,10 @@
         {% endfor %}
     </tbody>
     </table>
+    </div>
+    </div>
+    </div>
+   
 
-    <a href="{{ path('user_new') }}" class="btn btn-primary">Ajouter un nouvel utilisateur</a>
+
 {% endblock %}

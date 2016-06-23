@@ -15,18 +15,18 @@
 			
 {{ form_start(form) }}    
             <fieldset>
+{#                 <div class="row">#}
+{#                     <div class="form-group">#}
+{#                         <div class="col-md-6 col-sm-6">#}
+{#                             <label> Quantité : </label>#}
+{#                             {{ form_widget(form.quantite, {'attr':{'class':'form-control required'}}) }}#}
+{#                         </div>#}
+{#                     </div>#}
+{#                 </div>#}
                 <div class="row">
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6">
-                            <label> Quantité : </label>
-                            {{ form_widget(form.quantite, {'attr':{'class':'form-control required'}}) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 col-sm-6">
-                            <label>Poid : </label>
+                            <label>Poids (kg) : </label>
                             {{ form_widget(form.poids, {'attr':{'class':'form-control required'}}) }}
                         </div>
                     </div>

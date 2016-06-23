@@ -20,6 +20,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AdminBundle:Default:index.html.twig');
+    	return $this->redirectToRoute('stock_index');
+//         return $this->render('AdminBundle:Default:index.html.twig');
     }
 }

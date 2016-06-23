@@ -33,12 +33,21 @@ class HomeController extends Controller
     /**
      * Affiche la page de description de l'amap
      *
-     * @Route("/amap", name="amap_description")
+     * @Route("/AMAP", name="amap_description")
      * @Method({"GET", "POST"})
      */
     public function amapAction(\Symfony\Component\HttpFoundation\Request $request)
     {
         return $this->render('AMAPBundle:Default:amap.html.twig');
+    }
+    /**
+     * Affiche la page de contact
+     *
+     * @Route("/Contact", name="amap_contact")
+     */
+    public function contactAction()
+    {
+    	return $this->render('AMAPBundle:Default:contact.html.twig');
     }
     
     

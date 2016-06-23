@@ -31,7 +31,7 @@ class ContratProducteur
     /**
      * @var string
      *
-     * @ORM\Column(name="document", type="string", length=255)
+     * @ORM\Column(name="document", type="string", length=255, nullable=true)
      */
     private $document;
 
@@ -66,6 +66,8 @@ class ContratProducteur
     public function __construct()
     {
         $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateFin = new \DateTime();
+        $this->dateDebut = new \DateTime();
     }
 
     /**

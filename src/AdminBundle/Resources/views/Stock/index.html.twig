@@ -2,6 +2,7 @@
 
 {% block body %}
 <a href="{{ path('stock_new') }}" class="btn btn-primary">Ajouter au stock</a>
+<a href="{{ path('stock_retirer') }}" class="btn btn-primary">Retirer un panier du stock</a>
 <div id="content" class="padding-20">
 
 	<!-- ------ -->
@@ -18,7 +19,7 @@
                                     <tr>
                                         <th>Entrepot</th>
                                         <th>Produit</th>
-                                        <th>Quantité</th>
+{#                                         <th>Quantité</th>#}
                                         <th>Poids</th>
                                         <th>Actions</th>
                                     </tr>
@@ -29,7 +30,7 @@
                                     <tr>
                                         <td>{{ unStock.entrepot }}</td>
                                         <td>{{ unStock.produits }}</td>
-                                        <td>{{ unStock.quantite }}</td>
+{#                                         <td>{{ unStock.quantite }}</td>#}
                                         <td>{{ unStock.poids }}</td>
                                         <td>
                                             <a href="{{ path('stock_edit', { 'id': unStock.id }) }}">Modifier</a>

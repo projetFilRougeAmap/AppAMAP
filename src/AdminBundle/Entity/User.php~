@@ -39,7 +39,10 @@ class User extends BaseUser
      */
     private $prenom;
     
-    
+    /**
+     * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\ContratClient")
+     */
+    private $contrats;
 
     /**
      * Get id

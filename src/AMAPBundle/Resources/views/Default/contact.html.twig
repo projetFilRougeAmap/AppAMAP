@@ -1,0 +1,139 @@
+{% extends 'base.html.twig'%}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+
+						<!-- FORM -->
+						<div class="col-md-9 col-sm-9">
+
+							<h3>Nous envoyer un message !</h3>
+
+							
+							<!--
+								MESSAGES
+								
+									How it works?
+									The form data is posted to php/contact.php where the fields are verified!
+									php.contact.php will redirect back here and will add a hash to the end of the URL:
+										#alert_success 		= email sent
+										#alert_failed		= email not sent - internal server error (404 error or SMTP problem)
+										#alert_mandatory	= email not sent - required fields empty
+										Hashes are handled by assets/js/contact.js
+
+									Form data: required to be an array. Example:
+										contact[email][required]  WHERE: [email] = field name, [required] = only if this field is required (PHP will check this)
+										Also, add `required` to input fields if is a mandatory field. 
+										Example: <input required type="email" value="" class="form-control" name="contact[email][required]">
+
+									PLEASE NOTE: IF YOU WANT TO ADD OR REMOVE FIELDS (EXCEPT CAPTCHA), JUST EDIT THE HTML CODE, NO NEED TO EDIT php/contact.php or javascript
+												 ALL FIELDS ARE DETECTED DINAMICALY BY THE PHP
+
+									WARNING! Do not change the `email` and `name`!
+												contact[name][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
+												contact[email][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
+							-->
+
+							<!-- Alert Success -->
+							<div id="alert_success" class="alert alert-success margin-bottom-30">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+								<strong>Thank You!</strong> Your message successfully sent!
+							</div><!-- /Alert Success -->
+
+
+							<!-- Alert Failed -->
+							<div id="alert_failed" class="alert alert-danger margin-bottom-30">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+								<strong>[SMTP] Error!</strong> Internal server error!
+							</div><!-- /Alert Failed -->
+
+
+							<!-- Alert Mandatory -->
+							<div id="alert_mandatory" class="alert alert-danger margin-bottom-30">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+								<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
+							</div><!-- /Alert Mandatory -->
+
+
+							<form method="post" enctype="multipart/form-data">
+								<fieldset>
+									<input name="action" value="contact_send" type="hidden">
+
+									<div class="row">
+										<div class="form-group">
+											<div class="col-md-6">
+												<label for="contact:name">Nom complet *</label>
+												<input required="" value="" class="form-control" name="contact[name][required]" id="contact:name" type="text">
+											</div>
+											<div class="col-md-6">
+												<label for="contact:email">Email *</label>
+												<input required="" value="" class="form-control" name="contact[email][required]" id="contact:email" type="email">
+											</div>
+											
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group">
+											<div class="col-md-8">
+												<label for="contact:subject">Subject *</label>
+												<input required="" value="" class="form-control" name="contact[subject][required]" id="contact:subject" type="text">
+											</div>
+											<div class="col-md-4">
+												<label for="contact:phone">Téléphone</label>
+												<input value="" class="form-control" name="contact[phone]" id="contact:phone" type="text">
+											</div>
+											
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group">
+											<div class="col-md-12">
+												<label for="contact:message">Message *</label>
+												<textarea required="" maxlength="10000" rows="8" class="form-control" name="contact[message]" id="contact:message"></textarea>
+											</div>
+										</div>
+									</div>
+								
+								</fieldset>
+
+								<div class="row">
+									<div class="col-md-12">
+										<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Envoyer le message</button>
+									</div>
+								</div>
+							</form>
+
+						</div>
+						<!-- /FORM -->
+
+
+						<!-- INFO -->
+						<div class="col-md-3 col-sm-3">
+
+							
+
+							<p>
+								<span class="block"><strong><i class="fa fa-map-marker"></i> Addresse :</strong> 28 rue de l'hirondelle, 36000 Châteauroux</span>
+								<span class="block"><strong><i class="fa fa-phone"></i> Téléphone :</strong> <a href="tel:02-23-12-28-53">02-23-12-28-53</a></span>
+								<span class="block"><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="mailto:infos@amap.com">infos@amap.com</a></span>
+							</p>
+
+							<hr>
+
+							<h4 class="font300">Heures d'ouvertures</h4>
+							<p>
+								<span class="block"><strong>Lundi - Vendredi:</strong> 10h à 19h</span>
+								<span class="block"><strong>Samedi :</strong> 10h à 15h</span>
+								
+							</p>
+
+						</div>
+						<!-- /INFO -->
+
+					</div>
+{% endblock body%}
+
+{% block javascripts %}
+{% endblock %}

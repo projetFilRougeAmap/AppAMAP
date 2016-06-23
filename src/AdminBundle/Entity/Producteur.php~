@@ -38,6 +38,11 @@ class Producteur
      * @ORM\OneToOne(targetEntity="AdminBundle\Entity\User")
      */
     private $user;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\ContratProducteur")
+     */
+    private $contrats;
 
    
     

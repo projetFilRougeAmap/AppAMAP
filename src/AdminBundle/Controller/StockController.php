@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AdminBundle\Entity\Production;
 use AdminBundle\Form\StockType;
 use AdminBundle\Entity\Stock;
+use AdminBundle\Entity\Panier;
+use AdminBundle\Entity\Entrepot;
 
 /**
  * Stock controller.
@@ -145,5 +147,33 @@ class StockController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    
+    
+
+    /**
+     * Finds and displays a Stock entity.
+     *
+     * @Route("/RetirerPanier/", name="stock_retirer")
+     * @Method({"GET", "POST"})
+     */
+    public function retirerPanierAction(Request $request)
+    {
+    	 $form = $this->createForm('AdminBundle\Form\RetirerPanierType');
+    	 if ($_POST) {
+    	 	$em = $this->getDoctrine()->getManager();
+    	 	$entrepot = $em->getRepository('AdminBundle:Entrepot')->find($_POST['retirer_panier']['entrepot']);
+    	 	$panier = $em->getRepository('AdminBundle:Panier')->find($_POST['retirer_panier']['panier']);
+    	 	
+    	 	foreach ($panier->getPanierProduit() as $p){
+    	 		$em->getRepository('AdminBundle:Stock')->updateStock($p->getPoidProduit(),$p->getProduits(),$entrepot);
+    	 		
+    	 	}
+//     	 	$em->persist($stock);
+//     	 	$em->flush();
+    	 
+    	 	return $this->redirectToRoute('stock_index');
+    	 }
+    	return $this->render('AdminBundle:Stock:retirerPanier.html.twig', array('form'=>$form->createView()));
     }
 }

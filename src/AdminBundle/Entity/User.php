@@ -45,7 +45,10 @@ class User extends BaseUser
      */
     private $prenom;
     
-    
+    /**
+     * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\ContratClient")
+     */
+    private $contrats;
 
     /**
      * Get id
@@ -110,4 +113,38 @@ class User extends BaseUser
         return $this->prenom;
     }
 
+
+    /**
+     * Add contrat
+     *
+     * @param \AdminBundle\Entity\ContratClient $contrat
+     *
+     * @return User
+     */
+    public function addContrat(\AdminBundle\Entity\ContratClient $contrat)
+    {
+        $this->contrats[] = $contrat;
+
+        return $this;
+    }
+
+    /**
+     * Remove contrat
+     *
+     * @param \AdminBundle\Entity\ContratClient $contrat
+     */
+    public function removeContrat(\AdminBundle\Entity\ContratClient $contrat)
+    {
+        $this->contrats->removeElement($contrat);
+    }
+
+    /**
+     * Get contrats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContrats()
+    {
+        return $this->contrats;
+    }
 }

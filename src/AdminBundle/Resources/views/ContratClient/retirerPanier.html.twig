@@ -1,0 +1,41 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    
+<div>
+    <a href="{{ path('stock_index') }}" class="btn btn-primary">Retour</a><br><br>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-heading-transparent">
+            <strong>Retirer du stock</strong>
+    </div>
+
+    <div class="panel-body">
+        {{ form_start(form) }}    
+       <fieldset>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6">
+                        <label> Entrepot : </label>
+                        {{ form_widget(form.entrepot, {'attr':{'class':'form-control required'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6">
+                        <label>Paniers : </label>
+                        {{ form_widget(form.panier, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                </div>
+            </div>
+            
+
+            <input type="submit" value="Retirer" class="btn btn-success"/>
+        </fieldset>
+        {{ form_end(form) }}
+    </div>
+</div>
+
+{% endblock %}

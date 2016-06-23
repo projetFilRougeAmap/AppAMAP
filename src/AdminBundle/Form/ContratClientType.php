@@ -18,9 +18,11 @@ class ContratClientType extends AbstractType
     {
         $builder
             ->add('libelle')
+            
             ->add('document')
             ->add('dateDebut', DateType::class)
             ->add('dateFin', DateType::class)
+            ->add('nbPanierPrevu')
             ->add('modePaiement')
             ->add('paniers')
         ;

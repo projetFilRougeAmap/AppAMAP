@@ -22,6 +22,13 @@ class Panier
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=255)
+     */
+    private $libelle;
+    
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateDerniereModif", type="date", nullable=true)
@@ -70,7 +77,29 @@ class Panier
     {
         return $this->id;
     }
-
+    /**
+     * Set libelle
+     *
+     * @param string $libelle
+     *
+     * @return TypePanier
+     */
+    public function setLibelle($libelle)
+    {
+    	$this->libelle = $libelle;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get libelle
+     *
+     * @return string
+     */
+    public function getLibelle()
+    {
+    	return $this->libelle;
+    }
     /**
      * Set dateDerniereModif
      *
@@ -212,6 +241,6 @@ class Panier
     }
     
     public function __toString(){
-    	return $this->typePanier->getLibelle();
+    	return $this->libelle;
     }
 }

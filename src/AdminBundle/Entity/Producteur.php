@@ -38,6 +38,11 @@ class Producteur
      * @ORM\OneToOne(targetEntity="AdminBundle\Entity\User")
      */
     private $user;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\ContratProducteur")
+     */
+    private $contrats;
 
    
     
@@ -144,5 +149,39 @@ class Producteur
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add contrat
+     *
+     * @param \AdminBundle\Entity\ContratProducteur $contrat
+     *
+     * @return Producteur
+     */
+    public function addContrat(\AdminBundle\Entity\ContratProducteur $contrat)
+    {
+        $this->contrats[] = $contrat;
+
+        return $this;
+    }
+
+    /**
+     * Remove contrat
+     *
+     * @param \AdminBundle\Entity\ContratProducteur $contrat
+     */
+    public function removeContrat(\AdminBundle\Entity\ContratProducteur $contrat)
+    {
+        $this->contrats->removeElement($contrat);
+    }
+
+    /**
+     * Get contrats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContrats()
+    {
+        return $this->contrats;
     }
 }

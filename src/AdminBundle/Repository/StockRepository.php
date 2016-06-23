@@ -10,4 +10,18 @@ namespace AdminBundle\Repository;
  */
 class StockRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function updateStock($poids,$produit,$entreprot)
+	{
+		$qb = $this->_em->createQueryBuilder();
+		$q = $qb->update('AdminBundle:Stock', 's')
+		->set('s.poids', 's.poids - ?1')
+		->where('s.produits = ?2')
+		->andWhere("s.entrepot = ?3")
+		->setParameter(1, $poids)
+		->setParameter(2, $produit)
+		->setParameter(3, $entreprot->getId())
+		->getQuery();
+		$p = $q->execute();
+		return $p;
+	}
 }

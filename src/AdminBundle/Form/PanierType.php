@@ -19,6 +19,7 @@ class PanierType extends AbstractType
         $builder
 //             ->add('dateDerniereModif', \Symfony\Component\Form\Extension\Core\Type\DateType::class, array('format' => 'dd-MM-yyyy'))
             ->add('prix')
+            ->add('libelle')
             ->add('panierProduit', CollectionType::class, array('entry_type' => PanierProduitType::class,
             		'allow_add' => true,
             		'prototype' => true,

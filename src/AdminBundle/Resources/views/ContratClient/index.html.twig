@@ -22,6 +22,7 @@
                                         <th>Date debut</th>
                                         <th>Date fin</th>
                                         <th>Mode paiement</th>
+                                        <th>Nombre de panier restant</th>
                                         <th>Actions</th>
                                     </tr>
 				</thead>
@@ -34,11 +35,11 @@
                                         <td>{% if contratClient.dateDebut %}{{ contratClient.dateDebut|date('d/m/Y') }}{% endif %}</td>
                                         <td>{% if contratClient.dateFin %}{{ contratClient.dateFin|date('d/m/Y') }}{% endif %}</td>
                                         <td>{{ contratClient.modePaiement }}</td>
+                                        <td>{{ contratClient.nbPanier }}</td>
                                         <td>
-                                            <a href="{{ path('contratclient_edit', { 'id': contratClient.id }) }}">Modifier</a>
-                                        </td>
-                                        <td><a
-                                            href="{{path('contratclient_delete', { 'id': contratClient.id }) }}">Supprimer</a>
+                                            {% if contratClient.nbPanier>0 %}<a href="{{ path('contratclient_retirer', { 'id': contratClient.id }) }}">Retirer panier</a>
+                                            &nbsp;&nbsp;&nbsp;{% endif %}<a href="{{ path('contratclient_edit', { 'id': contratClient.id }) }}">Modifier</a>&nbsp;&nbsp;
+&nbsp;                                        <a href="{{path('contratclient_delete', { 'id': contratClient.id }) }}">Supprimer</a>
                                         </td>
                                     </tr>
                                     {% endfor %}

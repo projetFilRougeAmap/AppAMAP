@@ -8,6 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AdminBundle\Entity\ContratClient;
 use AdminBundle\Form\ContratClientType;
+use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 /**
  * ContratClient controller.
@@ -47,6 +50,7 @@ class ContratClientController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $contratCLient->setNbPanier($contratCLient->getNbPanierPrevu());
             $em->persist($contratCLient);
             $em->flush();
             return $this->redirectToRoute('contratclient_index');
@@ -133,5 +137,46 @@ class ContratClientController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    
+    /**
+     * Finds and displays a Stock entity.
+     *
+     * @Route("/RetirerPanier/{id}", name="contratclient_retirer")
+     * @Method({"GET", "POST"})
+     */
+    public function retirerPanierAction(Request $request, ContratClient $contratCLient)
+    {
+    		$em = $this->getDoctrine()->getManager();
+    		$form = $this->createFormBuilder()->add('panier', EntityType::class,
+	    				array(
+	    						'class' => 'AdminBundle:Panier',
+	    						'choices' =>$contratCLient->getPaniers()
+	    				)
+	    			)
+    				->add('entrepot',EntityType::class, 
+            		array(
+            				'class' => 'AdminBundle:Entrepot',
+            		)
+            )->getForm();
+    		if($_POST){
+    			if($contratCLient->getNbPanier()>0){
+		    		$em = $this->getDoctrine()->getManager();
+		    	 	$entrepot = $em->getRepository('AdminBundle:Entrepot')->find($_POST['form']['entrepot']);
+		    	 	$panier = $em->getRepository('AdminBundle:Panier')->find($_POST['form']['panier']);
+		    	 	
+		    	 	foreach ($panier->getPanierProduit() as $p){
+		    	 		$em->getRepository('AdminBundle:Stock')->updateStock($p->getPoidProduit(),$p->getProduits(),$entrepot);
+		    	 		
+		    	 	}	 	
+		    	 	$contratCLient->setNbPanier($contratCLient->getNbPanier()-1);
+		    	 	$em->persist($contratCLient);
+		    	 	$em->flush();
+	    	 	
+    			}
+    			return $this->redirectToRoute('contratclient_index');
+    		}
+    
+    	return $this->render('AdminBundle:ContratClient:retirerPanier.html.twig', array('form'=>$form->createView()));
     }
 }

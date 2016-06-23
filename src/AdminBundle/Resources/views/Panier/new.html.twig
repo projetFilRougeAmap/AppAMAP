@@ -15,18 +15,19 @@
 			<div class="row">
 				<div class="form-group">
 					<div class="col-md-6 col-sm-6">
+						<label>Nom du panier : </label> {{ form_widget(form.libelle,
+						{'attr':{'class':'form-control','required':'required'}}) }}
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-6 col-sm-6">
 						<label>Prix : </label> {{ form_widget(form.prix,
 						{'attr':{'class':'form-control','required':'required'}}) }}
 					</div>
 				</div>
 			</div>
-			 <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 col-sm-6"> 
-               				  <div id="champs"></div>   
-                 		</div>
-                    </div>
-                </div> 
 {# 			<div class="row">#}
 {# 				<div class="form-group">#}
 {# 					<div class="col-md-6 col-sm-6">#}
@@ -76,13 +77,13 @@
     <div class="row">
 		<div class="form-group">
 			<div class="col-md-3 col-sm-3"> 
-			<label>Poid : </label>
-				<div >{{ form_widget(produit.poidProduit,{'attr':{'class':'form-control'}}) }}</div>   
+			<label>Poids : </label>
+				<div >{{ form_widget(produit.poidProduit,{'attr':{'class':'form-control','required':'required'}}) }}</div>   
 			</div>
 			
 			<div class="col-md-3 col-sm-3"> 
 			<label>Produit : </label>
-				<div>{{ form_widget(produit.produits,{'attr':{'class':'form-control'}}) }}</div>   
+				<div>{{ form_widget(produit.produits,{'attr':{'class':'form-control','required':'required'}}) }}</div>   
 			</div>
 		</div>
 	</div> 

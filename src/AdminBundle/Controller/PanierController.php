@@ -115,9 +115,15 @@ class PanierController extends Controller
      */
     public function deleteAction(Request $request, Panier $panier)
     {
+    	try{
+    		
+    
         $em = $this->getDoctrine()->getManager();
         $em->remove($panier);
         $em->flush();
+    	}catch(\Exception $e){
+    		
+    	}
 
         return $this->redirectToRoute('panier_index');
     }

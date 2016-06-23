@@ -12,8 +12,8 @@
 				id="sample_editable_1">
 				<thead>
 					<tr>
-						<th>Type de panier</th>
-						<th>Prix (Kg)</th>
+						<th>Panier</th>
+						<th>Prix</th>
 						<th>Produit(s)</th>
 						<th>Modifier</th>
 						<th>Supprimer</th>
@@ -23,7 +23,7 @@
 				<tbody>
 					{% for panier in paniers %}
 					<tr>
-						<td>{{ panier.typePanier.libelle }}</td>
+						<td>{{ panier.libelle }} - {{ panier.typePanier.libelle }}</td>
 						<td>{{ panier.prix }}</td>
 						<td>{% for panierProduit in panier.panierProduit %} 
 							{{ panierProduit.produits.libelle}}

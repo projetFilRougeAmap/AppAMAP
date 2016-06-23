@@ -31,7 +31,7 @@ class ContratClient
     /**
      * @var string
      *
-     * @ORM\Column(name="document", type="string", length=255)
+     * @ORM\Column(name="document", type="string", length=255, nullable=true)
      */
     private $document;
 
@@ -60,6 +60,20 @@ class ContratClient
      * @ORM\Column(name="modePaiement", type="string", length=255, nullable=true)
      */
     private $modePaiement;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbPanierPrevu", type="integer")
+     */
+    private $nbPanierPrevu;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbPanier", type="integer")
+     */
+    private $nbPanier;
 
 
     /**
@@ -221,6 +235,8 @@ class ContratClient
     public function __construct()
     {
         $this->paniers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateFin = new \DateTime();
+        $this->dateDebut = new \DateTime();
     }
 
     /**
@@ -245,5 +261,52 @@ class ContratClient
     public function removePanier(\AdminBundle\Entity\Panier $panier)
     {
         $this->paniers->removeElement($panier);
+    }
+    /**
+     * Set nbPanierPrevu
+     *
+     * @param integer $nbPanierPrevu
+     *
+     * @return Panier
+     */
+    public function setNbPanierPrevu($nbPanierPrevu)
+    {
+    	$this->nbPanierPrevu = $nbPanierPrevu;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get nbPanierPrevu
+     *
+     * @return integer
+     */
+    public function getNbPanierPrevu()
+    {
+    	return $this->nbPanierPrevu;
+    }
+    
+    /**
+     * Set nbPanier
+     *
+     * @param integer $nbPanier
+     *
+     * @return Panier
+     */
+    public function setNbPanier($nbPanier)
+    {
+    	$this->nbPanier = $nbPanier;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get nbPanier
+     *
+     * @return integer
+     */
+    public function getNbPanier()
+    {
+    	return $this->nbPanier;
     }
 }

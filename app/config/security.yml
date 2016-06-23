@@ -30,6 +30,11 @@ security:
 
     access_control:
         - { path: ^/Identification$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/Admin/stock/new, role: ROLE_ADMIN }
+        - { path: ^/Admin/stock/.*/edit, role: ROLE_ADMIN }
+        - { path: ^/Admin/stock/.*/delete, role: ROLE_ADMIN }
+        - { path: ^/Admin/Entrepot/.*, role: ROLE_ADMIN }
         - { path: ^/Admin/, role: [ROLE_ADMIN, ROLE_RESPONSABLE, ROLE_PRODUCTEUR] }
+        
 
 
