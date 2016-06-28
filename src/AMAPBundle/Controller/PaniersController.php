@@ -2,15 +2,11 @@
 
 namespace AMAPBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use \Symfony\Component\Form\Extension\Core\Type\TextType;
-use \Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use \Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AdminBundle\Entity\Panier;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AdminBundle\Entity\Panier;
-use AdminBundle\Entity\TypePanier;
 
 
 /**

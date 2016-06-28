@@ -29,6 +29,8 @@ class GestionProduitsController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $produits = $em->getRepository('AdminBundle:Produit')->findAll();
+        
+        
 
         return $this->render('AdminBundle:Produit:index.html.twig', array(
             'produits' => $produits,
@@ -103,9 +105,13 @@ class GestionProduitsController extends Controller
      */
     public function deleteAction(Request $request, Produit $produit)
 {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($produit);
-        $em->flush();
+    	try{
+	        $em = $this->getDoctrine()->getManager();
+	        $em->remove($produit);
+	        $em->flush();
+    	}catch(\Exception $e){
+    		
+    	}
 
         return $this->redirectToRoute('gestionProduits_index');
     }
